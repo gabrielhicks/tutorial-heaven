@@ -14,17 +14,16 @@ export default function Html({imageSize}) {
         animate='animate'
         exit='exit'>
                 <motion.div
-                // initial={{
-                //     y: "15%",
-                //     width: imageSize.width,
-                //     height: imageSize.height,
-                // }}
-                // animate={{
-                //     y: 0,
-                //     width: "100%",
-                //     height: window.innerWidth > 1440 ? 800 : 400,
-                //     transition: { delay: 0.2, ...transition },
-                // }}
+                initial={{
+                    y: 0,
+                }}
+                animate={{
+                    y: "-200%",
+                    x: "0",
+                    width: "100vw",
+                    // height: window.innerWidth > 1440 ? 200 : 0,
+                    transition: { delay: 1.0, ...transition },
+                }}
                 >
                 <motion.div
                     className='frame-single'
@@ -47,10 +46,10 @@ export default function Html({imageSize}) {
                         width={imageSize.width}
                         height={imageSize.height}
                         initial={{ scale: 1.1 }}
-                        // animate={{
-                        //     transition: { delay: 0.2, ...transition },
-                        //     y: window.innerWidth > 1440 ? -1200 : -600,
-                        // }}
+                        animate={{
+                            transition: { delay: 0.6, ...transition },
+                            // y: window.innerWidth > 1440 ? 500 : 700,
+                        }}
                         />
                     </Icon>
                     </IconGrid>

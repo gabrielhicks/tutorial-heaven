@@ -19,7 +19,6 @@ function App() {
   const angularImage = { width: 100, height: 100, }
   const vueImage = { width: 100, height: 86.5, }
   const htmlImage = { width: 100, height: 100, }
-  // initial={false} exitBeforeEnter
   return (
     <>
       <Navbar />

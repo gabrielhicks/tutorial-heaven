@@ -14,17 +14,16 @@ export default function Rails({imageSize}) {
         animate='animate'
         exit='exit'>
                 <motion.div
-                // initial={{
-                //     y: "15%",
-                //     width: imageSize.width,
-                //     height: imageSize.height,
-                // }}
-                // animate={{
-                //     y: 0,
-                //     width: "100%",
-                //     height: window.innerWidth > 1440 ? 800 : 400,
-                //     transition: { delay: 0.2, ...transition },
-                // }}
+                initial={{
+                    y: 0,
+                }}
+                animate={{
+                    y: "-200%",
+                    x: "0",
+                    width: "100vw",
+                    // height: window.innerWidth > 1440 ? 200 : 0,
+                    transition: { delay: 1.0, ...transition },
+                }}
                 >
                 <motion.div
                     className='frame-single'
@@ -37,17 +36,17 @@ export default function Rails({imageSize}) {
                     <Icon className="extra"><motion.img transition={transition} initial={{opacity: 1}} animate={{opacity: 0}} alt="ReactJS" src="https://png2.cleanpng.com/sh/a9ae3b5b8626a46af7be3724fa57d4b1/L0KzQYm3VMA2N6Z7j5H0aYP2gLBuTfdidZYyitdqY4SwfrL7igZmNZtmjtN8Y4LsgMW0gf5lepDufJ95aIn2ebT6TcVia2dpTdgAMUi6SbaBTsY3OmQ5Tqc6MUW1QoqBUMM1OWI1SKU3cH7q/kisspng-game-react-native-javascript-android-physics-5ac6d5f51879e8.6623465115229803411003.png" /></Icon>
                     <Icon>
                     <MotionImage
-                        className="reactlogo"
+                        className="railslogo"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/200px-Ruby_logo.svg.png"
                         alt='Ruby on Rails'
                         style={{ scale: scale }}
                         width={imageSize.width}
                         height={imageSize.height}
                         initial={{ scale: 1.1 }}
-                        // animate={{
-                        //     transition: { delay: 0.2, ...transition },
-                        //     y: window.innerWidth > 1440 ? -1200 : -600,
-                        // }}
+                        animate={{
+                            transition: { delay: 0.6, ...transition },
+                            // y: window.innerWidth > 1440 ? 500 : 700,
+                        }}
                         />
                     </Icon>
                     <Icon className="extra"><motion.img transition={transition} initial={{ opacity: 1 }} animate={{opacity: 0}} alt="JavaScript" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png"/></Icon>

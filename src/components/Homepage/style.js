@@ -20,13 +20,13 @@ export const IconGrid = styled(Grid)`
             margin-bottom: 3vh;
         }
         img {
-            max-width: 75px;
+            width: 50px;
         }
         display: flex;
         top: 25vh;
         left: 25vw;
         margin-top: 5vh;
-        flex-direction: column;
+        ${'' /* flex-direction: column; */}
         transform: translate(-25%, -25%);
     }
 `
