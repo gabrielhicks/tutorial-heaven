@@ -3,13 +3,18 @@ import { connect } from 'react-redux'
 import {PostChartContainer} from './style'
 import {fetchPosts} from '../../redux/Post/post.action'
 
-function PostChart({posts, fetchPosts}) {
+function PostChart(props) {
     useEffect(() => {
-        fetchPosts()
+        props.fetchPosts()
     }, [])
-    return (
+
+    function filteredPosts() {
+        return props.posts.filter(post => post.category.topic === "React").map(post => <h1>This is a {post.id}</h1>)
+    }
+
+    return props.posts.length !== 32 ? (<h1>loading</h1>) : (
         <PostChartContainer>
-            {console.log(posts)}
+            {filteredPosts()}
         </PostChartContainer>
     )
 }

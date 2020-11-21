@@ -11,9 +11,7 @@ const INITIAL_STATE = {
 const postReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_POSTS_REQUEST:
-            return {
-                posts: action.payload
-            };
+            return action.payload
         // case POST_POSTS_REQUEST:
         //     return {
         //         ...state, count: state.count - 1,

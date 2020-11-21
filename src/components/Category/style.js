@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { motion } from "framer-motion";
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom'
+import Paper from '@material-ui/core/Paper';
 
 export const IconGrid = styled(Grid)`
     img {
@@ -33,10 +34,57 @@ export const Icon = styled(motion.a)`
     cursor: normal;
 `
 
+export const IconLink = styled(Link)`
+
+`
+
 export const MotionImage = styled(motion.img)`
-    ${'' /* position: relative;
-    top: 29vh;
-    left: 8vw; */}
-    ${'' /* transform: translate(-15%, -25%); */}
-    ${'' /* margin-top: 25vh; */}
+
+`
+
+export const PostContainer = styled(Grid)`
+    background-color: rgba(0, 0, 0, 0.1);
+    max-width: 80vw;
+    left: 10vw;
+    top: 40vh;
+    position: absolute;
+    z-index: -999;
+`
+
+export const PostCard = styled(Paper)`
+    position: relative;
+    text-align: "inline";
+    border: 1px solid rgba(0,0,0,0.5);
+    margin: -1px;
+    img {
+        width: 6vw;
+        float: right;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    i.status {
+        float: right;
+        color: red;
+    }
+    i.active {
+        color: green;
+    }
+    h3 {
+        cursor: pointer;
+    }
+`
+
+export const GridItem = styled(Grid)`
+    display: flex;
+`
+
+export const Title = styled.h2`
+    position: absolute;
+    font-weight: normal;
+    font-size: 5rem;
+    top: 15vh;
+    right: 10vw;
+    z-index: 1;
 `

@@ -1,77 +1,63 @@
 import React from 'react';
-import { Nav, NavLink, Bars, NavMenu, NavLogo, NavLinkMobile, MenuIcon, Times, NavItem } from './NavStyle';
+import PropTypes from 'prop-types';
+import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import Toolbar from '@material-ui/core/Toolbar';
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Zoom from '@material-ui/core/Zoom';
+import {Logo, StyledToolbar} from './styles'
 
-class Navbar extends React.Component {
-    state = {
-        clicked: false
-    }
+const useStyles = makeStyles((theme) => ({
+    root: {
+        position: 'fixed',
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+    },
+}));
 
-    clickHandler = () => {
-        this.setState(()=>({clicked: !this.state.clicked}))
-    }
+function ScrollTop(props) {
+    const { children } = props;
+    const classes = useStyles();
+    const trigger = useScrollTrigger({
+        disableHysteresis: true,
+        threshold: 100,
+    });
 
-    closeMenu = () => {
-        this.setState(()=>({clicked: false}))
-    }
+    const handleClick = (event) => {
+        const anchor = (event.target.ownerDocument || document).querySelector('#back-to-top-anchor');
 
-    closeMenuLogOut = (e) => {
-        this.setState(()=>({clicked: false}))
-        this.props.logoutHandler(e)
-    }
-
-    onMouseEnter = () => {
-        if (window.innerWidth < 960) {
-            this.setState(()=>({dropdown: false}))
-        } else {
-            this.setState(()=>({dropdown: true}))
+        if (anchor) {
+            anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     };
 
-    onMouseLeave = () => {
-        if (window.innerWidth < 960) {
-            this.setState(()=>({dropdown: false}))
-        } else {
-            this.setState(()=>({dropdown: true}))
-        }
-    }
+    return (
+        <Zoom in={trigger}>
+            <div onClick={handleClick} role="presentation" className={classes.root}>
+                {children}
+            </div>
+        </Zoom>
+    );
+}
 
-    itemCount = () => {
-        let items = 0;
-        for (const item of this.props.cart) {
-            items += parseInt(item.quantity)
-        }
-        return items
-    }
-
-
-    render() {
-        return (
-        <>
-            <Nav>
-                <NavLogo onClick={this.closeMenu} to="/"><img alt="Tutorial Heaven" src="https://img.icons8.com/pastel-glyph/64/ladder--v1.png"/>Tutorial Heaven</NavLogo>
-                <MenuIcon onClick={this.clickHandler}>
-                    {this.state.clicked ? <Times /> : <Bars />}
-                </MenuIcon>
-                {this.state.clicked ? 
-                    <NavMenu className="active">
-                    {/* <NavItem><NavLink onClick={this.closeMenu} to="/projects">Projects</NavLink></NavItem> */}
-                    <NavItem><NavLink onClick={this.closeMenu} to="/about">Log In</NavLink></NavItem>
-                    <NavItem><NavLinkMobile onClick={this.closeMenu} to="/contact">Sign Up</NavLinkMobile></NavItem>
-                    </NavMenu>
-                : 
-                    <NavMenu>
-                    {/* <NavItem><NavLink onClick={this.closeMenu} to="/projects">Projects</NavLink></NavItem> */}
-                    <NavItem><NavLink onClick={this.closeMenu} to="/about">Log In</NavLink></NavItem>
-                    <NavItem><NavLink onClick={this.closeMenu} to="/contact">Sign Up</NavLink></NavItem>
-                    </NavMenu>
-                }
-                {/* <NavBtn>
-                    <NavBtnLink to='/login'>sign in</NavBtnLink>
-                </NavBtn> */}
-            </Nav>
-            </>
-        )
-    }
-};
-
-export default Navbar
+export default function BackToTop(props) {
+    return (
+        <React.Fragment>
+        <CssBaseline />
+        <AppBar color="red">
+            <StyledToolbar>
+            <a href="/"><img width="50px;" alt="Tutorial Heaven" src="https://img.icons8.com/pastel-glyph/64/ladder--v1.png"/></a><Logo>Tutorial Heaven</Logo>
+            </StyledToolbar>
+        </AppBar>
+        <Toolbar id="back-to-top-anchor" />
+        <ScrollTop {...props}>
+            <Fab color="inherit" size="small" aria-label="scroll back to top">
+            <KeyboardArrowUpIcon />
+            </Fab>
+        </ScrollTop>
+        </React.Fragment>
+    );
+}
