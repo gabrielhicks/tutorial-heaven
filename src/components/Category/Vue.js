@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import CardMedia from '@material-ui/core/CardMedia';
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink} from './style'
-import PostChart from '../Charts/PostChart'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
 
@@ -25,15 +23,13 @@ function Vue({imageSize, posts, fetchPosts}) {
     }, [])
 
     const classes = useStyles();
-    const { scrollYProgress } = useViewportScroll();
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
     const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
 
     function filteredPosts() {
         return posts.filter(post => 
             post.category.topic === "Vue")
             .map(post => 
-            <GridItem item xs={10}>
+            <GridItem key={post.id} item xs={10}>
                 <PostCard className={classes.paper}>
                     <h3>{post.title}</h3>
                     <p>{post.comments.length} comments
@@ -50,7 +46,6 @@ function Vue({imageSize, posts, fetchPosts}) {
     return (
         <>
         <motion.div
-        onAnimationComplete={console.log(imageSize)}
         initial='initial'
         animate='animate'
         exit='exit'>
@@ -96,7 +91,7 @@ function Vue({imageSize, posts, fetchPosts}) {
                 </motion.div>
             </motion.div>
             <motion.div
-            initial={{opacity: 0.1}}
+            initial={{opacity: 0}}
             animate={{opacity: 1, transition: { delay: 1.0, ...transition }}}
             exit="exit"
             >

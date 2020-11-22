@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { motion, useViewportScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink} from './style'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
@@ -23,14 +23,13 @@ function Html({imageSize, posts, fetchPosts}) {
     }, [])
 
     const classes = useStyles();
-    const { scrollYProgress } = useViewportScroll();
     const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
 
     function filteredPosts() {
         return posts.filter(post => 
             post.category.topic === "HTML")
             .map(post => 
-            <GridItem item xs={10}>
+            <GridItem key={post.id} item xs={10}>
                 <PostCard className={classes.paper}>
                     <h3>{post.title}</h3>
                     <p>{post.comments.length} comments
@@ -47,7 +46,6 @@ function Html({imageSize, posts, fetchPosts}) {
     return (
         <>
         <motion.div
-        onAnimationComplete={console.log(imageSize)}
         initial='initial'
         animate='animate'
         exit='exit'>

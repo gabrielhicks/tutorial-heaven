@@ -14,4 +14,8 @@ export const StyledToolbar = styled(Toolbar)`
     img {
         margin-top: 5px;
         }
+    .login-button {
+        position: absolute;
+        right: 1vw;
+    }
 `
