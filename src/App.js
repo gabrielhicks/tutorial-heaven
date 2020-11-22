@@ -14,6 +14,18 @@ import Login from './components/User/Login';
 import Register from './components/User/Register';
 import Profile from './components/User/Profile';
 
+    // if (token) {
+    //   const options = {
+    //     method: "GET",
+    //     headers: {
+    //       Authorization: `Bearer ${token}` }
+    //     }
+    //   fetch("https://rplants-backend.herokuapp.com/api/v1/profile", options)
+    //   .then(res=>res.json())
+    //   .then(data=> this.setState({ user: data.user}))
+    // } else {
+    //   this.props.history.push("/")
+    // }
 
 function App() {
   const [user, setUser] = useState({})
