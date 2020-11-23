@@ -38,6 +38,11 @@ export const IconLink = styled(Link)`
 
 `
 
+export const PostLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+`
+
 export const MotionImage = styled(motion.img)`
 
 `

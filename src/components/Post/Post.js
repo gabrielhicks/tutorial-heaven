@@ -1,9 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
-export default function Post() {
+export default function Post({post, lang}) {
     return (
-        <div>
-            
-        </div>
+            <h2>{post.title}</h2>
     )
 }

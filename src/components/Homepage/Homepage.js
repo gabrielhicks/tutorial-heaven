@@ -4,7 +4,7 @@ import {IconGrid, Icon, HomeWrapper} from './style';
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
-export default function Homepage({reactImage, railsImage, jsImage, angularImage, vueImage, htmlImage}) {
+export default function Homepage() {
     return (
         <HomeWrapper>
         <IconGrid

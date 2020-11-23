@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import Homepage from './components/Homepage/Homepage'
 import Navbar from './components/Navbar/Navbar'
 import Reactjs from './components/Category/Reactjs'
+// import Category from './components/Category/Category'
 import Rails from './components/Category/Rails';
 import Javascript from './components/Category/Javascript';
 import Angular from './components/Category/Angular';
@@ -45,12 +46,13 @@ function App() {
         <Route path="/profile" render={() => (<Profile user={user}/> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>
-        <Route path="/reactjs" render={() => (<Reactjs imageSize={reactImage}/> )}/>
-        <Route path="/rails" render={() => (<Rails imageSize={railsImage}/> )}/>
-        <Route path="/javascript" render={() => (<Javascript imageSize={jsImage}/>)}/>
-        <Route path="/angular" render={() => (<Angular imageSize={angularImage}/> )}/>
-        <Route path="/vue" render={() => (<Vue imageSize={vueImage}/> )}/>
-        <Route path="/html5" render={() => (<Html imageSize={htmlImage}/> )}/>
+        <Route path="/reactjs" render={() => (<Reactjs root="reactjs" topic="React" imageSize={reactImage}/> )}/>
+        {/* <Route path="/reactjs" render={() => (<Category root="reactjs" topic="React" imageSize={reactImage}/> )}/> */}
+        <Route path="/rails" render={() => (<Rails root="rails" topic="Ruby on Rails" imageSize={railsImage}/> )}/>
+        <Route path="/javascript" render={() => (<Javascript root="javascript" topic="JavaScript" imageSize={jsImage}/>)}/>
+        <Route path="/angular" render={() => (<Angular root="angular" topic="Angular" imageSize={angularImage}/> )}/>
+        <Route path="/vue" render={() => (<Vue root="vue" topic="Vue" imageSize={vueImage}/> )}/>
+        <Route path="/html5" render={() => (<Html root="html5" topic="HTML" imageSize={htmlImage}/> )}/>
         <Route path="/" render={() => (<Homepage 
                                         reactImage={reactImage} 
                                         railsImage={railsImage} 

@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react'
+import { Route, Switch } from "react-router-dom"
+import Post from '../Post/Post'
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
-import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink} from './style'
+import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink} from './style'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
 
@@ -17,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Angular({imageSize, fetchPosts, posts}) {
+function Angular({imageSize, fetchPosts, posts, root, topic}) {
     useEffect(() => {
         fetchPosts()
     }, [])
@@ -27,11 +29,11 @@ function Angular({imageSize, fetchPosts, posts}) {
 
     function filteredPosts() {
         return posts.filter(post => 
-            post.category.topic === "Angular")
+            post.category.topic === topic)
             .map(post => 
             <GridItem key={post.id} item xs={10}>
                 <PostCard className={classes.paper}>
-                    <h3>{post.title}</h3>
+                    <PostLink to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink>
                     <p>{post.comments.length} comments
                     {post.status === "active" 
                     ? 
@@ -43,6 +45,28 @@ function Angular({imageSize, fetchPosts, posts}) {
     }
     
 
+    return (
+        <>
+        <Switch>
+        <Route path={`/${root}/:id`} render={(routerProps) => {
+            let id = parseInt(routerProps.match.params.id)
+            let post;
+            if(posts.length > 0) {
+                post = posts.find(post => post.id === id)
+            }
+            return (
+                <>
+                {
+                    posts.length > 0 
+                    ? 
+                    <Post key={post.id} post={post} lang={`${root}`}/>
+                    :
+                    <h2>Loading...</h2>
+                }
+                </>
+            )
+        }}/>
+        <Route path={`/${root}`} render={() => {
     return (
         <>
         <motion.div
@@ -106,6 +130,9 @@ function Angular({imageSize, fetchPosts, posts}) {
                     {posts.length === undefined ? (<h1>loading</h1>) : filteredPosts()}
                 </PostContainer>
             </motion.div>
+        </>
+    )}}/>
+        </Switch>
         </>
     )
 }
