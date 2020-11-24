@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import { Route, Switch, withRouter } from "react-router-dom"
+import { Route, Switch, withRouter, useLocation } from "react-router-dom"
 import './App.css';
 import { AnimatePresence } from "framer-motion";
 import Homepage from './components/Homepage/Homepage'
 import Navbar from './components/Navbar/Navbar'
 import Reactjs from './components/Category/Reactjs'
-// import Category from './components/Category/Category'
+import Category from './components/Category/Category'
 import Rails from './components/Category/Rails';
 import Javascript from './components/Category/Javascript';
 import Angular from './components/Category/Angular';
@@ -33,28 +33,29 @@ import NewComment from './components/Comment/NewComment';
 
 function App() {
   const [user, setUser] = useState({})
-  const reactImage = { width: 100, height: 90, }
+  const reactImage = { width: 100, height: 100, }
   const railsImage = { width: 100, height: 100, }
   const jsImage = { width: 100, height: 100, }
   const angularImage = { width: 100, height: 100, }
   const vueImage = { width: 100, height: 86.5, }
   const htmlImage = { width: 100, height: 100, }
   const handleLogin = user => {setUser(user)}
+  const location = useLocation()
   console.log(user)
   return (
     <>
       <Navbar />
-      <AnimatePresence initial={false} exitBeforeEnter>
-      <Switch>
+      <AnimatePresence initial={true} exitBeforeEnter>
+      <Switch location={location} key={location.pathname}>
         <Route path="/newcomment" render={() => (<NewComment /> )}/>
         <Route path="/logout" render={() => (<Logout /> )}/>
         <Route path="/newpost" render={() => (<NewPost /> )}/>
         <Route path="/profile" render={() => (<Profile /> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>
-        <Route path="/reactjs" render={() => (<Reactjs root="reactjs" topic="React" imageSize={reactImage}/> )}/>
-        {/* <Route path="/reactjs" render={() => (<Category root="reactjs" topic="React" imageSize={reactImage}/> )}/> */}
-        <Route path="/rails" render={() => (<Rails root="rails" topic="Ruby on Rails" imageSize={railsImage}/> )}/>
+        {/* <Route path="/reactjs" render={() => (<Reactjs root="reactjs" topic="React" imageSize={reactImage}/> )}/> */}
+        <Route path="/reactjs" render={() => (<Category root="reactjs" topic="React" imageSize={reactImage}/> )}/>
+        <Route path="/rails" render={() => (<Category root="rails" topic="Ruby on Rails" imageSize={railsImage}/> )}/>
         <Route path="/javascript" render={() => (<Javascript root="javascript" topic="JavaScript" imageSize={jsImage}/>)}/>
         <Route path="/angular" render={() => (<Angular root="angular" topic="Angular" imageSize={angularImage}/> )}/>
         <Route path="/vue" render={() => (<Vue root="vue" topic="Vue" imageSize={vueImage}/> )}/>

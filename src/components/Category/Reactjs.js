@@ -94,7 +94,7 @@ function Reactjs({posts, fetchPosts, imageSize, root, topic, user}) {
                                 alignItems="baseline">
                             <Icon>
                             <MotionImage
-                                src="https://png2.cleanpng.com/sh/a9ae3b5b8626a46af7be3724fa57d4b1/L0KzQYm3VMA2N6Z7j5H0aYP2gLBuTfdidZYyitdqY4SwfrL7igZmNZtmjtN8Y4LsgMW0gf5lepDufJ95aIn2ebT6TcVia2dpTdgAMUi6SbaBTsY3OmQ5Tqc6MUW1QoqBUMM1OWI1SKU3cH7q/kisspng-game-react-native-javascript-android-physics-5ac6d5f51879e8.6623465115229803411003.png"
+                                src="https://i.ibb.co/HqZ0RMF/ezgif-5-5320ccde36a0.webp"
                                 alt='Reactjs'
                                 width={imageSize.width}
                                 height={imageSize.height}
