@@ -2,19 +2,14 @@ import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { useLastLocation } from 'react-router-last-location';
 
-function NewPost({user}) {
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
+function NewComment({user}) {
+    const [body, setBody] = useState("")
     const [category, setCategory] = useState("")
     const [author, setAuthor] = useState("")
     const lastLocation = useLastLocation();
 
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value)
-    }
-
-    const handleContentChange = (e) => {
-        setContent(e.target.value)
+    const handleBodyChange = (e) => {
+        setBody(e.target.value)
     }
 
     const handleCategoryChange = (e) => {
@@ -33,15 +28,14 @@ function NewPost({user}) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({post: {title: title, content: content, category: category, user: author, status: "active"}
+            body: JSON.stringify({comment: {body: body, user: author, category: category}
             })
         })
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
         })
-        setTitle("")
-        setContent("")
+        setBody("")
     }
     const formDivStyle = {
         margin: "auto",
@@ -51,19 +45,15 @@ function NewPost({user}) {
     
     return(
         <div style={formDivStyle}>
-            <h1>New Post for {lastLocation.pathname}</h1>
+            <h1>New Comment for {lastLocation.pathname}</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Category</label>
                     <input value={category} onChange={handleCategoryChange} type="text" placeholder="Category"/>
                 </div>
                 <div>
-                    <label>Title</label>
-                    <input value={title} onChange={handleTitleChange} type="text" placeholder="Title"/>
-                </div>
-                <div>
-                    <label>Content</label>
-                    <textarea value={content} onChange={handleContentChange} placeholder="Content"/>
+                    <label>Body</label>
+                    <textarea value={body} onChange={handleBodyChange} placeholder="Body"/>
                 </div>
                 <div>
                     <label>Author</label>
@@ -82,4 +72,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(NewPost);
+export default connect(mapStateToProps)(NewComment);

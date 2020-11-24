@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Angular({imageSize, fetchPosts, posts, root, topic}) {
+function Angular({imageSize, fetchPosts, posts, root, topic, user}) {
     useEffect(() => {
         fetchPosts()
     }, [])
@@ -128,7 +128,7 @@ function Angular({imageSize, fetchPosts, posts, root, topic}) {
                 alignItems="center"
                 spacing={3}
                 className={classes.root}>
-                    {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<Button><NewPost to="/newpost">Add Post</NewPost></Button></>}
+                    {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
                 </PostContainer>
             </motion.div>
         </>
@@ -141,6 +141,7 @@ function Angular({imageSize, fetchPosts, posts, root, topic}) {
 const mapStateToProps = state => {
     return {
         posts: state.posts,
+        user: state.user,
     }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import {CommentContainer, CommentCard, GridItem, CommentLink} from './style'
 
@@ -14,18 +15,26 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Comment({comment}) {
+function Comment({comment, user}) {
     const classes = useStyles();
 
     return (
             <GridItem key={comment.id} item xs={10}>
                 <CommentCard className={classes.paper}>
                     <p>
-                    <b>{comment.body}</b>
+                    <>{comment.body}</>
                     <br />
-                    --- {comment.user.username}
+                    <b>{comment.user.username}</b>
                     </p>
                 </CommentCard>
             </GridItem>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps)(Comment)

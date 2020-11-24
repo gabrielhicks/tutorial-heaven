@@ -15,7 +15,11 @@ export const StyledToolbar = styled(Toolbar)`
         margin-top: 5px;
         }
     .login-button {
-        position: absolute;
-        right: 1vw;
+        ${'' /* position: absolute; */}
+        ${'' /* right: 1vw; */}
+    }
+    .signup-button {
+        ${'' /* position: absolute; */}
+        ${'' /* right: 7vw; */}
     }
 `

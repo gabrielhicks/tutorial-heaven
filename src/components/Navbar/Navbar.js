@@ -65,7 +65,8 @@ function Navbar({user}) {
             </>
             :
             <>
-            <Button className="login-button" color="inherit"><Link to="/login">Login</Link></Button>
+            <Button className="login-button" color="inherit"><Link to="/login">Log In</Link></Button>
+            <Button className="signup-button" color="inherit"><Link to="/signup">Sign Up</Link></Button>
             </>
             }
             </StyledToolbar>

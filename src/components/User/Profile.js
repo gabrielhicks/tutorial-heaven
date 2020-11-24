@@ -1,9 +1,18 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-export default function Profile({user}) {
+function Profile({user}) {
     return (
         <div>
-            {console.log(user)}
+            <h2>Hi {user.username}!</h2>
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps)(Profile);

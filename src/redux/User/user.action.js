@@ -17,7 +17,9 @@ export const createUser = (user) => {
         .then(data => {
             localStorage.setItem("token", data.jwt)
             dispatch(loginUserRequest(data.user))
+            console.log(data.user)
         })
+        .catch(console.log)
     }
 }
 
@@ -36,6 +38,7 @@ export const loginUser = (user) => {
             localStorage.setItem("token", data.jwt)
             dispatch(loginUserRequest(data.user))
         })
+        .catch(console.log)
     }
 }
 

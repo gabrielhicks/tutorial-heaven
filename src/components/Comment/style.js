@@ -11,7 +11,7 @@ export const CommentContainer = styled(Grid)`
     padding: 2rem;
     ${'' /* top: 40vh; */}
     ${'' /* position: absolute; */}
-    z-index: -999;
+    z-index: 0;
 `
 
 export const CommentCard = styled(Paper)`
@@ -43,4 +43,9 @@ export const CommentCard = styled(Paper)`
 
 export const GridItem = styled(Grid)`
     display: flex;
+`
+
+export const NewComment = styled(Link)`
+    text-decoration: none;
+    cursor: pointer;
 `

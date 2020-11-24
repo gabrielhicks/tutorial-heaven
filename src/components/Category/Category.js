@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import { Route, Switch } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
-import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink} from './style'
+import Button from '@material-ui/core/Button';
+import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink, NewPost} from './style'
 import Post from '../Post/Post'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Category({posts, fetchPosts, imageSize, root, topic}) {
+function Category({posts, fetchPosts, imageSize, root, topic, user}) {
     useEffect(() => {
         fetchPosts()
     }, [])
@@ -132,7 +133,7 @@ function Category({posts, fetchPosts, imageSize, root, topic}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : filteredPosts()}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -146,6 +147,7 @@ function Category({posts, fetchPosts, imageSize, root, topic}) {
 const mapStateToProps = state => {
     return {
         posts: state.posts,
+        user: state.user,
     }
 }
 

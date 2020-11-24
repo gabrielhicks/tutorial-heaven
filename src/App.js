@@ -16,6 +16,7 @@ import Register from './components/User/Register';
 import Profile from './components/User/Profile';
 import NewPost from './components/Post/NewPost';
 import Logout from './components/User/Logout';
+import NewComment from './components/Comment/NewComment';
 
     // if (token) {
     //   const options = {
@@ -45,9 +46,10 @@ function App() {
       <Navbar />
       <AnimatePresence initial={false} exitBeforeEnter>
       <Switch>
+        <Route path="/newcomment" render={() => (<NewComment /> )}/>
         <Route path="/logout" render={() => (<Logout /> )}/>
-        <Route path="/newpost" render={() => (<NewPost user={user}/> )}/>
-        <Route path="/profile" render={() => (<Profile user={user}/> )}/>
+        <Route path="/newpost" render={() => (<NewPost /> )}/>
+        <Route path="/profile" render={() => (<Profile /> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>
         <Route path="/reactjs" render={() => (<Reactjs root="reactjs" topic="React" imageSize={reactImage}/> )}/>
