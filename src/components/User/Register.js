@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {createUser} from '../../redux/User/user.action'
+import { motion } from "framer-motion";
 
 function Register(props) {
     const [username, setUsername] = useState("")
@@ -27,21 +28,26 @@ function Register(props) {
     }
     
     return(
-        <div style={formDivStyle}>
-            <h1>Sign Up</h1>
-            <form onSubmit={localHandleSubmit}>
-                <div>
-                    <label>Username</label>
-                    <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
-                </div>
-                
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <motion.div
+        initial="initial"
+        animate="animate"
+        exit="exit">
+            <div style={formDivStyle}>
+                <h1>Sign Up</h1>
+                <form onSubmit={localHandleSubmit}>
+                    <div>
+                        <label>Username</label>
+                        <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
+                    </div>
+                    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </motion.div>
     )
 }
 

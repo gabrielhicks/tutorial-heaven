@@ -1,11 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { motion } from "framer-motion";
 
 function Profile({user}) {
     return (
-        <div>
+        <motion.div
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        >
             <h2>Hi {user.username}!</h2>
-        </div>
+        </motion.div>
     )
 }
 

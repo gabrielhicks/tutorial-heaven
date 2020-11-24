@@ -10,6 +10,10 @@ import { connect } from 'react-redux'
 import Icons from './ReactIcons';
 import RailsIcons from './RailsIcons';
 import ReactIcons from './ReactIcons';
+import JavascriptIcons from './JavascriptIcons';
+import AngularIcons from './AngularIcons';
+import VueIcons from './VueIcons';
+import HtmlIcons from './HtmlIcons';
 // my intention here is to rework all of the categories to this base,
 // after I rework the "above" functionality, itd be nice to be able to render root category
 // with a more dynamic animation header with the faded icons
@@ -34,7 +38,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
     }, [])
 
     const classes = useStyles();
-    const transition = { duration: 1.0, ease: [0.6, 0.01, -0.05, 0.9] };
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
 
     function filteredPosts() {
         return posts.filter(post => 
@@ -79,22 +83,14 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
             return (
                 <>
                 <motion.div
-                initial={{opacity: 1, transition: transition, scale: 1,}}
-                animate={{opacity: 1, transition: transition, scale: 1,}
-                //     {
-                //     y: "-150%",
-                //     x: "0",
-                //     width: "100vw",
-                //     transition: { delay: 1.0, ...transition },
-                //     opacity: 1
-                // }
-                }
-                exit={{opacity: 0.1, transition: transition, scale: 1,}}>
+                exit={{opacity: 1, transition: transition, scale: 1,}}
+                >
                 <ReactIcons />
                     </motion.div>
                     <motion.div
-                    animate={{opacity: 1, transition: { delay: 1.0, ...transition }}}
-                    exit={{opacity: 1, transition: transition, scale: 1}}
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
                     >
                         <Title>{topic}</Title>
                         <PostContainer
@@ -113,24 +109,118 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
         <Route path={`/rails`} render={() => {
             return (
                 <>
-                {/* this is only wrapping the rails iconit appears */}
                 <motion.div
-                initial={{opacity: 1, transition: transition, scale: 1,}}
-                animate={{opacity: 1, transition: transition, scale: 1,}
-                //     {
-                //     y: "-150%",
-                //     x: "0",
-                //     width: "100vw",
-                //     transition: { delay: 1.0, ...transition },
-                //     opacity: 1
-                // }
-                }
-                exit={{opacity: 0.1, transition: transition, scale: 1,}}>
+                exit={{opacity: 1, transition: transition, scale: 1,}}>
                 <RailsIcons />
                     </motion.div>
                     <motion.div
-                    animate={{ transition: { delay: 1.0, ...transition }}}
-                    exit={{opacity: 1, transition: transition, scale: 1}}
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
+                    >
+                        <Title>{topic}</Title>
+                        <PostContainer
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                        spacing={3}
+                        className={classes.root}>
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                        </PostContainer>
+                    </motion.div>
+                    </>
+            )
+        }}/>
+        <Route path={`/javascript`} render={() => {
+            return (
+                <>
+                <motion.div
+                exit={{opacity: 1, transition: transition, scale: 1,}}>
+                <JavascriptIcons />
+                    </motion.div>
+                    <motion.div
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
+                    >
+                        <Title>{topic}</Title>
+                        <PostContainer
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                        spacing={3}
+                        className={classes.root}>
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                        </PostContainer>
+                    </motion.div>
+                    </>
+            )
+        }}/>
+        <Route path={`/angular`} render={() => {
+            return (
+                <>
+                <motion.div
+                exit={{opacity: 1, transition: transition, scale: 1,}}>
+                <AngularIcons />
+                    </motion.div>
+                    <motion.div
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
+                    >
+                        <Title>{topic}</Title>
+                        <PostContainer
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                        spacing={3}
+                        className={classes.root}>
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                        </PostContainer>
+                    </motion.div>
+                    </>
+            )
+        }}/>
+        <Route path={`/vue`} render={() => {
+            return (
+                <>
+                <motion.div
+                exit={{opacity: 1, transition: transition, scale: 1,}}>
+                <VueIcons />
+                    </motion.div>
+                    <motion.div
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
+                    >
+                        <Title>{topic}</Title>
+                        <PostContainer
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                        spacing={3}
+                        className={classes.root}>
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                        </PostContainer>
+                    </motion.div>
+                    </>
+            )
+        }}/>
+        <Route path={`/html5`} render={() => {
+            return (
+                <>
+                <motion.div
+                exit={{opacity: 1, transition: transition, scale: 1,}}>
+                <HtmlIcons />
+                    </motion.div>
+                    <motion.div
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
                     >
                         <Title>{topic}</Title>
                         <PostContainer

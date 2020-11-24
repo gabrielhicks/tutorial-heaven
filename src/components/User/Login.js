@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {loginUser} from '../../redux/User/user.action'
+import { motion } from "framer-motion";
 
 function Login(props){
     const [username, setUsername] = useState("")
@@ -27,7 +28,11 @@ function Login(props){
         width: "80%"
     }
     return(
-        <div>
+        <motion.div
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        >
             <div style={formDivStyle}>
             <h1>Log In</h1>
             <form onSubmit={localHandleSubmit}>
@@ -43,7 +48,7 @@ function Login(props){
                 <button type="submit">Submit</button>
             </form>
         </div>
-        </div>
+        </motion.div>
     )
 } 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {logoutUserRequest} from '../../redux/User/user.action'
+import { motion } from "framer-motion";
 
 function Logout(props) {
 
@@ -9,9 +10,13 @@ function Logout(props) {
     }
 
     return (
-        <div>
+        <motion.div
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        >
             {localHandleSubmit()}
-        </div>
+        </motion.div>
     )
 }
 
