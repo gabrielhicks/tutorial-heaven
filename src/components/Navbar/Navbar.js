@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
+import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -49,19 +50,28 @@ function ScrollTop(props) {
     );
 }
 
-export default function BackToTop(props) {
+function Navbar({user}) {
     return (
         <React.Fragment>
+        {console.log(user)}
         <CssBaseline />
         <AppBar color="inherit">
             <StyledToolbar>
             <Link to="/"><img width="50px;" alt="Tutorial Heaven" src="https://img.icons8.com/pastel-glyph/64/ladder--v1.png"/></Link><Logo>Tutorial Heaven</Logo>
-            <Link to="/profile" color="inherit">Profile</Link>
+            {user.id ?
+            <>
+            <Button><Link to="/profile" color="inherit">Profile</Link></Button>
+            <Button className="login-button" color="inherit"><Link to="/logout">Sign Out</Link></Button>
+            </>
+            :
+            <>
             <Button className="login-button" color="inherit"><Link to="/login">Login</Link></Button>
+            </>
+            }
             </StyledToolbar>
         </AppBar>
         <Toolbar id="back-to-top-anchor" />
-        <ScrollTop {...props}>
+        <ScrollTop>
             <Fab color="inherit" size="small" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />
             </Fab>
@@ -69,3 +79,11 @@ export default function BackToTop(props) {
         </React.Fragment>
     );
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);

@@ -14,6 +14,8 @@ import Html from './components/Category/Html';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
 import Profile from './components/User/Profile';
+import NewPost from './components/Post/NewPost';
+import Logout from './components/User/Logout';
 
     // if (token) {
     //   const options = {
@@ -43,6 +45,8 @@ function App() {
       <Navbar />
       <AnimatePresence initial={false} exitBeforeEnter>
       <Switch>
+        <Route path="/logout" render={() => (<Logout /> )}/>
+        <Route path="/newpost" render={() => (<NewPost user={user}/> )}/>
         <Route path="/profile" render={() => (<Profile user={user}/> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>

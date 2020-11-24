@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react'
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, withRouter } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
-import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink} from './style'
+import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink, NewPost} from './style'
+import Button from '@material-ui/core/Button';
 import Post from '../Post/Post'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
@@ -69,10 +70,10 @@ function Reactjs({posts, fetchPosts, imageSize, root, topic}) {
         <Route path={`/${root}`} render={() => {
             return (
                 <>
-                <motion.div
+                {/* <motion.div
                 initial='initial'
                 animate='animate'
-                exit='exit'>
+                exit='exit'> */}
                         <motion.div
                         initial={{
                             y: 0,
@@ -113,7 +114,7 @@ function Reactjs({posts, fetchPosts, imageSize, root, topic}) {
                             </IconGrid>
                             </div>
                         </motion.div>
-                    </motion.div>
+                    {/* </motion.div> */}
                     <motion.div
                     initial={{opacity: 0}}
                     animate={{opacity: 1, transition: { delay: 1.0, ...transition }}}
@@ -127,7 +128,7 @@ function Reactjs({posts, fetchPosts, imageSize, root, topic}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : filteredPosts()}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<Button><NewPost to="/newpost">Add Post</NewPost></Button></>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -150,4 +151,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Reactjs)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Reactjs))

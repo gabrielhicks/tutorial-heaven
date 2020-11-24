@@ -3,7 +3,8 @@ import { Route, Switch } from "react-router-dom"
 import Post from '../Post/Post'
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
-import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink} from './style'
+import Button from '@material-ui/core/Button';
+import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink, NewPost} from './style'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
 
@@ -127,7 +128,7 @@ function Vue({imageSize, posts, fetchPosts, root, topic}) {
                 alignItems="center"
                 spacing={3}
                 className={classes.root}>
-                    {posts.length === undefined ? (<h1>loading</h1>) : filteredPosts()}
+                    {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<Button><NewPost to="/newpost">Add Post</NewPost></Button></>}
                 </PostContainer>
             </motion.div>
         </>

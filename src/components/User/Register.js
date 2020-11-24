@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {createUser} from '../../redux/User/user.action'
 
 function Register(props) {
     const [username, setUsername] = useState("")
@@ -12,22 +14,9 @@ function Register(props) {
         setPassword(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const localHandleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({user: {username: username, password: password}
-            })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            localStorage.setItem("token", data.jwt)
-            props.handleLogin(data.user)
-        })
+        props.handleSubmit({username: username, password: password})
         setUsername("")
         setPassword("")
     }
@@ -40,7 +29,7 @@ function Register(props) {
     return(
         <div style={formDivStyle}>
             <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={localHandleSubmit}>
                 <div>
                     <label>Username</label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
@@ -56,4 +45,8 @@ function Register(props) {
     )
 }
 
-export default Register
+const mapDispatchToProps = (dispatch) => {
+    return {handleSubmit: (user) => dispatch(createUser(user))}
+}
+
+export default connect(null, mapDispatchToProps)(Register)

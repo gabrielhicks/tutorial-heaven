@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {loginUser} from '../../redux/User/user.action'
 
 function Login(props){
     const [username, setUsername] = useState("")
@@ -12,24 +14,13 @@ function Login(props){
         setPassword(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const localHandleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({user: {username: username, password: password}})
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            localStorage.setItem("token", data.jwt)
-            props.handleLogin(data.user)
-        })
+        props.handleSubmit({username: username, password: password})
         setUsername("")
         setPassword("")
     }
+
     const formDivStyle = {
         margin: "auto",
         padding: "20px",
@@ -39,7 +30,7 @@ function Login(props){
         <div>
             <div style={formDivStyle}>
             <h1>Log In</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={localHandleSubmit}>
                 <div>
                     <label>Username</label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
@@ -56,4 +47,8 @@ function Login(props){
     )
 } 
 
-export default Login
+const mapDispatchToProps = (dispatch) => {
+    return {handleSubmit: (user) => dispatch(loginUser(user))}
+}
+
+export default connect(null, mapDispatchToProps)(Login)

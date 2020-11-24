@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from "framer-motion";
 import Grid from '@material-ui/core/Grid';
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 
 export const IconGrid = styled(Grid)`
@@ -45,6 +45,11 @@ export const PostLink = styled(Link)`
 
 export const MotionImage = styled(motion.img)`
 
+`
+
+export const NewPost = styled(Link)`
+    text-decoration: none;
+    z-index: 100;
 `
 
 export const PostContainer = styled(Grid)`
