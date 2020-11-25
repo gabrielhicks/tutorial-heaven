@@ -7,7 +7,7 @@ import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, I
 import Post from '../Post/Post'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
-import Icons from './ReactIcons';
+import ReactChat from '../Channels/ReactChat';
 import RailsIcons from './RailsIcons';
 import ReactIcons from './ReactIcons';
 import JavascriptIcons from './JavascriptIcons';
@@ -61,6 +61,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
     return (
         <>
         <Switch>
+        <Route path={`/${root}/chat`} render={() => <ReactChat />}/>
         <Route path={`/${root}/:id`} render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
             let post;
