@@ -97,17 +97,4 @@ function RailsIcons({posts, fetchPosts, imageSize, root, topic, user}) {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        posts: state.posts,
-        user: state.user,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchPosts: () => dispatch(fetchPosts()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RailsIcons)
+export default RailsIcons

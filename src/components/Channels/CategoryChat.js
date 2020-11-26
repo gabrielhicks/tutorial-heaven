@@ -7,41 +7,16 @@ import consumer from '../../chat'
 
 console.log(consumer)
 
-    const findCategory = (category) => {
-        switch(category) {
-            case "/reactjs":
-                return "React"
-                break;
-            case "/javascript":
-                return "JavaScript"
-                break;
-            case "/rails":
-                return "Ruby on Rails"
-                break;
-            case "/vue":
-                return "Vue"
-                break;
-            case "/angular":
-                return "Angular"
-                break;
-            case "/html5":
-                return "HTML"
-                break;
-            default:
-                console.log()
-        }
-        console.log(category)
-    }
-
-function ReactChat({user}) {
-    const lastLocation = useLastLocation();
-    const category = findCategory(lastLocation.pathname)
+function CategoryChat({user, topic}) {
     
     useEffect(() => {
-        if(category) {
+        console.log(topic)
+        console.log(user)
+        if(topic) {
             const subscription = consumer.subscriptions.create({
                 channel: "ChatChannel",
-                category: category,
+                user: user.id,
+                category: topic,
             }, {
                 connected: () => console.log("connected"),
                 disconnected: () => console.log("disconnected"),
@@ -55,22 +30,48 @@ function ReactChat({user}) {
     }, [])
 
 
+    const findCategoryId = (category) => {
+        switch(category) {
+            case "React":
+                return 1
+                break;
+            case "JavaScript":
+                return 5
+                break;
+            case "Ruby on Rails":
+                return 4
+                break;
+            case "Vue":
+                return 3
+                break;
+            case "Angular":
+                return 2
+                break;
+            case "HTML":
+                return 6
+                break;
+            default:
+            console.log()
+        }
+        console.log(category)
+    }
+
     return (
         <motion.div 
         initial="initial"
         animate="animate"
         exit="exit"
         >
-            <ChatBox />
+            <ChatBox topic={topic} topicId={findCategoryId(topic)}/>
         </motion.div>
     )
 }
 const mapStateToProps = state => {
     return {
         user: state.user,
-        messages: state.messages,
+        // messages: state.messages,
         // categories: state.categories
     }
 }
 
-export default connect(mapStateToProps)(ReactChat)
+export default connect(mapStateToProps)(CategoryChat)

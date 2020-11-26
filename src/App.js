@@ -47,7 +47,6 @@ function App() {
         <Route path="/profile" render={() => (<Profile /> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>
-        {/* <Route path="/reactjs" render={() => (<Reactjs root="reactjs" topic="React" imageSize={reactImage}/> )}/> */}
         <Route path="/reactjs" render={() => (<Category root="reactjs" topic="React" imageSize={reactImage}/> )}/>
         <Route path="/rails" render={() => (<Category root="rails" topic="Ruby on Rails" imageSize={railsImage}/> )}/>
         <Route path="/javascript" render={() => (<Category root="javascript" topic="JavaScript" imageSize={jsImage}/>)}/>

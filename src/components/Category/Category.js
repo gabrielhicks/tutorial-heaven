@@ -7,19 +7,14 @@ import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, I
 import Post from '../Post/Post'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
-import ReactChat from '../Channels/ReactChat';
 import RailsIcons from './RailsIcons';
 import ReactIcons from './ReactIcons';
 import JavascriptIcons from './JavascriptIcons';
 import AngularIcons from './AngularIcons';
 import VueIcons from './VueIcons';
 import HtmlIcons from './HtmlIcons';
-// my intention here is to rework all of the categories to this base,
-// after I rework the "above" functionality, itd be nice to be able to render root category
-// with a more dynamic animation header with the faded icons
-// I would like to go to a category, and change the icon header to zoom in and out but stay in place
-// I want the animaion on entering to be the same however, for each category on entry
-// not a ton of time at this moment to refactor but hopefully I can come back to it.
+import CategoryChat from '../Channels/CategoryChat';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -32,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Category({posts, fetchPosts, imageSize, root, topic, user}) {
+function Category({posts, fetchPosts, root, topic, user}) {
     useEffect(() => {
-        fetchPosts()
+        // fetchPosts()
     }, [])
 
     const classes = useStyles();
@@ -61,7 +56,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
     return (
         <>
         <Switch>
-        <Route path={`/${root}/chat`} render={() => <ReactChat />}/>
+        <Route path={`/${root}/chat`} render={() => <CategoryChat topic={topic} />}/>
         <Route path={`/${root}/:id`} render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
             let post;
@@ -244,7 +239,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
 
 const mapStateToProps = state => {
     return {
-        posts: state.posts,
+        posts: [],
         user: state.user,
     }
 }

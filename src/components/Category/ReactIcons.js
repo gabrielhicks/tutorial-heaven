@@ -1,24 +1,6 @@
 import React, {useEffect} from 'react'
-import { Route, Switch, withRouter } from "react-router-dom"
-import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
 import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink, NewPost} from './style'
-import Button from '@material-ui/core/Button';
-import Post from '../Post/Post'
-import {fetchPosts} from '../../redux/Post/post.action'
-import { connect } from 'react-redux'
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        width: "50vw",
-        textAlign: 'left',
-        color: theme.palette.text.primary,
-    },
-}));
 
 const pageTransition = {
     in: {
@@ -29,36 +11,20 @@ const pageTransition = {
     }
 }
 
-function ReactIcons({posts, fetchPosts, imageSize, root, topic, user}) {
+function ReactIcons() {
 
-    const classes = useStyles();
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
 
     return (
         <>
-            {/* <motion.div
-            initial='initial'
-            animate='animate'
-            exit='exit'> */}
                 <motion.div
                 initial={{
                     y: "-150%",
                     x: "0",
                     width: "100vw",
-                    // height: window.innerWidth > 1440 ? 200 : 0,
                     transition: { delay: 0.5, ...transition },
                     opacity: 1,
                 }}
-                // animate={{
-                //     y: "-150%",
-                //     x: "0",
-                //     width: "100vw",
-                //     // height: window.innerWidth > 1440 ? 200 : 0,
-                //     transition: { delay: 1.0, ...transition },
-                // }}
-                // initial="out"
-                // animate="in"
-                // exit="in"
                 animate={{opacity: 1}}
                 exit="in"
                 >
@@ -84,7 +50,6 @@ function ReactIcons({posts, fetchPosts, imageSize, root, topic, user}) {
                         exit={{scale: 1, transition: transition, opacity: 0.1}}
                         />
                     </Icon>
-                    {/* <IconLink to="/reactjs"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="in" exit="out" variants={pageTransition} alt="React" src="https://i.ibb.co/HqZ0RMF/ezgif-5-5320ccde36a0.webp" /></Icon></IconLink> */}
                     <IconLink to="/rails"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="Ruby on Rails" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/200px-Ruby_logo.svg.png" /></Icon></IconLink>
                     <IconLink to="/javascript"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="JavaScript" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png"/></Icon></IconLink>
                     <IconLink to="/angular"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="AngularJS" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/200px-Angular_full_color_logo.svg.png" /></Icon></IconLink>
@@ -93,22 +58,8 @@ function ReactIcons({posts, fetchPosts, imageSize, root, topic, user}) {
                     </IconGrid>
                     </div>
                 </motion.div>
-            {/* </motion.div> */}
         </>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        posts: state.posts,
-        user: state.user,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchPosts: () => dispatch(fetchPosts()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReactIcons)
+export default ReactIcons

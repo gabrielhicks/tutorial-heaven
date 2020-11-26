@@ -5,7 +5,7 @@ import {fetchPosts} from '../../redux/Post/post.action'
 
 function PostChart({fetchPosts, posts}) {
     useEffect(() => {
-        fetchPosts()
+        // fetchPosts()
     }, [])
 
     function filteredPosts() {

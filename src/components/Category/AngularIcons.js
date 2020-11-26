@@ -26,17 +26,12 @@ const pageTransition = {
     }
 }
 
-function AngularIcons({posts, fetchPosts, imageSize, root, topic, user}) {
+function AngularIcons() {
 
-    const classes = useStyles();
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
 
     return (
         <>
-            {/* <motion.div
-            initial='initial'
-            animate='animate'
-            exit='exit'> */}
                 <motion.div
                 initial={{
                     y: "-150%",
@@ -78,22 +73,8 @@ function AngularIcons({posts, fetchPosts, imageSize, root, topic, user}) {
                     </IconGrid>
                     </div>
                 </motion.div>
-            {/* </motion.div> */}
         </>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        posts: state.posts,
-        user: state.user,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchPosts: () => dispatch(fetchPosts()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AngularIcons)
+export default AngularIcons

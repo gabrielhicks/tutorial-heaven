@@ -14,6 +14,11 @@ export const fetchMessages = () => {
     }
 }
 
+export const updateMessages = (message) => {
+    return (dispatch) => {
+        
+    }
+}
 
 export const createMessage = (message) => {
     return (dispatch) => {
