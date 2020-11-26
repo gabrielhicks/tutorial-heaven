@@ -4,15 +4,9 @@ import { createMessage } from '../../redux/Messages/message.action'
 import { useLastLocation } from 'react-router-last-location';
 import { ChatBoxContainer, ChatTextarea, SendButton, TextArea, ChatWindow } from './style'
 import { fetchMessages } from '../../redux/Messages/message.action';
+import { fetchCategory } from '../../redux/Category/category.action'
 
-function ChatBox({user, handleSubmit, messages, fetchMessages}) {
-    useEffect(() => {
-        fetchMessages()
-    }, [])
 
-    // const [username, setUsername] = useState("")
-    const [content, setContent] = useState("")
-    const lastLocation = useLastLocation();
     const findCategory = (category) => {
         switch(category) {
             case "/reactjs":
@@ -38,14 +32,15 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
         }
         console.log(category)
     }
+    
+function ChatBox({user, handleSubmit, messages, category, fetchCategory}) {
+    const lastLocation = useLastLocation();
     const category_id = findCategory(lastLocation.pathname)
-    const categoryMessages = () => {
-        console.log(messages)
-        return messages.filter(message => message.category_id === category_id)
-    }
-    // const handleUsernameChange = (e) => {
-    //     setUsername(user.username)
-    // }
+    const [content, setContent] = useState("")
+
+    useEffect(() => {
+        fetchCategory(1)
+    }, [])
 
     const handleContentChange = (e) => {
         setContent(e.target.value)
@@ -58,12 +53,12 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
         setContent("")
     }
 
-    const renderMessages = (messages) => {
-        // let categoryMessages = messages.filter(message => message.category.id === category_id)
-        if(messages.length > 0) {
-            return messages.map(message => <h3 key={message.id}>{message.user.username}: {message.content}</h3>)
+    const renderMessages = () => {
+        console.log(category)
+        if (category.messages) {
+            return category.messages.map(message => <h3 key={message.id}>{message.user_id}: {message.content}</h3>)
         } else {
-            return <h3>Please type to chat...</h3>
+            return <h2>loading</h2>
         }
     }
 
@@ -72,7 +67,7 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
         <ChatBoxContainer>
             <ChatTextarea>
                 <ChatWindow>
-                    {renderMessages(categoryMessages())}
+                    {renderMessages()}
                 </ChatWindow>
                 <TextArea onChange={handleContentChange} value={content}></TextArea>
                 <SendButton type="submit">Send</SendButton>
@@ -85,6 +80,7 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
 const mapStateToProps = state => {
     return {
         user: state.user,
+        category: state.category,
         messages: state.messages
     }
 }
@@ -93,6 +89,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleSubmit: (message) => dispatch(createMessage(message)),
         fetchMessages: () => dispatch(fetchMessages()),
+        fetchCategory: (category) => dispatch(fetchCategory(category)),
     }
 }
 
