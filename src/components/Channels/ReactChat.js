@@ -6,14 +6,6 @@ import { motion } from "framer-motion";
 import consumer from '../../chat'
 
 console.log(consumer)
-// consumer.subscriptions.create({
-//     channel: "ChatChannel",
-//     category: "React",
-// }, {
-//     connected: () => console.log("connected"),
-//     disconnected: () => console.log("disconnected"),
-//     received: message => console.log("received", message)
-// })
 
     const findCategory = (category) => {
         switch(category) {
