@@ -16,7 +16,7 @@ export const ChatBoxContainer = styled(Paper)`
 export const SendButton = styled(Button)`
     background-color: rgba(0, 0, 0, 0.1);
     float: right;
-    padding: 32px;
+    padding: 30px;
 `
 export const TextArea = styled.textarea`
     position: relative;
