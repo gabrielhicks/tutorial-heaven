@@ -127,7 +127,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -153,7 +153,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -179,7 +179,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -205,7 +205,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -231,7 +231,7 @@ function Category({posts, fetchPosts, imageSize, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <Button><NewPost to="/newpost">Add Post</NewPost></Button> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
                         </PostContainer>
                     </motion.div>
                     </>

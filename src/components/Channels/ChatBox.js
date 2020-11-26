@@ -34,11 +34,15 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
                 return 6
                 break;
             default:
-                console.log()
+            console.log()
         }
         console.log(category)
     }
-
+    const category_id = findCategory(lastLocation.pathname)
+    const categoryMessages = () => {
+        console.log(messages)
+        return messages.filter(message => message.category_id === category_id)
+    }
     // const handleUsernameChange = (e) => {
     //     setUsername(user.username)
     // }
@@ -50,12 +54,12 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
     const localHandleSubmit = (e) => {
         e.preventDefault()
         let category_id = findCategory(lastLocation.pathname)
-        console.log({user, content, category_id: category_id})
         handleSubmit({user_id: user.id, content: content, category_id: category_id})
         setContent("")
     }
 
-    const renderMessages = () => {
+    const renderMessages = (messages) => {
+        // let categoryMessages = messages.filter(message => message.category.id === category_id)
         if(messages.length > 0) {
             return messages.map(message => <h3 key={message.id}>{message.user.username}: {message.content}</h3>)
         } else {
@@ -68,7 +72,7 @@ function ChatBox({user, handleSubmit, messages, fetchMessages}) {
         <ChatBoxContainer>
             <ChatTextarea>
                 <ChatWindow>
-                    {renderMessages()}
+                    {renderMessages(categoryMessages())}
                 </ChatWindow>
                 <TextArea onChange={handleContentChange} value={content}></TextArea>
                 <SendButton type="submit">Send</SendButton>
