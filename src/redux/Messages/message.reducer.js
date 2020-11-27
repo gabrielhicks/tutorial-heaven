@@ -12,10 +12,8 @@ const messageReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_MESSAGES_REQUEST:
             return action.payload
-        // case POST_MESSAGES_REQUEST:
-        //     return {
-        //         ...state, count: state.count - 1,
-        //     };
+        case POST_MESSAGES_REQUEST:
+            return {...state, messages: [...state.messages, action.payload]}
         // case PATCH_MESSAGES_REQUEST:
         //     return {
         //         ...state, count: state.count - 1,

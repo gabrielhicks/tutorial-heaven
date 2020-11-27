@@ -34,7 +34,7 @@ export const ChatWindow = styled(Paper)`
     width: 76vw;
     height: 68vh;
     margin-bottom: 4px;
-    ${'' /* border: 1px solid black; */}
+    overflow-y: auto;
 `
 
 
@@ -48,5 +48,13 @@ export const ChatTextarea = styled(Paper)`
     margin-bottom: 1vh;
     width: 76vw;
     height: 10vh;
-    ${'' /* border: 1px solid black; */}
+    form {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    margin-right: 1vw;
+    width: 76vw;
+    height: 10vh;
+    }
 `
