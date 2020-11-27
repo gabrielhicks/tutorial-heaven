@@ -1,61 +1,45 @@
-import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
+import React, {useState, useEffect, useContext} from 'react'
+import {connect, useDispatch} from 'react-redux'
 import { createMessage, fetchMessages } from '../../redux/Messages/message.action'
 import { fetchCategory } from '../../redux/Category/category.action'
 import ChatBox from './ChatBox'
+import { ActionCableContext } from '../../index'
 import Message from './Message'
 import { ChatBoxContainer, ChatTextarea, ChatWindow } from './style'
 import { motion } from "framer-motion";
-import consumer from '../../chat'
-
-console.log(consumer)
 
 function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
+    const dispatch = useDispatch()
+    const cable = useContext(ActionCableContext)
+    const [channel, setChannel] = useState(null)
     const [chatMessages, setMessages] = useState({
         feed: [],
         newChatMessages: []
     })
 
     useEffect(() => {
-        if(user.username) {
-            const subscription = consumer.subscriptions.create({
-                channel: "ChatChannel",
-                category: topic,
-                user: user
-            }, {
-                connected: () => console.log("connected"),
-                disconnected: () => console.log("disconnected"),
-                received: message => {
-                    console.log("recieved", message)
-                    console.log(chatMessages, "chat messages")
-                    console.log(chatMessages.feed, "feed")
-                    setMessages(chatMessages => ({...chatMessages, newChatMessages: [...chatMessages.feed, message]}))
-                }
-            })
-
-            return () => {
-                console.log("unsubscribed")
-                subscription.unsubscribe()
+        const channel = cable.subscriptions.create({
+            channel: 'ChatChannel',
+            category: topic,
+        }, {
+            connected: () => console.log("connected"),
+            disconnected: () => console.log("disconnected"),
+            received: message => {
+                console.log("recieved", message)
+                dispatch()
             }
-        }
-    }, [user.username])
-
-    useEffect(() => {
-        if (chatMessages) {
-            let categoryId = findCategoryId(topic)
-            fetchCategory(categoryId).then(category => {
-            setMessages({
-                feed: category.messages,
-                newChatMessages: []
-            })
         })
+        setChannel(channel)
+        return () => {
+            channel.unsubscribe()
         }
-    }, [chatMessages])
+    }, [topic, dispatch])
 
-    const addMessage = message => {
-        createMessage(message)
+    const addMessage = (content) => {
+        const data = content
+        console.log(data)
+        channel.send(data)
     }
-
 
     const findCategoryId = (category) => {
         switch(category) {
@@ -92,11 +76,11 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
         <ChatBoxContainer>
             <ChatTextarea>
                 <ChatWindow>
-                {chatMessages.feed ?
+                {/* {chatMessages.feed ?
                     <>{chatMessages.feed.map(message => <Message message={message.content} username={message.user_id}/>)}</>
                 :
                 <h3>Loading</h3>
-                }
+                } */}
                 </ChatWindow>
                     <ChatBox user={user} addMessage={addMessage} topic={topic} topicId={findCategoryId(topic)}/>
             </ChatTextarea>
