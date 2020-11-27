@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        backgroundColor: 'transparent',
         flexGrow: 1,
     },
     paper: {

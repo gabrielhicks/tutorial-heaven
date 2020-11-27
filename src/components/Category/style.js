@@ -5,6 +5,7 @@ import {Link, NavLink} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 
 export const IconGrid = styled(Grid)`
+    background-color: transparent;
     img {
         width: 100px;
     }

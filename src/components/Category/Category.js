@@ -16,6 +16,9 @@ import HtmlIcons from './HtmlIcons';
 import CategoryChat from '../Channels/CategoryChat';
 
 const useStyles = makeStyles((theme) => ({
+    overrides: {
+        backgroundColor: 'transparent',
+    },
     root: {
         flexGrow: 1,
     },
@@ -29,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Category({posts, fetchPosts, root, topic, user}) {
     useEffect(() => {
-        // fetchPosts()
+        fetchPosts()
     }, [])
 
     const classes = useStyles();
@@ -239,7 +242,7 @@ function Category({posts, fetchPosts, root, topic, user}) {
 
 const mapStateToProps = state => {
     return {
-        posts: [],
+        posts: state.posts,
         user: state.user,
     }
 }

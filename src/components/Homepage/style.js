@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 export const HomeWrapper = styled.div`
-
+    ${'' /* background-color: black; */}
+    background-color: transparent;
 `
 
 export const IconGrid = styled(Grid)`
+    background-color: transparent;
     img {
         max-width: 100px;
     }
@@ -29,6 +31,16 @@ export const IconGrid = styled(Grid)`
         ${'' /* flex-direction: column; */}
         transform: translate(-25%, -25%);
     }
+`
+
+export const HeroImage = styled.div`
+    background-image: url("https://i.ibb.co/xjcFZdV/cloud.webp");
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    z-index: 100;
 `
 
 export const Icon = styled(Link)`

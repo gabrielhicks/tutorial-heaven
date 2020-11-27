@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location';
 import actionCable from 'actioncable'
 import store from './redux/store';
-import './index.css';
+import './App.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

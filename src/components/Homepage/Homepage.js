@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import {IconGrid, Icon, HomeWrapper} from './style';
+import {IconGrid, Icon, HomeWrapper, HeroImage} from './style';
 
 export default function Homepage() {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
@@ -36,6 +36,7 @@ export default function Homepage() {
             <Icon to="/vue" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="VueJS" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/200px-Vue.js_Logo_2.svg.png" /></Icon>
             <Icon to="/html5" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="HTML5" src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/184/full/html5.png" /></Icon>
         </IconGrid>
+        <HeroImage />
         </motion.div>
         </HomeWrapper>
     )

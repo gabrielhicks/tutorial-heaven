@@ -45,7 +45,11 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
         messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
     }
 
-    useEffect(() =>{scrollToBottom()});
+    useEffect(() => {
+        if(chatMessages.feed) {
+        scrollToBottom()
+        }
+    });
 
     useEffect(() => {
         let categoryId = findCategoryId(topic)
@@ -71,11 +75,7 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
                 connected: () => console.log("connected"),
                 disconnected: () => console.log("disconnected"),
                 received: message => {
-                    // console.log("recieved", message)
-                    // console.log(chatMessages, "chat messages")
-                    // console.log(chatMessages.feed, "feed")
                     setMessages(chatMessages => ({...chatMessages, feed: [...chatMessages.feed, message]}))
-                    // console.log(chatMessages.feed, "feed")
                 }
             })
 
@@ -115,7 +115,6 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
 const mapStateToProps = state => {
     return {
         user: state.user,
-        // messages: state.messages,
         category: state.category
     }
 }
@@ -123,7 +122,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchCategory: (category) => dispatch(fetchCategory(category)),
-        fetchMessages: () => dispatch(fetchMessages()),
         createMessage: (message) => dispatch(createMessage(message))
     }
 }
