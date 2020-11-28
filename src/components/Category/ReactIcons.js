@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { motion } from "framer-motion";
-import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink, NewPost} from './style'
+import {MotionImage, IconGrid, Icon, IconLink, NewPost} from './style'
 
 const pageTransition = {
     in: {
@@ -19,7 +19,7 @@ function ReactIcons() {
         <>
                 <motion.div
                 initial={{
-                    y: "-150%",
+                    y: "-80%",
                     x: "0",
                     width: "100vw",
                     transition: { delay: 0.5, ...transition },
@@ -28,7 +28,6 @@ function ReactIcons() {
                 animate={{opacity: 1}}
                 exit="in"
                 >
-                <div>
                     <IconGrid
                         container
                         direction="row"
@@ -36,27 +35,26 @@ function ReactIcons() {
                         alignItems="baseline">
                     <Icon>
                     <MotionImage
-                        src="https://i.ibb.co/HqZ0RMF/ezgif-5-5320ccde36a0.webp"
+                        src="https://i.ibb.co/yY881s1/react.webp"
                         alt='Reactjs'
-                        width="100px"
-                        height="100px"
+                        width="200px"
+                        height="200px"
                         initial={{ scale: 1, opacity: 0.1 }}
                         animate={{
                             transition: { delay: 0.2, ...transition },
-                            scale: 2.5,
+                            scale: 2,
                             opacity: 1,
                             // y: window.innerWidth > 1440 ? 500 : 700,
                         }}
                         exit={{scale: 1, transition: transition, opacity: 0.1}}
                         />
                     </Icon>
-                    <IconLink to="/rails"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="Ruby on Rails" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/200px-Ruby_logo.svg.png" /></Icon></IconLink>
-                    <IconLink to="/javascript"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="JavaScript" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png"/></Icon></IconLink>
-                    <IconLink to="/angular"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="AngularJS" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/200px-Angular_full_color_logo.svg.png" /></Icon></IconLink>
-                    <IconLink to="/vue"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="VueJS" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/200px-Vue.js_Logo_2.svg.png" /></Icon></IconLink>
-                    <IconLink to="/html5"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="HTML5" src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/184/full/html5.png" /></Icon></IconLink>
+                    <IconLink to="/rails"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="Ruby on Rails" src="https://i.ibb.co/3cXmQhY/ruby.webp" /></Icon></IconLink>
+                    <IconLink to="/javascript"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="JavaScript" src="https://i.ibb.co/pKCyJS6/JS.webp"/></Icon></IconLink>
+                    <IconLink to="/angular"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="AngularJS" src="https://i.ibb.co/r2jh9YP/angular.webp" /></Icon></IconLink>
+                    <IconLink to="/vue"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="VueJS" src="https://i.ibb.co/SVXP96Y/vue.webp" /></Icon></IconLink>
+                    <IconLink to="/html5"><Icon className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="HTML5" src="https://i.ibb.co/BqshWT1/html.webp" /></Icon></IconLink>
                     </IconGrid>
-                    </div>
                 </motion.div>
         </>
     )

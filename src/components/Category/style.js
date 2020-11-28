@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 export const IconGrid = styled(Grid)`
     background-color: transparent;
     img {
-        width: 100px;
+        max-width: 200px;
     }
     position: relative;
     top: 5vh;
@@ -37,7 +37,7 @@ export const Icon = styled(motion.a)`
 `
 
 export const IconLink = styled(Link)`
-
+    width: 200px;
 `
 
 export const PostLink = styled(Link)`
@@ -81,7 +81,7 @@ export const PostContainer = styled(Grid)`
     left: 10vw;
     top: 40vh;
     position: absolute;
-    z-index: -999;
+    z-index: 0;
 `
 
 export const PostCard = styled(Paper)`

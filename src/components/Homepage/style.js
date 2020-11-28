@@ -10,7 +10,7 @@ export const HomeWrapper = styled.div`
 export const IconGrid = styled(Grid)`
     background-color: transparent;
     img {
-        max-width: 100px;
+        max-width: 200px;
     }
     position: relative;
     top: 5vh;

@@ -44,9 +44,9 @@ function Category({posts, fetchPosts, root, topic, user}) {
         return posts.filter(post => 
             post.category.topic === topic)
             .map(post => 
-            <GridItem key={post.id} item xs={10}>
+            <GridItem style={{zIndex: 100}} key={post.id} item xs={10}>
                 <PostCard style={{backgroundColor: "rgba(242, 233, 224, 1)"}} className={classes.paper}>
-                    <PostLink to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink>
+                    <PostLink style={{zIndex: 100}} to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink>
                     <p>{post.comments.length} comments
                     {post.status === "active" 
                     ? 
@@ -84,13 +84,14 @@ function Category({posts, fetchPosts, root, topic, user}) {
             return (
                 <>
                 <motion.div
-                exit={{opacity: 1, transition: transition, scale: 1,}}
+                animate={{zIndex: 0}}
+                exit={{opacity: 1, transition: transition, scale: 1}}
                 >
                 <ReactIcons />
                     </motion.div>
                     <motion.div
                     initial={{opacity: 0.02}}
-                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }, zIndex: "0"}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
                     exit={{opacity: 0.02, transition: transition, scale: 1}}
                     >
                         <Title>{topic}</Title>
