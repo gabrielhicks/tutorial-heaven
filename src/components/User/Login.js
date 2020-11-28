@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
+import { useHistory } from "react-router-dom";
 import {loginUser} from '../../redux/User/user.action'
 import { motion } from "framer-motion";
 
 function Login(props){
+    const history = useHistory();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -20,6 +22,7 @@ function Login(props){
         props.handleSubmit({username: username, password: password})
         setUsername("")
         setPassword("")
+        return history.goBack()
     }
 
     const formDivStyle = {

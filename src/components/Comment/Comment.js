@@ -20,7 +20,7 @@ function Comment({comment, user}) {
 
     return (
             <GridItem key={comment.id} item xs={10}>
-                <CommentCard className={classes.paper}>
+                <CommentCard style={{backgroundColor: "rgba(242, 233, 224, 1)"}} className={classes.paper}>
                     <p>
                     <>{comment.body}</>
                     <br />

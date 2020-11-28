@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { motion } from "framer-motion";
 import Grid from '@material-ui/core/Grid';
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 export const IconGrid = styled(Grid)`
@@ -48,13 +49,34 @@ export const MotionImage = styled(motion.img)`
 
 `
 
-export const NewPost = styled(Link)`
+export const NewPost = styled(Button)`
+    margin-top: 1vh;
+    background-color: rgba(212, 212, 214, 1);
+    margin-right: 5px;
+    padding: 5px;
+    width: 75px;
     text-decoration: none;
-    z-index: 100;
+    z-index: 9999;
+`
+
+export const SideBar = styled.div`
+    position: fixed;
+    display: inline-column;
+    left: 0;
+    bottom: -70px;
+    ${'' /* top: 250px; */}
+    background-color: transparent;
+    height: 20vh;
+    margin-top: 1.75vh;
+    margin-left: 1.75vw;
+    width: 3vw;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 `
 
 export const PostContainer = styled(Grid)`
-    background-color: rgba(0, 0, 0, 0.1);
+    ${'' /* background-color: rgba(212, 212, 214, 0.1); */}
     max-width: 80vw;
     left: 10vw;
     top: 40vh;
@@ -65,7 +87,7 @@ export const PostContainer = styled(Grid)`
 export const PostCard = styled(Paper)`
     position: relative;
     text-align: "inline";
-    border: 1px solid rgba(0,0,0,0.5);
+    ${'' /* border: 1px solid rgba(0,0,0,0.5); */}
     margin: -1px;
     img {
         width: 6vw;
@@ -77,10 +99,12 @@ export const PostCard = styled(Paper)`
     }
     i.status {
         float: right;
-        color: red;
+        font-weight: 800;
+        color: rgba(238, 147, 152, 1);
     }
     i.active {
-        color: green;
+        font-weight: 800;
+        color: rgba(155, 173, 147, 1);
     }
     h3 {
         cursor: pointer;

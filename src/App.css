@@ -1,11 +1,10 @@
 html {
-    background-image: url("https://i.ibb.co/xjcFZdV/cloud.webp");
+    /* background-image: url("https://i.ibb.co/xjcFZdV/cloud.webp");
     background-attachment: fixed;
     background-size: contain;
-    background-position: bottom center;
+    background-position: bottom;
     background-repeat: no-repeat;
-    background-size: 100vw;
-    z-index: 100;
+    overflow: overlay; */
 }
 
 body {
@@ -14,12 +13,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
+  overflow: none;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* 
+rgba(251, 250, 206, 1); - canvas yellow
+rgba(212, 212, 214, 1); - canvas grey
+rgba(238, 147, 152, 1); - canvas red
+rgba(203, 218, 237, 1); - canvas blue
+rgba(254, 204, 153, 1); - canvas orange
+rgba(242, 233, 224, 1); - canvas canvas
+rgba(194, 216, 195, 1); - canvas green 
+*/

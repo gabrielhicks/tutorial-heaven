@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react'
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
+import ChatIcon from '@material-ui/icons/Chat';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Button from '@material-ui/core/Button';
-import {MotionImage, IconGrid, Icon, PostContainer, PostCard, GridItem, Title, IconLink, PostLink, NewPost} from './style'
+import {PostContainer, PostCard, GridItem, Title, SideBar, PostLink, NewPost} from './style'
 import Post from '../Post/Post'
 import {fetchPosts} from '../../redux/Post/post.action'
 import { connect } from 'react-redux'
@@ -43,7 +45,7 @@ function Category({posts, fetchPosts, root, topic, user}) {
             post.category.topic === topic)
             .map(post => 
             <GridItem key={post.id} item xs={10}>
-                <PostCard className={classes.paper}>
+                <PostCard style={{backgroundColor: "rgba(242, 233, 224, 1)"}} className={classes.paper}>
                     <PostLink to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink>
                     <p>{post.comments.length} comments
                     {post.status === "active" 
@@ -71,7 +73,7 @@ function Category({posts, fetchPosts, root, topic, user}) {
                 {
                     posts.length > 0 
                     ? 
-                    <Post key={post.id} post={post} lang={`${root}`}/>
+                    <Post key={post.id} post={post} root={`${root}`}/>
                     :
                     <h2>Loading...</h2>
                 }
@@ -88,7 +90,7 @@ function Category({posts, fetchPosts, root, topic, user}) {
                     </motion.div>
                     <motion.div
                     initial={{opacity: 0.02}}
-                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }, zIndex: "0"}}
                     exit={{opacity: 0.02, transition: transition, scale: 1}}
                     >
                         <Title>{topic}</Title>
@@ -99,7 +101,8 @@ function Category({posts, fetchPosts, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -125,7 +128,8 @@ function Category({posts, fetchPosts, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -151,7 +155,8 @@ function Category({posts, fetchPosts, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
                     </>
@@ -177,7 +182,8 @@ function Category({posts, fetchPosts, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
                         </PostContainer>
                     </motion.div>
                     </>
@@ -203,7 +209,8 @@ function Category({posts, fetchPosts, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
                         </PostContainer>
                     </motion.div>
                     </>
@@ -229,7 +236,8 @@ function Category({posts, fetchPosts, root, topic, user}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br />{user.id ? <><Button><NewPost to="/newpost">Add Post</NewPost></Button><Button><NewPost to={`/${root}/chat`}>Join Chat</NewPost></Button></> : null }</>}
+                            {posts.length === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
                         </PostContainer>
                     </motion.div>
                     </>

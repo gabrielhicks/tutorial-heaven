@@ -1,7 +1,8 @@
 import { 
     CREATE_USER, 
     LOGIN_USER, 
-    LOGOUT_USER } from './user.types';
+    LOGOUT_USER,
+    FETCH_USERS_REQUEST } from './user.types';
 
 export const createUser = (user) => {
     return (dispatch) => {
@@ -39,6 +40,24 @@ export const loginUser = (user) => {
             dispatch(loginUserRequest(data.user))
         })
         .catch(console.log)
+    }
+}
+
+export const fetchUsers = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/api/v1/users')
+        .then(response => response.json())
+        .then(users => {
+            // console.log(users)
+            dispatch(fetchUsersRequest(users))
+        })
+    }
+}
+
+export const fetchUsersRequest = users => {
+    return {
+        type: FETCH_USERS_REQUEST,
+        payload: users
     }
 }
 

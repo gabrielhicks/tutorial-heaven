@@ -22,7 +22,7 @@ function ChatBox({user, addMessage, topicId}) {
     return (
         <form onSubmit={localHandleSubmit}>
             <TextArea onChange={handleContentChange} value={content}></TextArea>
-            <SendButton type="submit">Send</SendButton>
+            <SendButton style={{backgroundColor: "rgba(251, 250, 206, 1)"}} type="submit">Send</SendButton>
         </form>
     )
 }

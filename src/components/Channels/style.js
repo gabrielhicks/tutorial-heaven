@@ -1,9 +1,31 @@
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Paper from '@material-ui/core/Paper';
+
+export const MyFab = styled(Fab)`
+
+`
+
+export const YourFab = styled(Fab)`
+    background-color:
+`
+
+export const MyText = styled.p`
+    &:hover {
+        background-color: rgba(212, 212, 214, 0.2);
+    }
+`
+
+export const YourText = styled.p`
+    &:hover {
+        background-color: rgba(212, 212, 214, 0.2);
+    }
+`
 
 export const ChatBoxContainer = styled(Paper)`
     position: relative;
+    background-color: rgba(242, 247, 235, 1);
     margin: auto;
     display: flex;
     margin-top: 5vh;
