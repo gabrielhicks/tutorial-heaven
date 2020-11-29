@@ -45,7 +45,7 @@ function Category({posts, fetchPosts, root, topic, user}) {
             post.category.topic === topic)
             .map(post => 
             <GridItem style={{zIndex: 100}} key={post.id} item xs={10}>
-                <PostCard style={{backgroundColor: "rgba(242, 233, 224, 1)"}} className={classes.paper}>
+                <PostCard style={{backgroundColor: "white"}} className={classes.paper}>
                     <PostLink style={{zIndex: 100}} to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink>
                     <p>{post.comments.length} comments
                     {post.status === "active" 

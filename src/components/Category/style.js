@@ -20,7 +20,7 @@ export const IconGrid = styled(Grid)`
             margin-bottom: 3vh;
         }
         img {
-            width: 50px;
+            width: 100px;
         }
         display: flex;
         top: 25vh;

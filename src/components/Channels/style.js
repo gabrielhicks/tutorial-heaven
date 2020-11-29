@@ -8,7 +8,7 @@ export const MyFab = styled(Fab)`
 `
 
 export const YourFab = styled(Fab)`
-    background-color:
+    ${'' /* background-image: url("https://i.ibb.co/R6F3bWR/favicon.webp") */}
 `
 
 export const MyText = styled.p`

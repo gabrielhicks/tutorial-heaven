@@ -9,12 +9,12 @@ function Message({username, message, user}) {
         {username === user.username
             ?
             <YourText>
-            <YourFab size="small">{username[0]}</YourFab>&nbsp;&nbsp;
+            <YourFab size="small"><img z-index="0" width="46px" src="https://i.ibb.co/R6F3bWR/favicon.webp" /></YourFab>&nbsp;&nbsp;
             <b style={{color: "rgba(154, 173, 146, 1)"}}>{username}</b>:&nbsp;&nbsp;{message}
             </YourText>
             :
             <MyText>
-            <MyFab size="small">{username[0]}</MyFab>&nbsp;&nbsp;
+            <MyFab size="small"><img z-index="0" width="46px" src="https://i.ibb.co/R6F3bWR/favicon.webp" /></MyFab>&nbsp;&nbsp;
             <b style={{color: "rgba(251, 158, 94, 1)"}}>{username}:</b>&nbsp;&nbsp;{message}
             </MyText>
         }

@@ -44,7 +44,6 @@ function ReactIcons() {
                             transition: { delay: 0.2, ...transition },
                             scale: 2,
                             opacity: 1,
-                            // y: window.innerWidth > 1440 ? 500 : 700,
                         }}
                         exit={{scale: 1, transition: transition, opacity: 0.1}}
                         />

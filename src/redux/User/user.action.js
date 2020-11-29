@@ -2,7 +2,8 @@ import {
     CREATE_USER, 
     LOGIN_USER, 
     LOGOUT_USER,
-    FETCH_USERS_REQUEST } from './user.types';
+    FETCH_USERS_REQUEST,
+    SET_USER } from './user.types';
 
 export const createUser = (user) => {
     return (dispatch) => {
@@ -48,9 +49,24 @@ export const fetchUsers = () => {
         fetch('http://localhost:3000/api/v1/users')
         .then(response => response.json())
         .then(users => {
-            // console.log(users)
             dispatch(fetchUsersRequest(users))
         })
+    }
+}
+
+export const setExistingUser = (token) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/v1/profile`, {
+            method: "GET",
+                headers: {
+            Authorization: `Bearer ${token}` }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            dispatch(setUserRequest(data.user))
+            console.log(data)
+        })
+        .catch(console.log)
     }
 }
 
@@ -58,6 +74,13 @@ export const fetchUsersRequest = users => {
     return {
         type: FETCH_USERS_REQUEST,
         payload: users
+    }
+}
+
+export const setUserRequest = user => {
+    return {
+        type: SET_USER,
+        payload: user
     }
 }
 

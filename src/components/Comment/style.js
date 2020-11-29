@@ -18,7 +18,6 @@ export const CommentContainer = styled(Grid)`
 export const CommentCard = styled(Paper)`
     position: relative;
     text-align: "inline";
-    ${'' /* border: 1px solid rgba(0,0,0,0.5); */}
     margin: -1px;
     margin-top: 20px;
     padding-top:

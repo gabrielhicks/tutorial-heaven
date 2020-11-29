@@ -9,6 +9,7 @@ function Logout(props) {
 
     const localHandleSubmit = () => {
         props.handleSubmit()
+        localStorage.clear()
         return history.push("/")
     }
 

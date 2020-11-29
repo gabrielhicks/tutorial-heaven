@@ -100,10 +100,11 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
         <ChatBoxContainer>
             <ChatTextarea>
                 <ChatWindow>
-                {chatMessages.feed ?
+                {chatMessages.feed 
+                ?
                     <><div>{chatMessages.feed.map(message => <Message message={message.content} username={message.user.username}/>)}</div><div ref={messagesEndRef} /></>
                 :
-                <h3>Loading</h3>
+                <h3>Loading{console.log(chatMessages.feed)}</h3> 
                 }
                 </ChatWindow>
                     <ChatBox user={user} addMessage={addMessage} topic={topic} topicId={findCategoryId(topic)}/>

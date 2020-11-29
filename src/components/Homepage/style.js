@@ -17,18 +17,49 @@ export const IconGrid = styled(Grid)`
     left: 15vw;
     transform: translate(-15%, -25%);
     margin-top: 25vh;
-    @media only screen and (max-width: 600px){
+
+    @media only screen and (max-width: 1200px){
         a {
             margin-bottom: 3vh;
         }
         img {
-            width: 50px;
+            width: 125px;
         }
         display: flex;
         top: 25vh;
         left: 25vw;
         margin-top: 5vh;
         ${'' /* flex-direction: column; */}
+        transform: translate(-25%, -25%);
+    }
+
+    @media only screen and (max-width: 750px){
+        a {
+            margin-bottom: 3vh;
+        }
+        img {
+            width: 100px;
+        }
+        display: flex;
+        top: 25vh;
+        left: 25vw;
+        margin-top: 5vh;
+        ${'' /* flex-direction: column; */}
+        transform: translate(-25%, -25%);
+    }
+
+    @media only screen and (max-width: 600px){
+        a {
+            margin-bottom: 3vh;
+        }
+        img {
+            max-width: 75px;
+        }
+        display: flex;
+        top: 25vh;
+        left: 25vw;
+        margin-top: 5vh;
+        flex-direction: column;
         transform: translate(-25%, -25%);
     }
 `

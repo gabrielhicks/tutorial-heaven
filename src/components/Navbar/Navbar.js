@@ -64,9 +64,9 @@ function Navbar({user}) {
     return (
         <>
         <CssBaseline />
-        <AppBar style={{backgroundColor: "rgba(203, 218, 237, 1)", color: "black"}}>
+        <AppBar style={{backgroundColor: "rgba(199, 237, 230, 1)", color: "black"}}>
             <StyledToolbar>
-            <Link to="/"><img width="50px;" alt="Tutorial Heaven" src="https://img.icons8.com/pastel-glyph/64/ladder--v1.png"/></Link><Logo>Tutorial Heaven</Logo>
+            <Link to="/"><img width="50px;" alt="Tutorial Heaven" src="https://i.ibb.co/fMxhH9m/lyre.webp"/></Link><Logo>Tutorial Heaven</Logo>
             {user.id ?
             <NavWrapper>
             <StyledIconButton

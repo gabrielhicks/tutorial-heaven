@@ -1,7 +1,8 @@
 import { 
     CREATE_USER, 
     LOGIN_USER, 
-    LOGOUT_USER } from './user.types';
+    LOGOUT_USER,
+    SET_USER } from './user.types';
 
 const INITIAL_STATE = {
     user: [],
@@ -15,6 +16,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return action.payload
         case LOGOUT_USER:
             return []
+        case SET_USER:
+            return action.payload
         default: return state;
     }
 };
