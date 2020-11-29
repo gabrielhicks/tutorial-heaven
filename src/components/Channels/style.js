@@ -8,7 +8,17 @@ export const MyFab = styled(Fab)`
 `
 
 export const YourFab = styled(Fab)`
-    ${'' /* background-image: url("https://i.ibb.co/R6F3bWR/favicon.webp") */}
+
+`
+
+export const StyledForm = styled.form`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    margin-right: 1vw;
+    width: 56vw;
+    height: 10vh;
 `
 
 export const MyText = styled.p`
@@ -25,11 +35,11 @@ export const YourText = styled.p`
 
 export const ChatBoxContainer = styled(Paper)`
     position: relative;
-    background-color: rgba(242, 247, 235, 1);
+    background-color: rgba(199, 237, 230, 1);
     margin: auto;
     display: flex;
     margin-top: 5vh;
-    width: 80vw;
+    width: 60vw;
     height: 80vh;
     ${'' /* border: 1px solid black; */}
     align-items: flex-end;
@@ -37,13 +47,17 @@ export const ChatBoxContainer = styled(Paper)`
 
 export const SendButton = styled(Button)`
     background-color: rgba(0, 0, 0, 0.1);
+    ${'' /* position: relative; */}
+    height: 100%;
+    width: 6vw;
+    margin-right: 0px;
     float: right;
-    padding: 30px;
+    padding: auto;
 `
 export const TextArea = styled.textarea`
     position: relative;
     padding-right: 1vw;
-    width: 70vw;
+    width: 50vw;
     height: 10vh;
     resize: none;
     outline: none;
@@ -53,7 +67,7 @@ export const TextArea = styled.textarea`
 export const ChatWindow = styled(Paper)`
     position: absolute;
     bottom: 10vh;
-    width: 76vw;
+    width: 56vw;
     height: 68vh;
     margin-bottom: 4px;
     overflow-y: auto;
@@ -68,15 +82,15 @@ export const ChatTextarea = styled(Paper)`
     margin-left: 2vw;
     margin-right: 1vw;
     margin-bottom: 1vh;
-    width: 76vw;
+    width: 56vw;
     height: 10vh;
-    form {
+    ${'' /* form {
     position: absolute;
     display: flex;
     align-items: center;
     bottom: 0;
     margin-right: 1vw;
-    width: 76vw;
+    width: 56vw;
     height: 10vh;
-    }
+    } */}
 `

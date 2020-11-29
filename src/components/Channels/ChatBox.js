@@ -1,10 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
-import { createMessage } from '../../redux/Messages/message.action'
-import { useLastLocation } from 'react-router-last-location';
-import { ChatBoxContainer, ChatTextarea, SendButton, TextArea, ChatWindow } from './style'
-import { fetchMessages } from '../../redux/Messages/message.action';
-import { fetchCategory } from '../../redux/Category/category.action'
+import React, {useState} from 'react'
+import {SendButton, StyledForm, TextArea} from './style'
     
 function ChatBox({user, addMessage, topicId}) {
     const [content, setContent] = useState("")
@@ -20,10 +15,10 @@ function ChatBox({user, addMessage, topicId}) {
     }
 
     return (
-        <form onSubmit={localHandleSubmit}>
+        <StyledForm onSubmit={localHandleSubmit}>
             <TextArea onChange={handleContentChange} value={content}></TextArea>
             <SendButton style={{backgroundColor: "rgba(251, 250, 206, 1)"}} type="submit">Send</SendButton>
-        </form>
+        </StyledForm>
     )
 }
 

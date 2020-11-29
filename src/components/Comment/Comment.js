@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import {CommentContainer, CommentCard, GridItem, CommentLink} from './style'
+import {CommentCard, GridItem} from './style'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,7 +20,7 @@ function Comment({comment, user}) {
 
     return (
             <GridItem key={comment.id} item xs={10}>
-                <CommentCard style={{backgroundColor: "rgba(253, 252, 239, 1)"}} className={classes.paper}>
+                <CommentCard className={classes.paper}>
                     <p>
                     <>{comment.body}</>
                     <br />

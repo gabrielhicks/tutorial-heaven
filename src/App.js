@@ -21,7 +21,6 @@ function App({setExistingUser}) {
     const oldToken = localStorage.getItem("token");
     if (oldToken) {
       setExistingUser(oldToken);
-      console.log("hi")
     } else {
       history.push("/")
     }

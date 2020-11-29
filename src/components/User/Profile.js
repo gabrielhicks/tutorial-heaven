@@ -28,11 +28,16 @@ function Profile({user, users, fetchUsers}) {
                         animate="animate"
                         exit="exit"
                         >
+                        {user ?
+                        <>
                         <h2>{user.username}</h2>
                         <p>{user.bio}</p>
                         <p>{user.first_name}</p>
                         <p>{user.last_name}</p>
-                    {/* <Post key={post.id} post={post} root={`${root}`}/> */}
+                        </>
+                        :
+                        <h3>This user can not be found</h3>
+                        }
                     </motion.div>
                     :
                     <motion.div

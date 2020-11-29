@@ -5,13 +5,10 @@ import Paper from '@material-ui/core/Paper';
 import ChatIcon from '@material-ui/icons/Chat';
 
 export const CommentContainer = styled(Grid)`
-    ${'' /* background-color: rgba(212, 212, 214, 0.1); */}
     position: relative;
     max-width: 80vw;
     left: 10vw;
     padding: 2rem;
-    ${'' /* top: 40vh; */}
-    ${'' /* position: absolute; */}
     z-index: 0;
 `
 
