@@ -27,12 +27,6 @@ function App({setExistingUser}) {
   }, []);
 
   const [user, setUser] = useState({})
-  const reactImage = { width: 100, height: 100, }
-  const railsImage = { width: 100, height: 100, }
-  const jsImage = { width: 100, height: 100, }
-  const angularImage = { width: 100, height: 100, }
-  const vueImage = { width: 100, height: 86.5, }
-  const htmlImage = { width: 100, height: 100, }
   const handleLogin = user => {setUser(user)}
   const location = useLocation()
 
@@ -47,12 +41,12 @@ function App({setExistingUser}) {
         <Route path="/profile" render={() => (<Profile /> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>
-        <Route path="/reactjs" render={() => (<Category root="reactjs" topic="React" imageSize={reactImage}/> )}/>
-        <Route path="/rails" render={() => (<Category root="rails" topic="Ruby on Rails" imageSize={railsImage}/> )}/>
-        <Route path="/javascript" render={() => (<Category root="javascript" topic="JavaScript" imageSize={jsImage}/>)}/>
-        <Route path="/angular" render={() => (<Category root="angular" topic="Angular" imageSize={angularImage}/> )}/>
-        <Route path="/vue" render={() => (<Category root="vue" topic="Vue" imageSize={vueImage}/> )}/>
-        <Route path="/html5" render={() => (<Category root="html5" topic="HTML" imageSize={htmlImage}/> )}/>
+        <Route path="/reactjs" render={() => (<Category icons={"ReactIcons"} root="reactjs" key="1" catId="1" /> )}/>
+        <Route path="/rails" render={() => (<Category root="rails" key="5"/> )}/>
+        <Route path="/javascript" render={() => (<Category root="javascript" key="5"/>)}/>
+        <Route path="/angular" render={() => (<Category root="angular" key="2" /> )}/>
+        <Route path="/vue" render={() => (<Category root="vue" key="3" /> )}/>
+        <Route path="/html5" render={() => (<Category root="html5" key="6"/> )}/>
         <Route path="/" render={() => (<Homepage /> 
                                         )}/>
       </Switch>
