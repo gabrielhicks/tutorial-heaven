@@ -1,40 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {connect} from 'react-redux'
-import { createMessage, fetchMessages } from '../../redux/Messages/message.action'
-import { fetchCategory } from '../../redux/Category/category.action'
+import { createMessage } from '../../redux/Messages/message.action'
+import { fetchCategoryMessages } from '../../redux/Category/category.action'
 import ChatBox from './ChatBox'
 import Message from './Message'
 import { ChatBoxContainer, ChatTextarea, ChatWindow } from './style'
 import { motion } from "framer-motion";
 import consumer from '../../chat'
 
-console.log(consumer)
-    const findCategoryId = (category) => {
-        switch(category) {
-            case "React":
-                return 1
-                break;
-            case "JavaScript":
-                return 5
-                break;
-            case "Ruby on Rails":
-                return 4
-                break;
-            case "Vue":
-                return 3
-                break;
-            case "Angular":
-                return 2
-                break;
-            case "HTML":
-                return 6
-                break;
-            default:
-            console.log()
-        }
-    }
-
-function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
+function CategoryChat({user, topic, categoryMessages, fetchCategoryMessages, createMessage}) {
     const [chatMessages, setMessages] = useState({
         feed: [],
         newChatMessages: []
@@ -49,21 +23,21 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
         if(chatMessages.feed) {
         scrollToBottom()
         }
-    });
+    }, [chatMessages]);
 
     useEffect(() => {
-        let categoryId = findCategoryId(topic)
-        fetchCategory(categoryId)
-    }, [])
+        fetchCategoryMessages(topic)
+    }, [topic])
 
     useEffect(() => {
-        if(category) {
+        if(categoryMessages) {
+            console.log("hi", categoryMessages.messages)
         setMessages({
-            feed: category.messages,
+            feed: categoryMessages.messages,
             newChatMessages: []
         })
         }
-    }, [category])
+    }, [categoryMessages])
 
     useEffect(() => {
         if(user.username) {
@@ -96,7 +70,7 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
         animate="animate"
         exit="exit"
         >
-        <h2>Welcome to {topic} chat!</h2>
+        <h2>Welcome to {categoryMessages.topic} chat!</h2>
         <ChatBoxContainer>
             <ChatTextarea>
                 <ChatWindow>
@@ -107,7 +81,7 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
                 <h3>Loading{console.log(chatMessages.feed)}</h3> 
                 }
                 </ChatWindow>
-                    <ChatBox user={user} addMessage={addMessage} topic={topic} topicId={findCategoryId(topic)}/>
+                    <ChatBox user={user} addMessage={addMessage} topic={topic} topicId={topic}/>
             </ChatTextarea>
         </ChatBoxContainer>
         </motion.div>
@@ -116,13 +90,13 @@ function CategoryChat({user, topic, category, fetchCategory, createMessage}) {
 const mapStateToProps = state => {
     return {
         user: state.user,
-        category: state.category
+        categoryMessages: state.categoryMessages
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchCategory: (category) => dispatch(fetchCategory(category)),
+        fetchCategoryMessages: (category) => dispatch(fetchCategoryMessages(category)),
         createMessage: (message) => dispatch(createMessage(message))
     }
 }

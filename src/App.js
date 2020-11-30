@@ -41,12 +41,12 @@ function App({setExistingUser}) {
         <Route path="/profile" render={() => (<Profile /> )}/>
         <Route path="/signup" render={() => (<Register handleLogin={handleLogin}/> )}/>
         <Route path="/login" render={() => (<Login handleLogin={handleLogin}/> )}/>
-        <Route path="/reactjs" render={() => (<Category icons={"ReactIcons"} root="reactjs" key="1" catId="1" /> )}/>
-        <Route path="/rails" render={() => (<Category root="rails" key="5"/> )}/>
-        <Route path="/javascript" render={() => (<Category root="javascript" key="5"/>)}/>
-        <Route path="/angular" render={() => (<Category root="angular" key="2" /> )}/>
-        <Route path="/vue" render={() => (<Category root="vue" key="3" /> )}/>
-        <Route path="/html5" render={() => (<Category root="html5" key="6"/> )}/>
+        <Route path="/reactjs" render={() => (<Category root="reactjs" key="1" catId="1" /> )}/>
+        <Route path="/rails" render={() => (<Category root="rails" key="4" catId="4"/> )}/>
+        <Route path="/javascript" render={() => (<Category root="javascript" key="5" catId="5"/>)}/>
+        <Route path="/angular" render={() => (<Category root="angular" key="2" catId="2"/> )}/>
+        <Route path="/vue" render={() => (<Category root="vue" key="3" catId="3"/> )}/>
+        <Route path="/html5" render={() => (<Category root="html5" key="6" catId="6"/> )}/>
         <Route path="/" render={() => (<Homepage /> 
                                         )}/>
       </Switch>

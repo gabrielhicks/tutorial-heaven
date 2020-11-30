@@ -6,7 +6,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {PostContainer, PostCard, GridItem, Title, SideBar, PostLink, NewPost} from './style'
 import Post from '../Post/Post'
-import {fetchCategory} from '../../redux/Category/category.action'
+import {fetchCategory } from '../../redux/Category/category.action'
 import { connect } from 'react-redux'
 import RailsIcons from './RailsIcons';
 import ReactIcons from './ReactIcons';
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Category({fetchCategory, catId, root, topic, user, category, icons}) {
+function Category({fetchCategory, catId, root, topic, user, category}) {
     useEffect(() => {
         console.log(catId)
         let newId = parseInt(catId)
@@ -39,7 +39,7 @@ function Category({fetchCategory, catId, root, topic, user, category, icons}) {
         if(newId) {
         fetchCategory(newId)
         }
-    }, [catId])
+    }, [])
 
     const classes = useStyles();
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
@@ -83,7 +83,7 @@ function Category({fetchCategory, catId, root, topic, user, category, icons}) {
         {category ?
         <>
         <Switch>
-        <Route path={`/${root}/chat`} render={() => <CategoryChat topic={category.topic} />}/>
+        <Route path={`/${root}/chat`} render={() => <CategoryChat topic={category.id} />}/>
         <Route path={`/${root}/:id`} render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
             let post;

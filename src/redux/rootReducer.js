@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import categoryMessagesReducer from './Category/messages.reducer';
 import categoryReducer from './Category/category.reducer';
 import commentReducer from './Comment/comment.reducer';
 import messageReducer from './Messages/message.reducer'
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     messages: messageReducer,
     category: categoryReducer,
     users: usersReducer,
+    categoryMessages: categoryMessagesReducer,
 
 });
 
