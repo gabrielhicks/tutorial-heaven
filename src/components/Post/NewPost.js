@@ -1,12 +1,66 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { useLastLocation } from 'react-router-last-location';
+import { motion } from "framer-motion";
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
+const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: 'black',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: 'black',
+        },
+        '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+                borderColor: 'black',
+            },
+        },
+    },
+})(TextField);
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        color: "black",
+        backgroundColor: "rgb(199, 237, 230)",
+    },
+    form: {
+        width: '100%',
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+        backgroundColor: "rgb(199, 237, 230)",
+    },
+}));
 
 function NewPost({user}) {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [category, setCategory] = useState("")
     const [author, setAuthor] = useState("")
+    const [image, setImage] = useState("")
+    const [status, setStatus] = useState("")
+    const [difficulty, setDifficulty] = useState("")
+    const [github, setGithub] = useState("")
+    const classes = useStyles();
     const lastLocation = useLastLocation();
 
     const handleTitleChange = (e) => {
@@ -25,6 +79,22 @@ function NewPost({user}) {
         setAuthor(e.target.value)
     }
 
+    const handleImageChange = (e) => {
+        setImage(e.target.value)
+    }
+
+    const handleStatusChange = (e) => {
+        setStatus(e.target.value)
+    }
+
+    const handleGithubChange = (e) => {
+        setGithub(e.target.value)
+    }
+
+    const handleDifficultyChange = (e) => {
+        setDifficulty(e.target.value)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         fetch(`http://localhost:3000/api/v1/posts`, {
@@ -33,7 +103,7 @@ function NewPost({user}) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({post: {title: title, content: content, category: category, user: author, status: "active"}
+            body: JSON.stringify({post: {title: title, content: content, category: category, user: author, status: true, }
             })
         })
         .then(resp => resp.json())
@@ -42,37 +112,142 @@ function NewPost({user}) {
         })
         setTitle("")
         setContent("")
-    }
-    const formDivStyle = {
-        margin: "auto",
-        padding: "20px",
-        width: "80%"
+        setImage("")
+        setStatus("")
+        setGithub("")
+        setDifficulty("")
     }
     
     return(
-        <div style={formDivStyle}>
-            <h1>New Post for {lastLocation.pathname}</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Category</label>
-                    <input value={category} onChange={handleCategoryChange} type="text" placeholder="Category"/>
-                </div>
-                <div>
-                    <label>Title</label>
-                    <input value={title} onChange={handleTitleChange} type="text" placeholder="Title"/>
-                </div>
-                <div>
-                    <label>Content</label>
-                    <textarea value={content} onChange={handleContentChange} placeholder="Content"/>
-                </div>
-                <div>
-                    <label>Author</label>
-                    <input value={user.username} onChange={handleAuthorChange} type="text" placeholder="Author"/>
-                </div>
-                {console.log(JSON.stringify(lastLocation.pathname))}
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <motion.div
+        initial="initial"
+        animate="animate"
+        exit="exit">
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                <img width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                New Post
+                </Typography>
+                <form onSubmit={handleSubmit} className={classes.form} noValidate>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                    <CssTextField
+                        variant="outlined"
+                        required
+                        autoFocus
+                        fullWidth
+                        name="title"
+                        label="Post Title"
+                        id="title"
+                        value={title} 
+                        onChange={handleTitleChange}
+                    />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <CssTextField
+                        multiline
+                        rowsMax={6}
+                        name="content"
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="content"
+                        label="Post Body"
+                        value={content} 
+                        onChange={handleContentChange}                        
+                    />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                    <CssTextField
+                        autoComplete="category"
+                        name="category"
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="category"
+                        label="Category"
+                        value={lastLocation.pathname.slice(1)}
+                        onChange={handleCategoryChange}
+                    />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                    <CssTextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="author"
+                        label="Author"
+                        name="author"
+                        value={user.username} 
+                        onChange={handleAuthorChange}                        
+                    />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <CssTextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="image"
+                        label="Image Url"
+                        name="image"
+                        value={image} 
+                        onChange={handleImageChange}                        
+                    />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <CssTextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="github"
+                        label="GitHub Repo Url"
+                        name="github"
+                        value={github} 
+                        onChange={handleGithubChange}                        
+                    />
+                    </Grid>             
+                    <Grid item xs={12}>
+                    <CssTextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="difficulty"
+                        label="Difficulty"
+                        name="difficulty"
+                        value={difficulty} 
+                        onChange={handleDifficultyChange}                        
+                    />
+                    </Grid>      
+                    <Grid item xs={12}>
+                    <CssTextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="status"
+                        label="Status"
+                        name="status"
+                        value={"Open"} 
+                        onChange={handleStatusChange}                        
+                    />
+                    </Grid>      
+                </Grid>
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="inherit"
+                    className={classes.submit}
+                >
+                    Add Post
+                </Button>
+                </form>
+            </div>
+            </Container>
+        </motion.div>
     )
 }
 

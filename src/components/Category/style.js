@@ -153,16 +153,36 @@ export const PostCardGrid = styled(Grid)`
     }
 `
 export const PostCardImage = styled.img`
-    grid-column: 1:2;
+    grid-column: 1;
     grid-row: 1;
     width: 100px;
     height: 100px;
+    @media only screen and (max-width: 750px){
+        justify-self: middle;
+        grid-column: 1;
+        grid-row: 1;
+    }
 `
 export const PostCardTitle = styled.p`
     justify-self: center;
     font-size: 1.3rem;
     grid-column: 2;
     grid-row: 1;
+    @media only screen and (max-width: 750px){
+        font-size: 1rem;
+        grid-column: 1;
+        grid-row: 2;
+    }
+`
+
+export const PostCardDate = styled.p`
+    font-size: 11px;
+    grid-column: 1;
+    grid-row: 3;
+    @media only screen and (max-width: 750px){
+        grid-column: 1;
+        grid-row: 4;
+    }
 `
 
 export const PostCardAuthor = styled.p`
@@ -175,7 +195,7 @@ export const PostCardComments = styled.p`
     grid-row: 2;
     justify-self: right;
     @media only screen and (max-width: 750px){
-        grid-column: 2;
+        grid-column: 1;
         grid-row: 3;
     }
 `

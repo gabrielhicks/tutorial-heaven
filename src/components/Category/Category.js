@@ -4,7 +4,21 @@ import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
 import ChatIcon from '@material-ui/icons/Chat';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import {PostContainer, PostCard, GridItem, Title, SideBar, PostLink, NewPost, PostCardGrid, PostCardImage, PostCardTitle, PostCardAuthor, PostCardComments, PostCardStatus} from './style'
+import {
+    PostContainer, 
+    PostCard, 
+    GridItem, 
+    Title, 
+    SideBar, 
+    PostLink, 
+    NewPost, 
+    PostCardGrid, 
+    PostCardImage, 
+    PostCardTitle, 
+    PostCardAuthor, 
+    PostCardComments, 
+    PostCardStatus,
+    PostCardDate} from './style'
 import Post from '../Post/Post'
 import {fetchCategory } from '../../redux/Category/category.action'
 import { connect } from 'react-redux'
@@ -31,6 +45,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const fixDate = date => {
+    let date_test = new Date(date);
+    let first = `${date_test}`.slice(4,15)
+    let last = `${date_test}`.slice(16,25)
+    return `${first} at ${last} EST`
+}
+
 function Category({fetchCategory, catId, root, user, category}) {
     useEffect(() => {
         fetchCategory(catId)
@@ -46,16 +67,14 @@ function Category({fetchCategory, catId, root, user, category}) {
                 <PostCardGrid>
                     <a style={{width: "100px"}} target="_blank" href={`${post.github}`}><PostCardImage style={{width: "100px"}} src={post.image_url}></PostCardImage></a>
                     <PostCardTitle><PostLink style={{zIndex: 100}} to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink></PostCardTitle>
-                    {console.log(post)}
-                    <PostCardAuthor>
-                        Posted by&nbsp;<Link style={{color: "black"}} to={`/profile/${post.user.id}`}><i>{post.user.username}</i></Link>
-                    </PostCardAuthor>
+                    <PostCardAuthor>Posted by&nbsp;<Link style={{color: "black"}} to={`/profile/${post.user.id}`}><i>{post.user.username}</i></Link></PostCardAuthor>
+                    <PostCardDate>{fixDate(post.created_at)}</PostCardDate>
                     <PostCardComments><Link style={{color: "black"}} to={`/${root}/${post.id}`}>{post.comments.length} comments</Link></PostCardComments>
                     {post.status === true
                     ? 
-                    <PostCardStatus><i className="status active">Open</i></PostCardStatus>
+                    <PostCardStatus>{post.difficulty}&nbsp;|&nbsp;<i className="status active">Open</i></PostCardStatus>
                     :
-                    <PostCardStatus><i className="status">{post.status}</i></PostCardStatus>
+                    <PostCardStatus>{post.difficulty}&nbsp;|&nbsp;<i className="status">Closed</i></PostCardStatus>
                     }
                 </PostCardGrid>
                 </PostCard>
@@ -90,13 +109,13 @@ function Category({fetchCategory, catId, root, user, category}) {
         <Route path={`/${root}/:id`} render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
             let post;
-            if(category.posts.length > 0) {
+            if(category.posts) {
                 post = category.posts.find(post => post.id === id)
             }
             return (
                 <>
                 {
-                    category.posts.length > 0 
+                    category.posts
                     ? 
                     <Post key={post.id} post={post} root={`${root}`}/>
                     :

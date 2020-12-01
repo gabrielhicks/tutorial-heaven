@@ -6,6 +6,7 @@ import messageReducer from './Messages/message.reducer'
 import postReducer from './Post/post.reducer'
 import userReducer from './User/user.reducer'
 import usersReducer from './User/users.reducer';
+import editPostReducer from './Post/editpost.reducer';
 
 const rootReducer = combineReducers({
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     category: categoryReducer,
     users: usersReducer,
     categoryMessages: categoryMessagesReducer,
+    post: editPostReducer,
 
 });
 

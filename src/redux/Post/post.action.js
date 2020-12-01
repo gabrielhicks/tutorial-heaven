@@ -2,7 +2,8 @@ import {
     FETCH_POSTS_REQUEST, 
     PATCH_POSTS_REQUEST, 
     POST_POSTS_REQUEST, 
-    DELETE_POSTS_REQUEST } from './post.types';
+    DELETE_POSTS_REQUEST,
+    FETCH_POST_REQUEST } from './post.types';
 
 export const fetchPosts = () => {
     return (dispatch) => {
@@ -11,6 +12,17 @@ export const fetchPosts = () => {
         .then(posts => {
             // console.log(posts)
             dispatch(fetchPostsRequest(posts))
+        })
+    }
+}
+
+export const fetchPost = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/api/v1/posts/${id}`)
+        .then(response => response.json())
+        .then(post => {
+            // console.log(post)
+            dispatch(fetchPostRequest(post))
         })
     }
 }
@@ -38,6 +50,13 @@ export const fetchPostsRequest = posts => {
     return {
         type: FETCH_POSTS_REQUEST,
         payload: posts
+    }
+}
+
+export const fetchPostRequest = post => {
+    return {
+        type: FETCH_POST_REQUEST,
+        payload: post
     }
 }
 

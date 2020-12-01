@@ -13,6 +13,7 @@ import Profile from './components/User/Profile';
 import NewPost from './components/Post/NewPost';
 import Logout from './components/User/Logout';
 import NewComment from './components/Comment/NewComment';
+import EditPost from './components/Post/EditPost';
 
 function App({setExistingUser}) {
   const history = useHistory();
@@ -35,6 +36,7 @@ function App({setExistingUser}) {
       <Navbar />
       <AnimatePresence initial={true} exitBeforeEnter>
       <Switch location={location} key={location.pathname}>
+        <Route path="/editpost" render={() => (<EditPost /> )}/>
         <Route path="/newcomment" render={() => (<NewComment /> )}/>
         <Route path="/logout" render={() => (<Logout /> )}/>
         <Route path="/newpost" render={() => (<NewPost /> )}/>
