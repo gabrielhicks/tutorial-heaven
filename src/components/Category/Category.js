@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
 import ChatIcon from '@material-ui/icons/Chat';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import {PostContainer, PostCard, GridItem, Title, SideBar, PostLink, NewPost} from './style'
+import {PostContainer, PostCard, GridItem, Title, SideBar, PostLink, NewPost, PostCardGrid, PostCardImage, PostCardTitle, PostCardAuthor, PostCardComments, PostCardStatus} from './style'
 import Post from '../Post/Post'
 import {fetchCategory } from '../../redux/Category/category.action'
 import { connect } from 'react-redux'
@@ -31,15 +31,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Category({fetchCategory, catId, root, topic, user, category}) {
+function Category({fetchCategory, catId, root, user, category}) {
     useEffect(() => {
-        console.log(catId)
-        let newId = parseInt(catId)
-        console.log(newId)
-        if(newId) {
-        fetchCategory(newId)
-        }
-    }, [])
+        fetchCategory(catId)
+    }, [catId])
 
     const classes = useStyles();
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
@@ -48,13 +43,21 @@ function Category({fetchCategory, catId, root, topic, user, category}) {
         return category.posts.map(post => 
             <GridItem style={{zIndex: 100}} key={post.id} item xs={10}>
                 <PostCard style={{backgroundColor: "white"}} className={classes.paper}>
-                    <PostLink style={{zIndex: 100}} to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink>
-                    <p>{post.comments.length} comments
-                    {post.status === "active" 
+                <PostCardGrid>
+                    <a style={{width: "100px"}} target="_blank" href={`${post.github}`}><PostCardImage style={{width: "100px"}} src={post.image_url}></PostCardImage></a>
+                    <PostCardTitle><PostLink style={{zIndex: 100}} to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink></PostCardTitle>
+                    {console.log(post)}
+                    <PostCardAuthor>
+                        Posted by&nbsp;<Link style={{color: "black"}} to={`/profile/${post.user.id}`}><i>{post.user.username}</i></Link>
+                    </PostCardAuthor>
+                    <PostCardComments><Link style={{color: "black"}} to={`/${root}/${post.id}`}>{post.comments.length} comments</Link></PostCardComments>
+                    {post.status === true
                     ? 
-                    <i className="status active">{post.status}</i>
+                    <PostCardStatus><i className="status active">Open</i></PostCardStatus>
                     :
-                    <i className="status">{post.status}</i>}</p>
+                    <PostCardStatus><i className="status">{post.status}</i></PostCardStatus>
+                    }
+                </PostCardGrid>
                 </PostCard>
             </GridItem>)
     }
@@ -116,7 +119,7 @@ function Category({fetchCategory, catId, root, topic, user, category}) {
                     animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
                     exit={{opacity: 0.02, transition: transition, scale: 1}}
                     >
-                        <Title>{topic}</Title>
+                        <Title>{category.topic}</Title>
                         <PostContainer
                         container
                         direction="column"

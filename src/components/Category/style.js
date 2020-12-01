@@ -74,7 +74,6 @@ export const IconLink = styled(Link)`
 
 export const PostLink = styled(Link)`
     color: black;
-    text-decoration: none;
 `
 
 export const MotionImage = styled(motion.img)`
@@ -145,6 +144,51 @@ export const PostCard = styled(Paper)`
 
 export const GridItem = styled(Grid)`
     display: flex;
+`
+
+export const PostCardGrid = styled(Grid)`
+    display: grid;
+    @media only screen and (max-width: 750px){
+        display: grid-column;
+    }
+`
+export const PostCardImage = styled.img`
+    grid-column: 1:2;
+    grid-row: 1;
+    width: 100px;
+    height: 100px;
+`
+export const PostCardTitle = styled.p`
+    justify-self: center;
+    font-size: 1.3rem;
+    grid-column: 2;
+    grid-row: 1;
+`
+
+export const PostCardAuthor = styled.p`
+    grid-column: 1;
+    grid-row: 2;
+`
+
+export const PostCardComments = styled.p`
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: right;
+    @media only screen and (max-width: 750px){
+        grid-column: 2;
+        grid-row: 3;
+    }
+`
+
+export const PostCardStatus = styled.p`
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+    @media only screen and (max-width: 750px){
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: left;
+    }
 `
 
 export const Title = styled.h2`

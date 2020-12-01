@@ -76,7 +76,7 @@ function CategoryChat({user, topic, categoryMessages, fetchCategoryMessages, cre
                 <ChatWindow>
                 {chatMessages.feed 
                 ?
-                    <><div>{chatMessages.feed.map(message => <Message message={message.content} username={message.user.username}/>)}</div><div ref={messagesEndRef} /></>
+                    <><div>{chatMessages.feed.map(message => <Message image={message.user.image} first={message.user.first_name} message={message.content} username={message.user.username}/>)}</div><div ref={messagesEndRef} /></>
                 :
                 <h3>Loading{console.log(chatMessages.feed)}</h3> 
                 }
