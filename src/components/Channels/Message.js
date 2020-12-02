@@ -1,6 +1,5 @@
 import React from 'react'
-import Fab from '@material-ui/core/Fab';
-import {YourFab, MyFab, YourText, MyText, MyName, YourName, YourMessage, MyMessage, YourImg, MyImg} from './style'
+import {YourFab, MyFab, MyName, YourName, YourMessage, MyMessage, YourImg, MyImg} from './style'
 import {connect} from 'react-redux'
 
 function Message({username, message, user, image, first}) {

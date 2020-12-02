@@ -50,6 +50,13 @@ export const YourMessage = styled.p`
     }
 `
 
+export const ChatImage = styled.img`
+    width: 20vw;
+    position: fixed;
+    left: 0;
+    z-index: 10;
+`
+
 export const MyText = styled.p`
     align-self: start;
     grid-row: 1;

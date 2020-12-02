@@ -7,9 +7,10 @@ import ChatIcon from '@material-ui/icons/Chat';
 export const CommentContainer = styled(Grid)`
     position: relative;
     max-width: 80vw;
-    left: 10vw;
+    left: 13vw;
     padding: 2rem;
-    z-index: 0;
+    padding-left: 0;
+    z-index: 1;
 `
 
 export const CommentCard = styled(Paper)`
@@ -17,7 +18,6 @@ export const CommentCard = styled(Paper)`
     text-align: "inline";
     margin: -1px;
     margin-top: 20px;
-    padding-top:
     img {
         width: 6vw;
         float: right;
@@ -51,11 +51,12 @@ export const NewComment = styled(Button)`
     padding: 5px;
     width: 75px;
     text-decoration: none;
-    z-index: 9999;
+    z-index: 100;
 `
 
 export const SideBar = styled.div`
     position: fixed;
+    z-index: -10;
     display: inline-column;
     left: 0;
     bottom: -70px;

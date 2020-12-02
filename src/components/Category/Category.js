@@ -105,7 +105,7 @@ function Category({fetchCategory, catId, root, user, category}) {
         {category ?
         <>
         <Switch>
-        <Route path={`/${root}/chat`} render={() => <CategoryChat topic={category.id} />}/>
+        <Route path={`/${root}/chat`} render={() => <CategoryChat root={category.root} image={category.image} topic={category.id} />}/>
         <Route path={`/${root}/:id`} render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
             let post;

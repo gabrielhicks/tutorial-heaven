@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { motion } from "framer-motion";
 import {MotionImage, IconGrid, Icon, IconLink, NewPost} from './style'
 
@@ -19,20 +19,22 @@ function ReactIcons() {
         <>
                 <motion.div
                 initial={{
-                    y: "-80%",
+                    y: "20%",
                     x: "0",
-                    width: "100vw",
+                    width: "auto",
+                    position: "fixed",
                     transition: { delay: 0.5, ...transition },
-                    opacity: 1,
+                    opacity: 1
                 }}
                 animate={{opacity: 1}}
                 exit="in"
                 >
                     <IconGrid
                         container
-                        direction="row"
+                        direction="column"
                         justify="space-evenly"
-                        alignItems="baseline">
+                        // alignItems="baseline"
+                        >
                     <Icon>
                     <MotionImage
                         src="https://i.ibb.co/yY881s1/react.webp"
@@ -42,7 +44,7 @@ function ReactIcons() {
                         initial={{ scale: 1, opacity: 0.1 }}
                         animate={{
                             transition: { delay: 0.2, ...transition },
-                            scale: 2,
+                            scale: 1.25,
                             opacity: 1,
                         }}
                         exit={{scale: 1, transition: transition, opacity: 0.1}}

@@ -6,59 +6,20 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 export const IconGrid = styled(Grid)`
+    position: fixed;
+    display: grid-column;
     background-color: transparent;
     img {
-        max-width: 200px;
+        max-width: 100px;
+        max-height: 100px;
     }
-    position: relative;
-    top: 5vh;
-    left: 15vw;
+    margin-right: 0;
+    left: 6vw;
+    margin-left: 0;
     transform: translate(-15%, -25%);
-    margin-top: 25vh;
-
-    @media only screen and (max-width: 1200px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            width: 125px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        ${'' /* flex-direction: column; */}
-        transform: translate(-25%, -25%);
-    }
-
+    margin-top: 20vh;
     @media only screen and (max-width: 750px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            width: 100px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        ${'' /* flex-direction: column; */}
-        transform: translate(-25%, -25%);
-    }
-
-    @media only screen and (max-width: 600px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            max-width: 75px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        flex-direction: column;
-        transform: translate(-25%, -25%);
+        width: 50vw;
     }
 `
 
@@ -69,7 +30,8 @@ export const Icon = styled(Link)`
 `
 
 export const IconLink = styled(Link)`
-    width: 200px;
+    width: 50px;
+    z-index: 100;
 `
 
 export const PostLink = styled(Link)`
@@ -87,7 +49,7 @@ export const NewPost = styled(Button)`
     padding: 5px;
     width: 75px;
     text-decoration: none;
-    z-index: 9999;
+    z-index: 100;
 `
 
 export const SideBar = styled.div`
@@ -101,6 +63,7 @@ export const SideBar = styled.div`
     margin-top: 1.75vh;
     margin-left: 1.75vw;
     width: 3vw;
+    z-index: 999;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -213,7 +176,7 @@ export const PostCardStatus = styled.p`
 
 export const Title = styled.h2`
     position: absolute;
-    font-weight: 100;
+    font-weight: normal;
     font-size: 5rem;
     top: 15vh;
     right: 10vw;

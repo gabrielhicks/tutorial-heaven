@@ -9,6 +9,7 @@ import {CommentContainer, NewComment, SideBar} from '../Comment/style'
 import {PostCard, PostTitle, PostContent, PostImage, PostInfo, ProjectStatus, PostCardAuthor, PostCardDate, PostCardRepo, MaskDiv} from './style'
 import { motion } from "framer-motion";
 import { Button } from '@material-ui/core';
+import Sidebar from '../Sidebar/Sidebar'
 
 
 function Post({post, root, user}) {
@@ -37,6 +38,7 @@ function Post({post, root, user}) {
         animate="animate"
         exit="exit"
         >
+        <Sidebar root={root}/>
             <CommentContainer
             container
             direction="column"

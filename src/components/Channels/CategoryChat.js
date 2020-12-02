@@ -4,11 +4,12 @@ import { createMessage } from '../../redux/Messages/message.action'
 import { fetchCategoryMessages } from '../../redux/Category/category.action'
 import ChatBox from './ChatBox'
 import Message from './Message'
-import { ChatBoxContainer, ChatTextarea, ChatWindow } from './style'
+import { ChatBoxContainer, ChatImage, ChatTextarea, ChatWindow } from './style'
 import { motion } from "framer-motion";
 import consumer from '../../chat'
+import { Link } from 'react-router-dom'
 
-function CategoryChat({user, topic, categoryMessages, fetchCategoryMessages, createMessage}) {
+function CategoryChat({user, image, root, topic, categoryMessages, fetchCategoryMessages, createMessage}) {
     const [chatMessages, setMessages] = useState({
         feed: [],
         newChatMessages: []
@@ -70,7 +71,9 @@ function CategoryChat({user, topic, categoryMessages, fetchCategoryMessages, cre
         animate="animate"
         exit="exit"
         >
-        <h2>Welcome to {categoryMessages.topic} chat!</h2>
+
+        {/* <h2>Welcome to {categoryMessages.topic} chat!</h2> */}
+        <Link to={`/${categoryMessages.root_url}`}><ChatImage src={`${image}`} /></Link>
         <ChatBoxContainer>
             <ChatTextarea>
                 <ChatWindow>
