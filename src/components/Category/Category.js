@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
 import ChatIcon from '@material-ui/icons/Chat';
+import MediaQuery from 'react-responsive'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {
     PostContainer, 
@@ -18,7 +19,9 @@ import {
     PostCardAuthor, 
     PostCardComments, 
     PostCardStatus,
-    PostCardDate} from './style'
+    PostCardDate,
+    TitleMobile,
+    PostContainerMobile} from './style'
 import Post from '../Post/Post'
 import {fetchCategory } from '../../redux/Category/category.action'
 import { connect } from 'react-redux'
@@ -29,6 +32,7 @@ import AngularIcons from './AngularIcons';
 import VueIcons from './VueIcons';
 import HtmlIcons from './HtmlIcons';
 import CategoryChat from '../Channels/CategoryChat';
+import Sidebar from '../Sidebar/Sidebar';
 
 const useStyles = makeStyles((theme) => ({
     overrides: {
@@ -96,7 +100,23 @@ function Category({fetchCategory, catId, root, user, category}) {
             case "html5":
                 return <HtmlIcons />
         }
+    }
 
+    const renderIconsMobile = (category) => {
+        switch(category) {
+            case "reactjs":
+                return <ReactIcons />
+            case "rails":
+                return <RailsIcons />
+            case "javascript":
+                return <JavascriptIcons />
+            case "angular":
+                return <AngularIcons />
+            case "vue":
+                return <VueIcons />
+            case "html5":
+                return <HtmlIcons />
+        }
     }
     
 
@@ -127,11 +147,12 @@ function Category({fetchCategory, catId, root, user, category}) {
         <Route path={`/${root}`} render={() => {
             return (
                 <>
+                <MediaQuery minWidth={1201}>
                 <motion.div
                 animate={{zIndex: 0}}
                 exit={{opacity: 1, transition: transition, scale: 1}}
                 >
-                {renderIcons(root)}
+                {renderIconsMobile(root)}
                     </motion.div>
                     <motion.div
                     initial={{opacity: 0.02}}
@@ -150,7 +171,34 @@ function Category({fetchCategory, catId, root, user, category}) {
                             {category.posts === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
-                    </>
+                </MediaQuery>
+                <MediaQuery maxWidth={1200}>
+                <motion.div
+                animate={{zIndex: 0}}
+                exit={{opacity: 1, transition: transition, scale: 1}}
+                >
+                <Sidebar root={root}/>
+                    </motion.div>
+                    <motion.div
+                    initial={{opacity: 0.02}}
+                    animate={{opacity: 1, transition: { delay: 0.2, ...transition }}}
+                    exit={{opacity: 0.02, transition: transition, scale: 1}}
+                    >
+                        <TitleMobile>{category.topic}</TitleMobile>
+                        <PostContainerMobile
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                        spacing={3}
+                        style={{zIndex: -10}}
+                        className={classes.root}>
+                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
+                            {category.posts === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
+                        </PostContainerMobile>
+                    </motion.div>
+                    </MediaQuery>
+                </>
             )
         }}/>
         </Switch>

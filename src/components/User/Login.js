@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login(props){
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const classes = useStyles();
     const history = useHistory();
     const [username, setUsername] = useState("")
@@ -73,12 +74,11 @@ function Login(props){
         setPassword("")
         return history.push("/")
     }
-
     return(
         <motion.div
-        initial="initial"
-        animate="animate"
-        exit="exit"
+            initial={{transition: transition, opacity: 0.1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
             <Container component="main" maxWidth="xs">
                 <CssBaseline />

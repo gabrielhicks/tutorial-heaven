@@ -14,67 +14,27 @@ export const IconGrid = styled(Grid)`
     }
     position: relative;
     top: 5vh;
+    z-index: 5;
     left: 15vw;
     transform: translate(-15%, -25%);
     margin-top: 25vh;
-
-    @media only screen and (max-width: 1200px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            width: 125px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        ${'' /* flex-direction: column; */}
-        transform: translate(-25%, -25%);
-    }
-
-    @media only screen and (max-width: 750px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            width: 100px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        ${'' /* flex-direction: column; */}
-        transform: translate(-25%, -25%);
-    }
-
-    @media only screen and (max-width: 600px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            max-width: 75px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        flex-direction: column;
-        transform: translate(-25%, -25%);
-    }
-`
-
-export const HeroImage = styled.div`
-    background-image: url("https://i.ibb.co/xjcFZdV/cloud.webp");
-    background-attachment: fixed;
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: 100vw;
-    z-index: 100;
 `
 
 export const Icon = styled(Link)`
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+`
+
+export const HomeMobileText = styled.h2`
+    position: fixed;
+    margin: auto;
+    width: 50vw;
+    word-wrap: break;
+    font-weight: 100;
+    text-align: right;
+    font-size: 4rem;
+    top: 15vh;
+    opacity: 0.7;
+    right: 10vw;
+    z-index: 1;
 `

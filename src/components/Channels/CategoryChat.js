@@ -15,7 +15,7 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
         newChatMessages: []
     })
     const messagesEndRef = useRef(null)
-
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
     }
@@ -67,9 +67,9 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
 
     return (
         <motion.div 
-        initial="initial"
-        animate="animate"
-        exit="exit"
+            initial={{transition: transition, opacity: 0.1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
 
         {/* <h2>Welcome to {categoryMessages.topic} chat!</h2> */}

@@ -216,6 +216,29 @@ export const Title = styled.h2`
     font-weight: 100;
     font-size: 5rem;
     top: 15vh;
+    opacity: 0.8;
     right: 10vw;
     z-index: 1;
+`
+
+export const TitleMobile = styled.h2`
+    position: fixed;
+    opacity: 0.7;
+    font-weight: 100;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 2.5rem;
+    top: 10vh;
+    right: 0vw;
+    z-index: 1;
+`
+
+export const PostContainerMobile = styled(Grid)`
+    ${'' /* background-color: rgba(212, 212, 214, 0.1); */}
+    max-width: 80vw;
+    flex-direction: column;
+    left: 10vw;
+    top: 10vh;
+    position: absolute;
+    z-index: 0;
 `

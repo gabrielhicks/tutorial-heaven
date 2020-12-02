@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Register(props) {
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -98,9 +99,10 @@ function Register(props) {
     
     return(
         <motion.div
-        initial="initial"
-        animate="animate"
-        exit="exit">
+            initial={{transition: transition, opacity: 0.1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0.1, transition: transition, scale: 1}}
+        >
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>

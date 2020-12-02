@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NewPost({user}) {
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [category, setCategory] = useState("")
@@ -118,9 +119,10 @@ function NewPost({user}) {
     
     return(
         <motion.div
-        initial="initial"
-        animate="animate"
-        exit="exit">
+            initial={{transition: transition, opacity: 0.1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0.1, transition: transition, scale: 1}}
+        >
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>

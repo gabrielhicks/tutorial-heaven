@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import { connect } from 'react-redux'
 import RailsIcons from './RailsIcons';
 import ReactIcons from './ReactIcons';
 import JavascriptIcons from './JavascriptIcons';
@@ -33,6 +32,7 @@ function Sidebar({root}) {
 
     return (
             <motion.div
+            initial={{transition: transition}}
             animate={{zIndex: -100}}
             exit={{opacity: 1, transition: transition, scale: 1}}
             >
@@ -41,10 +41,4 @@ function Sidebar({root}) {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.user,
-    }
-}
-
-export default connect(mapStateToProps)(Sidebar)
+export default Sidebar

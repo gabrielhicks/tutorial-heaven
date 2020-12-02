@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NewComment({user}) {
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [body, setBody] = useState("")
     const [author, setAuthor] = useState(user)
     const [category, setCategory] = useState("")
@@ -89,29 +90,11 @@ function NewComment({user}) {
         setBody("")
     }
     return(
-        // <div style={formDivStyle}>
-        //     <h1>New Comment for {lastLocation.pathname}</h1>
-        //     <form onSubmit={handleSubmit}>
-        //         <div>
-        //             <label>Category</label>
-        //             <input value={category} onChange={handleCategoryChange} type="text" placeholder="Category"/>
-        //         </div>
-        //         <div>
-        //             <label>Body</label>
-        //             <textarea value={body} onChange={handleBodyChange} placeholder="Body"/>
-        //         </div>
-        //         <div>
-        //             <label>Author</label>
-        //             <input value={user.username} onChange={handleAuthorChange} type="text" placeholder="Author"/>
-        //         </div>
-        //         {console.log(JSON.stringify(lastLocation.pathname))}
-        //         <button type="submit">Submit</button>
-        //     </form>
-        // </div>
         <motion.div
-        initial="initial"
-        animate="animate"
-        exit="exit">
+            initial={{transition: transition, opacity: 0.1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0.1, transition: transition, scale: 1}}
+        >
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>

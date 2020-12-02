@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function EditPost({user, post}) {
-    
+    const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [title, setTitle] = useState(post.title)
     const [content, setContent] = useState(post.content)
     const [category, setCategory] = useState(post.id)
@@ -118,9 +118,9 @@ function EditPost({user, post}) {
         <>
         {post ?
         <MyForm
-        initial="initial"
-        animate="animate"
-        exit="exit"
+            initial={{transition: transition, opacity: 0.1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
         <Container style={{backgroundColor: "white", marginBottom: "500px"}} component="main" maxWidth="xs">
             <CssBaseline />
