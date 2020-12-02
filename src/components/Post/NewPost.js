@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
-import { useLastLocation } from 'react-router-last-location';
-import { motion } from "framer-motion";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { motion } from "framer-motion";
+import {MyForm} from './style'
 
 const CssTextField = withStyles({
     root: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function NewPost({user}) {
+function NewPost({user, categoryObj}) {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
@@ -60,7 +60,6 @@ function NewPost({user}) {
     const [difficulty, setDifficulty] = useState("")
     const [github, setGithub] = useState("")
     const classes = useStyles();
-    const lastLocation = useLastLocation();
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value)
@@ -102,7 +101,7 @@ function NewPost({user}) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({post: {title: title, content: content, category: category, user: author, status: true, }
+            body: JSON.stringify({post: {title: title, content: content, category: categoryObj.id, user: author, status: true, }
             })
         })
         .then(resp => resp.json())
@@ -123,7 +122,7 @@ function NewPost({user}) {
             animate={{opacity: 1}}
             exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
-        <Container component="main" maxWidth="xs">
+        <Container style={{backgroundColor: "white"}} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
@@ -136,6 +135,7 @@ function NewPost({user}) {
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                     <CssTextField
+                    
                         variant="outlined"
                         required
                         autoFocus
@@ -149,6 +149,7 @@ function NewPost({user}) {
                     </Grid>
                     <Grid item xs={12}>
                     <CssTextField
+                    
                         multiline
                         rowsMax={6}
                         name="content"
@@ -170,7 +171,7 @@ function NewPost({user}) {
                         fullWidth
                         id="category"
                         label="Category"
-                        value={lastLocation.pathname.slice(1)}
+                        value={categoryObj.root_url}
                         onChange={handleCategoryChange}
                     />
                     </Grid>
@@ -236,6 +237,7 @@ function NewPost({user}) {
                     </Grid>      
                 </Grid>
                 <Button
+                
                     type="submit"
                     fullWidth
                     variant="contained"

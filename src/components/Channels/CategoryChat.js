@@ -71,8 +71,6 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
             animate={{opacity: 1}}
             exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
-
-        {/* <h2>Welcome to {categoryMessages.topic} chat!</h2> */}
         <Link to={`/${categoryMessages.root_url}`}><ChatImage src={`${image}`} /></Link>
         <ChatBoxContainer>
             <ChatTextarea>

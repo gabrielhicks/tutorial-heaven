@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 export const IconGrid = styled(Grid)`
     position: fixed;
     display: grid-column;
+    z-index: 5;
     background-color: transparent;
     img {
         max-width: 100px;
@@ -31,7 +32,7 @@ export const Icon = styled(Link)`
 
 export const IconLink = styled(Link)`
     width: 50px;
-    z-index: 100;
+    z-index: -1;
 `
 
 export const PostLink = styled(Link)`
@@ -49,7 +50,7 @@ export const NewPost = styled(Button)`
     padding: 5px;
     width: 75px;
     text-decoration: none;
-    z-index: 100;
+    z-index: 10;
 `
 
 export const SideBar = styled.div`
@@ -63,7 +64,7 @@ export const SideBar = styled.div`
     margin-top: 1.75vh;
     margin-left: 1.75vw;
     width: 3vw;
-    z-index: 999;
+    z-index: -10;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -75,7 +76,7 @@ export const PostContainer = styled(Grid)`
     left: 10vw;
     top: 40vh;
     position: absolute;
-    z-index: 0;
+    z-index: -1;
 `
 
 export const PostCard = styled(Paper)`
@@ -180,5 +181,5 @@ export const Title = styled.h2`
     font-size: 5rem;
     top: 15vh;
     right: 10vw;
-    z-index: 1;
+    z-index: -1;
 `

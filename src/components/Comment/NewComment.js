@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {MyForm} from './style'
 
 const CssTextField = withStyles({
     root: {
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function NewComment({user}) {
+function NewComment({user, post}) {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [body, setBody] = useState("")
     const [author, setAuthor] = useState(user)
@@ -61,25 +62,17 @@ function NewComment({user}) {
 
     const handleBodyChange = (e) => {
         setBody(e.target.value)
-        let category2 = `${lastLocation.pathname.slice(1)}`
-        let words = category2.split("/")
-    
-        console.log(words[1])
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let category2 = `${lastLocation.pathname.slice(1)}`
-        let words = category2.split("/")
-        let cat = words[0]
-        let postId = words[1]
         fetch(`http://localhost:3000/api/v1/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({comment: {body: body, user: author, category: cat, post_id: postId}
+            body: JSON.stringify({comment: {body: body, user: author, category: post.category.id, post_id: post.id}
             })
         })
         .then(resp => resp.json())
@@ -90,23 +83,23 @@ function NewComment({user}) {
         setBody("")
     }
     return(
-        <motion.div
+        <MyForm
             initial={{transition: transition, opacity: 0.1}}
             animate={{opacity: 1}}
             exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
-        <Container component="main" maxWidth="xs">
+        <Container style={{backgroundColor: "white"}} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
+                <Avatar style={{zIndex: "100"}} className={classes.avatar}>
                 <img width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography style={{zIndex: "100"}} component="h1" variant="h5">
                 New Comment
                 </Typography>
-                <form onSubmit={handleSubmit} className={classes.form} noValidate>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                <form style={{zIndex: "100"}} onSubmit={handleSubmit} className={classes.form} noValidate>
+                <Grid style={{zIndex: "100"}} container spacing={2}>
+                    <Grid  style={{zIndex: "100"}}item xs={12}>
                     <CssTextField
                         multiline
                         rowsMax={6}
@@ -120,21 +113,19 @@ function NewComment({user}) {
                         onChange={handleBodyChange}                        
                     />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid style={{zIndex: "100"}} item xs={12} sm={6}>
                     <CssTextField
-                        autoComplete="category"
                         name="category"
                         variant="outlined"
                         required
                         fullWidth
                         id="category"
                         label="Post"
-                        value={lastLocation.pathname.slice(1)}
+                        value={post.id}
                     />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid style={{zIndex: "100"}} item xs={12} sm={6}>
                     <CssTextField
-                        autoComplete="author"
                         name="author"
                         variant="outlined"
                         required
@@ -157,7 +148,7 @@ function NewComment({user}) {
                 </form>
             </div>
             </Container>
-        </motion.div>
+        </MyForm>
     )
 }
 

@@ -9,7 +9,7 @@ export const MaskDiv = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 100;
+    z-index: 1;
 `
 
 export const PostCard = styled(Paper)`
@@ -71,6 +71,11 @@ text-align: left;
 `
 
 export const MyForm = styled(motion.div)`
+    background-color: white;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 100;
 `
 

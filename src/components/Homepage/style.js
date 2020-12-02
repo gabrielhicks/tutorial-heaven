@@ -37,4 +37,7 @@ export const HomeMobileText = styled.h2`
     opacity: 0.7;
     right: 10vw;
     z-index: 1;
+    @media only screen and (max-width: 500px){
+        font-size: 2.8rem;
+    }
 `

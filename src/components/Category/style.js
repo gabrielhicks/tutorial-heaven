@@ -15,53 +15,27 @@ export const IconGrid = styled(Grid)`
     left: 15vw;
     transform: translate(-15%, -25%);
     margin-top: 25vh;
-
-    @media only screen and (max-width: 1200px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            width: 125px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        ${'' /* flex-direction: column; */}
-        transform: translate(-25%, -25%);
-    }
-
-    @media only screen and (max-width: 750px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            width: 100px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        ${'' /* flex-direction: column; */}
-        transform: translate(-25%, -25%);
-    }
-
-    @media only screen and (max-width: 600px){
-        a {
-            margin-bottom: 3vh;
-        }
-        img {
-            max-width: 75px;
-        }
-        display: flex;
-        top: 25vh;
-        left: 25vw;
-        margin-top: 5vh;
-        flex-direction: column;
-        transform: translate(-25%, -25%);
-    }
 `
 
+
+export const MaskDiv = styled.div`
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+`
+
+export const MyForm = styled.div`
+    background-color: white;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+`
 export const Icon = styled(Link)`
     transition: all 0.2s ease-in-out;
     color: blue;
@@ -80,14 +54,14 @@ export const MotionImage = styled(motion.img)`
 
 `
 
-export const NewPost = styled(Button)`
+export const NewPostStyle = styled(Button)`
     margin-top: 1vh;
     background-color: rgba(212, 212, 214, 1);
     margin-right: 5px;
     padding: 5px;
     width: 75px;
     text-decoration: none;
-    z-index: 9999;
+    ${'' /* z-index: 100; */}
 `
 
 export const SideBar = styled.div`
@@ -95,7 +69,6 @@ export const SideBar = styled.div`
     display: inline-column;
     left: 0;
     bottom: -70px;
-    ${'' /* top: 250px; */}
     background-color: transparent;
     height: 20vh;
     margin-top: 1.75vh;
@@ -107,18 +80,16 @@ export const SideBar = styled.div`
 `
 
 export const PostContainer = styled(Grid)`
-    ${'' /* background-color: rgba(212, 212, 214, 0.1); */}
     max-width: 80vw;
     left: 10vw;
     top: 40vh;
     position: absolute;
-    z-index: 0;
+    z-index: -1;
 `
 
 export const PostCard = styled(Paper)`
     position: relative;
     text-align: "inline";
-    ${'' /* border: 1px solid rgba(0,0,0,0.5); */}
     margin: -1px;
     img {
         width: 6vw;
@@ -140,6 +111,7 @@ export const PostCard = styled(Paper)`
     h3 {
         cursor: pointer;
     }
+    ${'' /* z-index: -10; */}
 `
 
 export const GridItem = styled(Grid)`
@@ -148,6 +120,7 @@ export const GridItem = styled(Grid)`
 
 export const PostCardGrid = styled(Grid)`
     display: grid;
+    ${'' /* z-index: -1; */}
     @media only screen and (max-width: 750px){
         display: grid-column;
     }
@@ -218,7 +191,7 @@ export const Title = styled.h2`
     top: 15vh;
     opacity: 0.8;
     right: 10vw;
-    z-index: 1;
+    ${'' /* z-index: 1; */}
 `
 
 export const TitleMobile = styled.h2`
@@ -230,15 +203,15 @@ export const TitleMobile = styled.h2`
     font-size: 2.5rem;
     top: 10vh;
     right: 0vw;
-    z-index: 1;
+    ${'' /* z-index: -1; */}
 `
 
 export const PostContainerMobile = styled(Grid)`
-    ${'' /* background-color: rgba(212, 212, 214, 0.1); */}
+    ${'' /* background-color: rgba(212, 212, 214, 1); */}
     max-width: 80vw;
     flex-direction: column;
     left: 10vw;
     top: 10vh;
     position: absolute;
-    z-index: 0;
+    ${'' /* z-index: -1; */}
 `

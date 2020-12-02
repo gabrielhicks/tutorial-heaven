@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { Route, Switch, Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
 import ChatIcon from '@material-ui/icons/Chat';
-import MediaQuery from 'react-responsive'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import MediaQuery from 'react-responsive'
+import Button from '@material-ui/core/Button';
 import {
     PostContainer, 
     PostCard, 
@@ -12,7 +13,7 @@ import {
     Title, 
     SideBar, 
     PostLink, 
-    NewPost, 
+    NewPostStyle, 
     PostCardGrid, 
     PostCardImage, 
     PostCardTitle, 
@@ -21,10 +22,13 @@ import {
     PostCardStatus,
     PostCardDate,
     TitleMobile,
-    PostContainerMobile} from './style'
+    PostContainerMobile,
+    MaskDiv,
+    MyForm} from './style'
 import Post from '../Post/Post'
 import {fetchCategory } from '../../redux/Category/category.action'
 import { connect } from 'react-redux'
+import NewPost from '../Post/NewPost'
 import RailsIcons from './RailsIcons';
 import ReactIcons from './ReactIcons';
 import JavascriptIcons from './JavascriptIcons';
@@ -40,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         flexGrow: 1,
+        zIndex: 1
     },
     paper: {
         padding: theme.spacing(2),
@@ -61,16 +66,27 @@ function Category({fetchCategory, catId, root, user, category}) {
         fetchCategory(catId)
     }, [catId])
 
+    const pageTopRef = useRef(null)
+    const [newClicked, setNewClick] = useState(false)
+
+    const scrollToTop = () => {
+        pageTopRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+
+    const newClickHandler = () => {
+        setNewClick(!newClicked)
+    }
+
     const classes = useStyles();
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
 
     function filteredPosts() {
         return category.posts.map(post => 
-            <GridItem style={{zIndex: 100}} key={post.id} item xs={10}>
+            <GridItem key={post.id} item xs={10}>
                 <PostCard style={{backgroundColor: "white"}} className={classes.paper}>
                 <PostCardGrid>
-                    <a style={{width: "100px"}} target="_blank" href={`${post.github}`}><PostCardImage style={{width: "100px"}} src={post.image_url}></PostCardImage></a>
-                    <PostCardTitle><PostLink style={{zIndex: 100}} to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink></PostCardTitle>
+                    <a style={{width: "100px"}} target="_blank" href={`/${root}/${post.id}`}><PostCardImage style={{width: "100px"}} src={post.image_url}></PostCardImage></a>
+                    <PostCardTitle><PostLink to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink></PostCardTitle>
                     <PostCardAuthor>Posted by&nbsp;<Link style={{color: "black"}} to={`/profile/${post.user.id}`}><i>{post.user.username}</i></Link></PostCardAuthor>
                     <PostCardDate>{fixDate(post.created_at)}</PostCardDate>
                     <PostCardComments><Link style={{color: "black"}} to={`/${root}/${post.id}`}>{post.comments.length} comments</Link></PostCardComments>
@@ -101,25 +117,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                 return <HtmlIcons />
         }
     }
-
-    const renderIconsMobile = (category) => {
-        switch(category) {
-            case "reactjs":
-                return <ReactIcons />
-            case "rails":
-                return <RailsIcons />
-            case "javascript":
-                return <JavascriptIcons />
-            case "angular":
-                return <AngularIcons />
-            case "vue":
-                return <VueIcons />
-            case "html5":
-                return <HtmlIcons />
-        }
-    }
     
-
     return (
         <>
         {category ?
@@ -149,10 +147,13 @@ function Category({fetchCategory, catId, root, user, category}) {
                 <>
                 <MediaQuery minWidth={1201}>
                 <motion.div
-                animate={{zIndex: 0}}
-                exit={{opacity: 1, transition: transition, scale: 1}}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                ref={pageTopRef}
                 >
-                {renderIconsMobile(root)}
+                {newClicked === true ? <>{scrollToTop()}<MyForm><NewPost categoryObj={category} /></MyForm><MaskDiv onClick={newClickHandler} /></> : null}
+                {renderIcons(root)}
                     </motion.div>
                     <motion.div
                     initial={{opacity: 0.02}}
@@ -167,17 +168,20 @@ function Category({fetchCategory, catId, root, user, category}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
+                            {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
                             {category.posts === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
                 </MediaQuery>
                 <MediaQuery maxWidth={1200}>
                 <motion.div
-                animate={{zIndex: 0}}
-                exit={{opacity: 1, transition: transition, scale: 1}}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                ref={pageTopRef}
                 >
                 <Sidebar root={root}/>
+                {newClicked === true ? <>{scrollToTop()}<MyForm><NewPost categoryObj={category} /></MyForm><MaskDiv onClick={newClickHandler} /></> : null}
                     </motion.div>
                     <motion.div
                     initial={{opacity: 0.02}}
@@ -191,9 +195,8 @@ function Category({fetchCategory, catId, root, user, category}) {
                         justify="center"
                         alignItems="center"
                         spacing={3}
-                        style={{zIndex: -10}}
                         className={classes.root}>
-                            {user.id ? <><SideBar container item xs={4}><NewPost component={Link} to="/newpost"><AddCircleIcon/>New</NewPost><NewPost component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPost></SideBar></> : null }
+                            {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
                             {category.posts === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainerMobile>
                     </motion.div>

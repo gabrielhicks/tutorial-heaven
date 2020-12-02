@@ -1,14 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {connect} from 'react-redux'
 import Comment from '../Comment/Comment'
 import {Link} from 'react-router-dom'
 import EditPost from './EditPost'
 import ChatIcon from '@material-ui/icons/Chat';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import {CommentContainer, NewComment, SideBar} from '../Comment/style'
+import {CommentContainer, NewCommentStyle, SideBar} from '../Comment/style'
 import {PostCard, PostTitle, PostContent, PostImage, PostInfo, ProjectStatus, PostCardAuthor, PostCardDate, PostCardRepo, MaskDiv} from './style'
 import { motion } from "framer-motion";
 import { Button } from '@material-ui/core';
+import NewComment from '../Comment/NewComment'
 import Sidebar from '../Sidebar/Sidebar'
 
 
@@ -16,11 +17,20 @@ function Post({post, root, user}) {
     function renderComments(){
         return post.comments.map(comment => <Comment comment={comment}></Comment>)
     }
+    const pageTopRef = useRef(null)
+    const [editClicked, setEditClick] = useState(false)
+    const [newClicked, setNewClick] = useState(false)
 
-    const [clicked, setClick] = useState(false)
+    const scrollToTop = () => {
+        pageTopRef.current.scrollIntoView({ behavior: "smooth" })
+    }
 
-    const clickHandler = () => {
-        setClick(!clicked)
+    const editClickHandler = () => {
+        setEditClick(!editClicked)
+    }
+
+    const newClickHandler = () => {
+        setNewClick(!newClicked)
     }
 
     const fixDate = date => {
@@ -37,6 +47,7 @@ function Post({post, root, user}) {
         initial="initial"
         animate="animate"
         exit="exit"
+        ref={pageTopRef}
         >
         <Sidebar root={root}/>
             <CommentContainer
@@ -44,13 +55,14 @@ function Post({post, root, user}) {
             direction="column"
             alignItems="center"
             >
-            {clicked === true ? <><MaskDiv onClick={clickHandler} /><EditPost style={{zIndex: 999}} post={post} /></> : null}
+            {newClicked === true ? <><MaskDiv onClick={newClickHandler} />{scrollToTop()}<NewComment style={{zIndex: 999}} post={post} /></> : null}
+            {editClicked === true ? <><MaskDiv onClick={editClickHandler} />{scrollToTop()}<EditPost style={{zIndex: 999}} post={post} /></> : null}
             <PostCard>
                 <PostImage src={post.image_url}/>
                 <PostInfo>
                     {post.user.id === user.id ?
                     <>
-                    <><Button onClick={clickHandler}>Edit Post{console.log(clicked)}</Button><b>&nbsp;|&nbsp;</b></>
+                    <><Button onClick={editClickHandler}>Edit Post</Button><b>&nbsp;|&nbsp;</b></>
                     </>
                     :
                     null
@@ -69,7 +81,7 @@ function Post({post, root, user}) {
             </PostCard>
             {console.log(post)}
             {post.comments.length === undefined ? (<h1>loading</h1>) : <>{renderComments()}<br /></>}
-            {user.id ? <><SideBar container item xs={4}><NewComment component={Link} to="/newcomment"><AddCircleIcon/>New</NewComment><NewComment component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewComment></SideBar></> : null }
+            {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewCommentStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewCommentStyle></SideBar></> : null }
             </CommentContainer>
         </motion.div>
         :

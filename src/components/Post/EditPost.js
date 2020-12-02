@@ -122,7 +122,7 @@ function EditPost({user, post}) {
             animate={{opacity: 1}}
             exit={{opacity: 0.1, transition: transition, scale: 1}}
         >
-        <Container style={{backgroundColor: "white", marginBottom: "500px"}} component="main" maxWidth="xs">
+        <Container style={{backgroundColor: "white"}} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar style={{zIndex: "100"}} className={classes.avatar}>

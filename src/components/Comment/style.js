@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import ChatIcon from '@material-ui/icons/Chat';
+import { motion } from "framer-motion";
 
 export const CommentContainer = styled(Grid)`
     position: relative;
@@ -44,7 +44,7 @@ export const GridItem = styled(Grid)`
     display: flex;
 `
 
-export const NewComment = styled(Button)`
+export const NewCommentStyle = styled(Button)`
     margin-top: 1vh;
     background-color: rgba(212, 212, 214, 1);
     margin-right: 5px;
@@ -69,4 +69,12 @@ export const SideBar = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
+`
+export const MyForm = styled(motion.div)`
+    background-color: white;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
 `
