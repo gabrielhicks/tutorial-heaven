@@ -34,10 +34,10 @@ function RailsIcons() {
                         justify="space-evenly"
                         // alignItems="baseline"
                         >
-                    <IconLink to="/reactjs"><Icon to="/reactjs" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="React" src="https://i.ibb.co/yY881s1/react.webp" /></Icon></IconLink>
+                    <IconLink to="/reactjs"><Icon to="/reactjs" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="React" src="https://i.ibb.co/5vVZS3n/react.webp" /></Icon></IconLink>
                     <Icon>
                     <MotionImage
-                        src="https://i.ibb.co/3cXmQhY/ruby.webp"
+                        src="https://i.ibb.co/x1v8PBP/ruby.webp"
                         alt='Ruby on Rails'
                         width="200px"
                         height="200px"
@@ -50,10 +50,10 @@ function RailsIcons() {
                         exit={{scale: 1, transition: transition, opacity: 0.1}}
                         />
                     </Icon>
-                    <IconLink to="/javascript"><Icon to="/javascript" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="JavaScript" src="https://i.ibb.co/pKCyJS6/JS.webp"/></Icon></IconLink>
-                    <IconLink to="/angular"><Icon to="/angular" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="AngularJS" src="https://i.ibb.co/r2jh9YP/angular.webp" /></Icon></IconLink>
-                    <IconLink to="/vue"><Icon to="/vue" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="VueJS" src="https://i.ibb.co/SVXP96Y/vue.webp" /></Icon></IconLink>
-                    <IconLink to="/html5"><Icon to="/html5" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="HTML5" src="https://i.ibb.co/BqshWT1/html.webp" /></Icon></IconLink>
+                    <IconLink to="/javascript"><Icon to="/javascript" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="JavaScript" src="https://i.ibb.co/wRjQj2t/JS.webp"/></Icon></IconLink>
+                    <IconLink to="/angular"><Icon to="/angular" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="AngularJS" src="https://i.ibb.co/MPG2MJr/angular.webp" /></Icon></IconLink>
+                    <IconLink to="/vue"><Icon to="/vue" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="VueJS" src="https://i.ibb.co/CBV6QkC/vue.webp" /></Icon></IconLink>
+                    <IconLink to="/html5"><Icon to="/html5" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="HTML5" src="https://i.ibb.co/myrrbFx/html.webp" /></Icon></IconLink>
                     </IconGrid>
                 </motion.div>
         </>

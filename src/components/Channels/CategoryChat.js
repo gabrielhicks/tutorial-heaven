@@ -65,6 +65,13 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
         createMessage(message)
     }
 
+    const fixDate = date => {
+        let date_test = new Date(date);
+        let first = `${date_test}`.slice(4,15)
+        let last = `${date_test}`.slice(16,25)
+        return `${first} at ${last} EST`
+    }
+
     return (
         <motion.div 
             initial={{transition: transition, opacity: 0.1}}
@@ -77,7 +84,7 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
                 <ChatWindow>
                 {chatMessages.feed 
                 ?
-                    <><div>{chatMessages.feed.map(message => <Message image={message.user.image} first={message.user.first_name} message={message.content} username={message.user.username}/>)}</div><div ref={messagesEndRef} /></>
+                    <><div>{chatMessages.feed.map(message => <Message date={fixDate(message.created_at)} image={message.user.image} first={message.user.first_name} message={message.content} username={message.user.username}/>)}</div><div ref={messagesEndRef} /></>
                 :
                 <h3>Loading{console.log(chatMessages.feed)}</h3> 
                 }

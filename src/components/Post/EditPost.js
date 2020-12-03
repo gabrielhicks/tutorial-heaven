@@ -105,7 +105,7 @@ function EditPost({user, post}) {
                 content: content, 
                 category_id: post.category_id, 
                 user_id: user.id, 
-                status: true, 
+                status: status, 
                 github: github,
                 image_url: image,
                 difficulty: difficulty

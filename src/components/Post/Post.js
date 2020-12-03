@@ -4,6 +4,8 @@ import Comment from '../Comment/Comment'
 import {Link} from 'react-router-dom'
 import EditPost from './EditPost'
 import ChatIcon from '@material-ui/icons/Chat';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {CommentContainer, NewCommentStyle, SideBar} from '../Comment/style'
 import {PostCard, PostTitle, PostContent, PostImage, PostInfo, ProjectStatus, PostCardAuthor, PostCardDate, PostCardRepo, MaskDiv} from './style'
@@ -59,6 +61,7 @@ function Post({post, root, user}) {
             {editClicked === true ? <><MaskDiv onClick={editClickHandler} />{scrollToTop()}<EditPost style={{zIndex: 999}} post={post} /></> : null}
             <PostCard>
                 <PostImage src={post.image_url}/>
+                
                 <PostInfo>
                     {post.user.id === user.id ?
                     <>
@@ -68,9 +71,9 @@ function Post({post, root, user}) {
                     null
                     }
                     {post.status === true ?
-                    <ProjectStatus>{post.difficulty}&nbsp;|&nbsp;<i className="active">Open</i></ProjectStatus>
+                    <ProjectStatus><b>{post.difficulty}</b>&nbsp;|&nbsp;<i className="active">Open</i></ProjectStatus>
                     :
-                    <ProjectStatus>{post.difficulty}&nbsp;|&nbsp;<i className="status">Closed</i></ProjectStatus>
+                    <ProjectStatus><b>{post.difficulty}</b>&nbsp;|&nbsp;<i className="status">Closed</i></ProjectStatus>
                     }
                     <PostCardAuthor>posted by <Link style={{color: "black"}} to={`/profile/${post.user.id}`}>{post.user.username}</Link></PostCardAuthor>
                     <PostCardRepo>Project Repo: <a style={{width: "100px", color: "black"}} target="_blank" href={`${post.github}`}>GitHub</a></PostCardRepo>

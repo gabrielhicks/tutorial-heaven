@@ -39,10 +39,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Profile({user, users, fetchUsers, setExistingUser}) {
     useEffect(() => {
+        if(user) {
         const oldToken = localStorage.getItem("token");
         setExistingUser(oldToken)
         fetchUsers()
-    }, [user.posts.length, user.comments.length])
+        }
+    }, [])
 
     const classes = useStyles();
 
@@ -56,14 +58,13 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
             }
             return (
                 <>
-                {
-                    users.length > 0
-                    ? 
-                    <motion.div
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        >
+        {users.length > 0
+        ? 
+            <motion.div
+                initial="initial"
+                animate="animate"
+                exit="exit"
+            >
         {user.posts.length !== undefined ?
         <Container style={{backgroundColor: "white"}} component="main" maxWidth="xs">
             <CssBaseline />
@@ -172,7 +173,8 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
                     {user.posts.length > 0 ?
                         <>{user.posts.map(post => 
                         <>
-                        <PostCard>
+                        {console.log(user)}
+                        <PostCard component={Link} to={`/${post.category.root_url}/${post.id}`}>
                             <PostImage src={post.image_url}/>
                             <PostTitle>{post.title.slice(0, 10)}...
                             <PostContent>{post.content.slice(0, 10)}...</PostContent></PostTitle>

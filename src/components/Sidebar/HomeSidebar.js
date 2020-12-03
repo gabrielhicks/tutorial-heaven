@@ -24,12 +24,12 @@ function HomeSidebar({root}) {
                 justify="space-evenly"
                 alignItems="baseline"
                 >
-                <Icon to="/reactjs"><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="ReactJS" src="https://i.ibb.co/yY881s1/react.webp"/></Icon>
-                <Icon to="/rails" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="Ruby on Rails" src="https://i.ibb.co/3cXmQhY/ruby.webp" /></Icon>
-                <Icon to="/javascript" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="JavaScript" src="https://i.ibb.co/pKCyJS6/JS.webp"/></Icon>
-                <Icon to="/angular" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="AngularJS" src="https://i.ibb.co/r2jh9YP/angular.webp" /></Icon>
-                <Icon to="/vue" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="VueJS" src="https://i.ibb.co/SVXP96Y/vue.webp" /></Icon>
-                <Icon to="/html5" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="HTML5" src="https://i.ibb.co/BqshWT1/html.webp" /></Icon>
+                <Icon to="/reactjs"><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="ReactJS" src="https://i.ibb.co/5vVZS3n/react.webp"/></Icon>
+                <Icon to="/rails" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="Ruby on Rails" src="https://i.ibb.co/x1v8PBP/ruby.webp" /></Icon>
+                <Icon to="/javascript" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="JavaScript" src="https://i.ibb.co/wRjQj2t/JS.webp"/></Icon>
+                <Icon to="/angular" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="AngularJS" src="https://i.ibb.co/MPG2MJr/angular.webp" /></Icon>
+                <Icon to="/vue" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="VueJS" src="https://i.ibb.co/CBV6QkC/vue.webp" /></Icon>
+                <Icon to="/html5" ><motion.img whileHover={{ scale: 1.1 }} transition={transition} exit={{opacity: 1}} alt="HTML5" src="https://i.ibb.co/myrrbFx/html.webp" /></Icon>
                 </IconGrid>
             </motion.div>
     )

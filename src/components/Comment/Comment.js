@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
-import {CommentCard, GridItem} from './style'
+import {CommentCard, GridItem, LikeButton} from './style'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,7 +34,7 @@ function Comment({comment, user}) {
                     <br />
                     <b>{comment.user.username}</b> <i style={{fontSize: "9px"}}>posted at {fixDate(comment.created_at)}</i>
                     </p>
-                    {user.username === comment.user.username ? <button>DELETE</button> : null}
+                    {user.username === comment.user.username ? <LikeButton><img src="https://i.ibb.co/TTScPT8/delete.webp" /></LikeButton> : null}
                 </CommentCard>
             </GridItem>
     )

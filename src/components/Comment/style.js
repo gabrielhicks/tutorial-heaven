@@ -78,3 +78,16 @@ export const MyForm = styled(motion.div)`
     transform: translate(-50%, -50%);
     z-index: 100;
 `
+
+export const LikeButton = styled.button`
+    float: right;
+    padding: 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    img {
+        margin: 0;
+        padding: 0;
+        width: 25px;
+    }
+`

@@ -126,14 +126,14 @@ function Category({fetchCategory, catId, root, user, category}) {
         <Route path={`/${root}/chat`} render={() => <CategoryChat root={category.root} image={category.image} topic={category.id} />}/>
         <Route path={`/${root}/:id`} render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
-            let post;
+            let post
             if(category.posts) {
                 post = category.posts.find(post => post.id === id)
             }
             return (
                 <>
                 {
-                    category.posts
+                    post
                     ? 
                     <Post key={post.id} post={post} root={`${root}`}/>
                     :
