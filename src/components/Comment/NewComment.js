@@ -72,13 +72,13 @@ function NewComment({user, post}) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({comment: {body: body, user: author, category: post.category.id, post_id: post.id}
+            body: JSON.stringify({comment: {body: body, user_id: user.id, category_id: post.category_id, post_id: post.id}
             })
         })
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
-            return history.push(`${lastLocation.pathname.slice(1)}`)
+            return history.push(`/`)
         })
         setBody("")
     }

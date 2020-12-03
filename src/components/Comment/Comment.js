@@ -15,8 +15,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 function Comment({comment, user}) {
     const classes = useStyles();
+
+    const fixDate = date => {
+        let date_test = new Date(date);
+        let first = `${date_test}`.slice(4,15)
+        let last = `${date_test}`.slice(16,25)
+        return `${first} at ${last} EST`
+    }
 
     return (
             <GridItem key={comment.id} item xs={10}>
@@ -24,8 +32,9 @@ function Comment({comment, user}) {
                     <p>
                     <>{comment.body}</>
                     <br />
-                    <b>{comment.user.username}</b>
+                    <b>{comment.user.username}</b> <i style={{fontSize: "9px"}}>posted at {fixDate(comment.created_at)}</i>
                     </p>
+                    {user.username === comment.user.username ? <button>DELETE</button> : null}
                 </CommentCard>
             </GridItem>
     )

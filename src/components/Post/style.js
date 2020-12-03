@@ -17,7 +17,7 @@ export const PostCard = styled(Paper)`
     justify-content: center;
     align-items: center;
     text-align: center;
-    max-width: 60vw;
+    max-width: 50vw;
     min-width: 50vw;
     min-height: 20vw;
 `

@@ -84,7 +84,7 @@ export const PostContainer = styled(Grid)`
     left: 10vw;
     top: 40vh;
     position: absolute;
-    z-index: -1;
+    z-index: 0;
 `
 
 export const PostCard = styled(Paper)`

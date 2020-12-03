@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { Paper } from '@material-ui/core'
+import { motion } from "framer-motion";
 import {NavLink as Link} from 'react-router-dom'
 
 const LoginWrapper = styled.div`
@@ -127,5 +129,61 @@ const UserInput = styled.input`
         padding: 2%;
     }
 `
+
+export const MaskDiv = styled.div`
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+`
+
+export const PostCard = styled(Paper)`
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    max-height: 10vw;
+`
+
+export const PostTitle = styled.h2`
+    margin: auto;
+    font-size: 1rem;
+    max-width: 40vw;
+    grid-column: 2;
+    margin-top: 0;
+    grid-row: 1;
+`
+
+export const PostContent = styled.p`
+    margin: auto;
+    font-size: 12px;
+    font-weight: 400;
+    max-width: 40vw;
+    margin-top: 0;
+    grid-column: 2;
+    grid-row: 2;
+`
+
+export const PostImage = styled.img`
+    width: 45px;
+    border-radius: 10px;
+    grid-column: 1;
+    grid-row: 1;
+`
+
+
+export const MyForm = styled(motion.div)`
+    background-color: white;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+`
+
 
 export {LoginForm, LoginButton, UserInput, LoginWrapper, SignUpLink, Break, Or}

@@ -94,13 +94,22 @@ function EditPost({user, post}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/posts`, {
-            method: "POST",
+        fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({post: {title: title, content: content, category: category, user: author, status: true, }
+            body: JSON.stringify({post: {
+                title: title, 
+                content: content, 
+                category_id: post.category_id, 
+                user_id: user.id, 
+                status: true, 
+                github: github,
+                image_url: image,
+                difficulty: difficulty
+            }
             })
         })
         .then(resp => resp.json())

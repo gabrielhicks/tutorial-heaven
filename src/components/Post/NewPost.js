@@ -101,7 +101,17 @@ function NewPost({user, categoryObj}) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({post: {title: title, content: content, category: categoryObj.id, user: author, status: true, }
+            body: JSON.stringify({
+                post: {
+                title: title, 
+                content: content, 
+                category_id: categoryObj.id, 
+                user_id: user.id, 
+                status: true, 
+                github: github,
+                image_url: image,
+                difficulty: difficulty
+            }
             })
         })
         .then(resp => resp.json())

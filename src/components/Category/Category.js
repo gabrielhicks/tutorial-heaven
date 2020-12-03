@@ -85,7 +85,7 @@ function Category({fetchCategory, catId, root, user, category}) {
             <GridItem key={post.id} item xs={10}>
                 <PostCard style={{backgroundColor: "white"}} className={classes.paper}>
                 <PostCardGrid>
-                    <a style={{width: "100px"}} target="_blank" href={`/${root}/${post.id}`}><PostCardImage style={{width: "100px"}} src={post.image_url}></PostCardImage></a>
+                    <Link style={{width: "100px"}} to={`/${root}/${post.id}`}><PostCardImage style={{width: "100px"}} src={post.image_url}></PostCardImage></Link>
                     <PostCardTitle><PostLink to={`/${root}/${post.id}`}><h3>{post.title}</h3></PostLink></PostCardTitle>
                     <PostCardAuthor>Posted by&nbsp;<Link style={{color: "black"}} to={`/profile/${post.user.id}`}><i>{post.user.username}</i></Link></PostCardAuthor>
                     <PostCardDate>{fixDate(post.created_at)}</PostCardDate>
