@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom"
 import { motion } from "framer-motion";
 import {Link} from 'react-router-dom'
-import {fetchUsers} from '../../redux/User/user.action'
+import {fetchUsers, setExistingUser, setUserRequest} from '../../redux/User/user.action'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -37,19 +37,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Profile({user, users, fetchUsers}) {
+function Profile({user, users, fetchUsers, setExistingUser}) {
     useEffect(() => {
+        const oldToken = localStorage.getItem("token");
+        setExistingUser(oldToken)
         fetchUsers()
-    }, [])
+    }, [user.posts.length])
 
     const classes = useStyles();
-
-    const fixDate = date => {
-        let date_test = new Date(date);
-        let first = `${date_test}`.slice(4,15)
-        let last = `${date_test}`.slice(16,25)
-        return `${first} at ${last} EST`
-    }
 
     return (
         <Switch>
@@ -232,6 +227,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        setExistingUser: (token) => dispatch(setExistingUser(token)),
         fetchUsers: () => dispatch(fetchUsers()),
     }
 }

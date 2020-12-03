@@ -64,7 +64,7 @@ const fixDate = date => {
 function Category({fetchCategory, catId, root, user, category}) {
     useEffect(() => {
         fetchCategory(catId)
-    }, [catId])
+    }, [])
 
     const pageTopRef = useRef(null)
     const [newClicked, setNewClick] = useState(false)
@@ -152,7 +152,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                 exit="exit"
                 ref={pageTopRef}
                 >
-                {newClicked === true ? <>{scrollToTop()}<MyForm><NewPost categoryObj={category} /></MyForm><MaskDiv onClick={newClickHandler} /></> : null}
+                {newClicked === true ? <>{scrollToTop()}<MyForm><NewPost onClickHandler={newClickHandler} categoryObj={category} /></MyForm><MaskDiv onClick={newClickHandler} /></> : null}
                 {renderIcons(root)}
                     </motion.div>
                     <motion.div

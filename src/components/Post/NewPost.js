@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import { connect } from 'react-redux'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -9,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { motion } from "framer-motion";
-import {MyForm} from './style'
+import {createPost} from '../../redux/Post/post.action'
 
 const CssTextField = withStyles({
     root: {
@@ -49,8 +50,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function NewPost({user, categoryObj}) {
+function NewPost({user, categoryObj, createPost}) {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
+    const history = useHistory()
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [category, setCategory] = useState("")
@@ -95,14 +97,8 @@ function NewPost({user, categoryObj}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/posts`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                post: {
+        createPost(
+            {
                 title: title, 
                 content: content, 
                 category_id: categoryObj.id, 
@@ -112,18 +108,14 @@ function NewPost({user, categoryObj}) {
                 image_url: image,
                 difficulty: difficulty
             }
-            })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data)
-        })
+        )
         setTitle("")
         setContent("")
         setImage("")
         setStatus("")
         setGithub("")
         setDifficulty("")
+        history.push("/profile")
     }
     
     return(
@@ -247,7 +239,6 @@ function NewPost({user, categoryObj}) {
                     </Grid>      
                 </Grid>
                 <Button
-                
                     type="submit"
                     fullWidth
                     variant="contained"
@@ -269,4 +260,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(NewPost);
+const mapDispatchToProps = dispatch => {
+    return {
+        createPost: (post) => dispatch(createPost(post)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

@@ -1,3 +1,4 @@
+import { fetchCategory } from '../Category/category.action';
 import { 
     FETCH_POSTS_REQUEST, 
     PATCH_POSTS_REQUEST, 
@@ -39,8 +40,9 @@ export const createPost = (post) => {
         })
         .then(resp => resp.json())
         .then(data => {
-            dispatch(postPostsRequest(data.post))
-            console.log(data.post)
+            console.log(data)
+            dispatch(fetchCategory(data.category.id))
+            dispatch(postPostsRequest(data))
         })
         .catch(console.log)
     }
@@ -60,9 +62,10 @@ export const fetchPostRequest = post => {
     }
 }
 
-export const postPostsRequest = () => {
+export const postPostsRequest = post => {
     return {
-        type: POST_POSTS_REQUEST
+        type: POST_POSTS_REQUEST,
+        action: post
     }
 }
 

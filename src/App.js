@@ -15,6 +15,8 @@ import Logout from './components/User/Logout';
 
 function App({setExistingUser}) {
   const history = useHistory();
+  const [user, setUser] = useState({})
+  const handleLogin = user => {setUser(user)}
 
   useEffect(() => {
     const oldToken = localStorage.getItem("token");
@@ -23,10 +25,10 @@ function App({setExistingUser}) {
     } else {
       history.push("/")
     }
-  }, []);
+  }, [user.posts, user.comments]);
 
-  const [user, setUser] = useState({})
-  const handleLogin = user => {setUser(user)}
+
+
   const location = useLocation()
 
   return (
