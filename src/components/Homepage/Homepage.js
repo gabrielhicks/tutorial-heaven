@@ -24,7 +24,7 @@ export default function Homepage() {
                 x: "0",
                 width: "100vw",
                 transition: transition,
-                opacity: 0.1
+                opacity: 0.3
             }}
         >
         <IconGrid
@@ -56,7 +56,7 @@ export default function Homepage() {
                     opacity: 0
                 }}
                 animate={{opacity: 1}}
-                exit={{opacity: 0.1}}
+                exit={{opacity: 0.3}}
         >
             <HomeSidebar />
         </motion.div>

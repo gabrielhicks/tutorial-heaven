@@ -7,7 +7,7 @@ const pageTransition = {
         opacity: 1
     },
     out: {
-        opacity: 0.1
+        opacity: 0.3
     }
 }
 
@@ -41,13 +41,13 @@ function JavascriptIcons() {
                         alt='JavaScript'
                         width="200px"
                         height="200px"
-                        initial={{ scale: 1, opacity: 0.1 }}
+                        initial={{ scale: 1, opacity: 0.3 }}
                         animate={{
                             transition: { delay: 0.2, ...transition },
                             scale: 2,
                             opacity: 1
                         }}
-                        exit={{scale: 1, transition: transition, opacity: 0.1}}
+                        exit={{scale: 1, transition: transition, opacity: 0.3}}
                         />
                     </Icon>
                     <IconLink to="/angular"><Icon to="/angular" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="AngularJS" src="https://i.ibb.co/MPG2MJr/angular.webp" /></Icon></IconLink>

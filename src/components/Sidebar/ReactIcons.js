@@ -7,7 +7,7 @@ const pageTransition = {
         opacity: 1
     },
     out: {
-        opacity: 0.1
+        opacity: 0.3
     }
 }
 
@@ -41,13 +41,13 @@ function ReactIcons() {
                         alt='Reactjs'
                         width="200px"
                         height="200px"
-                        initial={{ scale: 1, opacity: 0.1 }}
+                        initial={{ scale: 1, opacity: 0.3 }}
                         animate={{
                             transition: { delay: 0.2, ...transition },
                             scale: 1.25,
                             opacity: 1,
                         }}
-                        exit={{scale: 1, transition: transition, opacity: 0.1}}
+                        exit={{scale: 1, transition: transition, opacity: 0.3}}
                         />
                     </Icon>
                     <IconLink to="/rails"><Icon to="/rails" className="extra"><motion.img whileHover={{ scale: 1.1 }} transition={transition} initial="out" animate="out" exit="out" variants={pageTransition} alt="Ruby on Rails" src="https://i.ibb.co/x1v8PBP/ruby.webp" /></Icon></IconLink>

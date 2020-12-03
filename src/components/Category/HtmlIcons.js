@@ -7,7 +7,7 @@ const pageTransition = {
         opacity: 1
     },
     out: {
-        opacity: 0.1
+        opacity: 0.3
     }
 }
 
@@ -44,13 +44,13 @@ function HtmlIcons() {
                         alt='HTML5'
                         width="200px"
                         height="200px"
-                        initial={{ scale: 1, opacity: 0.1 }}
+                        initial={{ scale: 1, opacity: 0.3 }}
                         animate={{
                             transition: { delay: 0.2, ...transition },
                             scale: 2,
                             opacity: 1
                         }}
-                        exit={{scale: 1, transition: transition, opacity: 0.1}}
+                        exit={{scale: 1, transition: transition, opacity: 0.3}}
                         />
                     </Icon>
                     </IconGrid>
