@@ -42,7 +42,7 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
         const oldToken = localStorage.getItem("token");
         setExistingUser(oldToken)
         fetchUsers()
-    }, [user.posts.length])
+    }, [user.posts.length, user.comments.length])
 
     const classes = useStyles();
 
