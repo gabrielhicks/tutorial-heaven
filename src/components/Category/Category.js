@@ -116,7 +116,7 @@ function Category({fetchCategory, catId, root, user, category}) {
             case "html5":
                 return <HtmlIcons />
             default:
-                return <h2>Loading...</h2>
+                return <h5>Waking up the dyno...</h5>
         }
     }
     
