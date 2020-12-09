@@ -87,7 +87,22 @@ function Register(props) {
 
     const localHandleSubmit = (e) => {
         e.preventDefault()
-        props.handleSubmit({username: username, password: password, first_name: firstName, last_name: lastName, email: email, bio: bio})
+        let images = [
+            "https://i.ibb.co/T4q1LdD/cloud1.webp", 
+            "https://i.ibb.co/xJbwB2R/cloud2.webp", 
+            "https://i.ibb.co/VTsRD9n/cloud3.webp",
+            "https://i.ibb.co/mhSK8rM/cloud4.webp",
+            "https://i.ibb.co/QKM5kZ9/cloud5.webp"
+        ]
+        props.handleSubmit({
+            username: username, 
+            password: password, 
+            first_name: firstName, 
+            last_name: lastName, 
+            email: email, 
+            bio: bio,
+            image: images[Math.floor(Math.random() * images.length)]
+        })
         setUsername("")
         setPassword("")
         setFirstName("")
