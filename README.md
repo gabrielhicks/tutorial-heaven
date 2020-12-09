@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+<h1 align="center">Welcome to Tutorial Heaven</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/gabrielhicks/tutorial-heaven#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/gabrielhicks/tutorial-heaven/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/gabrielhicks/tutorial-heaven/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/gabrielhicks/tutorial-heaven" />
+  </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A React / Redux / Ruby on Rails web forum and live chat application
 
-## Available Scripts
+### 🏠 [Homepage](https://tutorial-heaven.netlify.app/)
 
-In the project directory, you can run:
+## Authors
 
-### `yarn start`
+👤 **Gabriel Hicks**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Github: [@gabrielhicks](https://github.com/gabrielhicks)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## To Do
+- [x] Browser responsiveness
+- [ ] Create unit tests
+- [1/2] Fix mobile responsiveness (landscape)
+- [ ] CRUD functionalities of User Profile
+- [ ] Fine tuning the Modal new/edit functions
+- [ ] Integrating live chat lobby to see who is online
+- [ ] Implementing Admin role
+- [ ] Draft and/or Approval for projects to reduce potential spam
+- [ ] Refresh token in place of JWT Access token
+- [ ] GitHub OAuth
+- [ ] Current contributors on proejcts
 
-### `yarn test`
+## 🤝 Contributing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/gabrielhicks/tutorial-heaven/issues).
 
-### `yarn build`
+## Show your support
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Give a ⭐️ if this project helped you!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📝 License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Copyright © 2020 [Gabriel Hicks](https://github.com/gabrielhicks).<br />
+This project is [MIT](https://github.com/gabrielhicks/tutorial-heaven/blob/master/LICENSE) licensed.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+***
