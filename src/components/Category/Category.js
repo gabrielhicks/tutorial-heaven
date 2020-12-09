@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import ChatIcon from '@material-ui/icons/Chat';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import MediaQuery from 'react-responsive'
-import Button from '@material-ui/core/Button';
 import {
     PostContainer, 
     PostCard, 
