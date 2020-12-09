@@ -6,7 +6,7 @@ import {
 
 export const fetchComments = () => {
     return (dispatch) => {
-        fetch('http://tutorialheavenapi.herokuapp.com/api/v1/comments')
+        fetch('https://tutorialheavenapi.herokuapp.com/api/v1/comments')
         .then(response => response.json())
         .then(comments => {
             // console.log(comments)
@@ -17,7 +17,7 @@ export const fetchComments = () => {
 
 export const createComment = (comment) => {
     return (dispatch) => {
-        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/comments`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com/api/v1/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -7,7 +7,7 @@ import {
 
 export const createUser = (user) => {
     return (dispatch) => {
-        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/users`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com/api/v1/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const createUser = (user) => {
 
 export const loginUser = (user) => {
     return (dispatch) => {
-        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/login`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com/api/v1/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export const loginUser = (user) => {
 
 export const fetchUsers = () => {
     return (dispatch) => {
-        fetch('http://tutorialheavenapi.herokuapp.com/api/v1/users')
+        fetch('https://tutorialheavenapi.herokuapp.com/api/v1/users')
         .then(response => response.json())
         .then(users => {
             dispatch(fetchUsersRequest(users))
@@ -56,7 +56,7 @@ export const fetchUsers = () => {
 
 export const setExistingUser = (token) => {
     return (dispatch) => {
-        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/profile`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com/api/v1/profile`, {
             method: "GET",
                 headers: {
             Authorization: `Bearer ${token}` }

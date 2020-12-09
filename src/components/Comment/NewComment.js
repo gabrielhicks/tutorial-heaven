@@ -61,7 +61,7 @@ function NewComment({user, post}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://tutorialheavenapi.herokuapp.com//api/v1/comments`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com//api/v1/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

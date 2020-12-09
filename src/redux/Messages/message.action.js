@@ -6,7 +6,7 @@ import {
 
 export const fetchMessages = () => {
     return (dispatch) => {
-        fetch('http://tutorialheavenapi.herokuapp.com/api/v1/messages')
+        fetch('https://tutorialheavenapi.herokuapp.com/api/v1/messages')
         .then(response => response.json())
         .then(messages => {
             dispatch(fetchMessagesRequest(messages))
@@ -22,7 +22,7 @@ export const fetchMessages = () => {
 
 export const createMessage = (message) => {
     return (dispatch) => {
-        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/messages`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com/api/v1/messages`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

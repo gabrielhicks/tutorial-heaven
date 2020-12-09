@@ -94,7 +94,7 @@ function EditPost({user, post}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/posts/${post.id}`, {
+        fetch(`https://tutorialheavenapi.herokuapp.com/api/v1/posts/${post.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
