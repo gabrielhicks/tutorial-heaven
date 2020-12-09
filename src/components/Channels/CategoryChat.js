@@ -86,7 +86,7 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
                 ?
                     <><div>{chatMessages.feed.map(message => <Message date={fixDate(message.created_at)} image={message.user.image} first={message.user.first_name} message={message.content} username={message.user.username}/>)}</div><div ref={messagesEndRef} /></>
                 :
-                <h3>Loading{console.log(chatMessages.feed)}</h3> 
+                <h5>Waking up the dyno...</h5> 
                 }
                 </ChatWindow>
                     <ChatBox user={user} addMessage={addMessage} topic={topic} topicId={topic}/>

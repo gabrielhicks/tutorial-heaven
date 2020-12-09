@@ -139,7 +139,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                     ? 
                     <Post key={post.id} post={post} root={`${root}`}/>
                     :
-                    <h2>Loading...</h2>
+                    <h5>Waking up the dyno...</h5>
                 }
                 </>
             )
@@ -171,7 +171,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                         spacing={3}
                         className={classes.root}>
                             {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
-                            {category.posts === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
+                            {category.posts === undefined ? (<h5>Waking up the dyno...</h5>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
                 </MediaQuery>
@@ -199,7 +199,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                         spacing={3}
                         className={classes.root}>
                             {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
-                            {category.posts === undefined ? (<h1>loading</h1>) : <>{filteredPosts()}<br /></>}
+                            {category.posts === undefined ? (<h1>https://tutori</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainerMobile>
                     </motion.div>
                     </MediaQuery>
@@ -209,7 +209,7 @@ function Category({fetchCategory, catId, root, user, category}) {
         </Switch>
         </>
         :
-        <h3>Loading</h3>
+        <h5>Waking up the dyno...</h5>
         }
         </>
     )

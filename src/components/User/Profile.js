@@ -134,7 +134,7 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
                         animate="animate"
                         exit="exit"
                         >
-                    <h2>Loading...</h2>
+                    <h5>Waking up the dyno...</h5>
                     </motion.div>
                 }
                 </>
@@ -210,7 +210,7 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
             </div>
             </Container>
             :
-            <h2>Loading</h2>
+            <h5>Waking up the dyno...</h5>
         }
         </motion.div>
             )}} />
