@@ -224,7 +224,7 @@ function Register(props) {
                 <Grid container justify="flex-end">
                     <Grid item>
                     <Link style={{color: "black"}} href="/login" variant="body2">
-                        Already have an account? Sign in
+                        Don't want to register? Try username 'demo' with password 'demo' and click here to Log In
                     </Link>
                     </Grid>
                 </Grid>
