@@ -25,7 +25,7 @@ function App({setExistingUser}) {
     } else {
       history.push("/")
     }
-  }, [user.posts, user.comments]);
+  }, [user.posts, user.comments, history, setExistingUser]);
 
 
 

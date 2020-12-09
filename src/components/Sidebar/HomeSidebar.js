@@ -1,12 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import {IconGrid, Icon} from './style';
-import RailsIcons from './RailsIcons';
-import ReactIcons from './ReactIcons';
-import JavascriptIcons from './JavascriptIcons';
-import AngularIcons from './AngularIcons';
-import VueIcons from './VueIcons';
-import HtmlIcons from './HtmlIcons';
 
 function HomeSidebar({root}) {
 

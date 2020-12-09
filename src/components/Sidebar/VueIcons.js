@@ -1,19 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
 import { motion } from "framer-motion";
 import {MotionImage, IconGrid, Icon, IconLink} from './style'
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        width: "50vw",
-        textAlign: 'left',
-        color: theme.palette.text.primary,
-    },
-}));
 
 const pageTransition = {
     in: {

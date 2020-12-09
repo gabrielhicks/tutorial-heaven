@@ -52,8 +52,8 @@ function EditPost({user, post}) {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [title, setTitle] = useState(post.title)
     const [content, setContent] = useState(post.content)
-    const [category, setCategory] = useState(post.id)
-    const [author, setAuthor] = useState(user.username)
+    // const [category, setCategory] = useState(post.id)
+    // const [author, setAuthor] = useState(user.username)
     const [image, setImage] = useState(post.image_url)
     const [status, setStatus] = useState(post.status)
     const [difficulty, setDifficulty] = useState(post.difficulty)
@@ -69,11 +69,11 @@ function EditPost({user, post}) {
     }
 
     const handleCategoryChange = (e) => {
-        setCategory(e.target.value)
+    //     setCategory(e.target.value)
     }
 
     const handleAuthorChange = (e) => {
-        setAuthor(e.target.value)
+        // setAuthor(e.target.value)
     }
 
     const handleImageChange = (e) => {
@@ -94,7 +94,7 @@ function EditPost({user, post}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
+        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/posts/${post.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -135,7 +135,7 @@ function EditPost({user, post}) {
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar style={{zIndex: "100"}} className={classes.avatar}>
-                <img width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
+                <img alt="Plus sign Icon" width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
                 </Avatar>
                 <Typography style={{zIndex: "100"}} component="h1" variant="h5">
                 Edit Post

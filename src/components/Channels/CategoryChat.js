@@ -28,7 +28,7 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
 
     useEffect(() => {
         fetchCategoryMessages(topic)
-    }, [topic])
+    }, [topic, fetchCategoryMessages])
 
     useEffect(() => {
         if(categoryMessages) {
@@ -59,7 +59,7 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
                 subscription.unsubscribe()
             }
         }
-    }, [user.id])
+    }, [user.id, topic, user])
 
     const addMessage = message => {
         createMessage(message)

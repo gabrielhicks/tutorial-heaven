@@ -55,10 +55,10 @@ function NewPost({user, categoryObj, createPost}) {
     const history = useHistory()
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
-    const [category, setCategory] = useState("")
-    const [author, setAuthor] = useState("")
+    // const [category, setCategory] = useState("")
+    // const [author, setAuthor] = useState("")
     const [image, setImage] = useState("")
-    const [status, setStatus] = useState("")
+    // const [status, setStatus] = useState("")
     const [difficulty, setDifficulty] = useState("")
     const [github, setGithub] = useState("")
     const classes = useStyles();
@@ -72,11 +72,11 @@ function NewPost({user, categoryObj, createPost}) {
     }
 
     const handleCategoryChange = (e) => {
-        setCategory(e.target.value)
+        // setCategory(e.target.value)
     }
 
     const handleAuthorChange = (e) => {
-        setAuthor(e.target.value)
+        // setAuthor(e.target.value)
     }
 
     const handleImageChange = (e) => {
@@ -84,7 +84,7 @@ function NewPost({user, categoryObj, createPost}) {
     }
 
     const handleStatusChange = (e) => {
-        setStatus(e.target.value)
+        // setStatus(e.target.value)
     }
 
     const handleGithubChange = (e) => {
@@ -112,7 +112,6 @@ function NewPost({user, categoryObj, createPost}) {
         setTitle("")
         setContent("")
         setImage("")
-        setStatus("")
         setGithub("")
         setDifficulty("")
         history.push("/profile")
@@ -128,7 +127,7 @@ function NewPost({user, categoryObj, createPost}) {
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
-                <img width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
+                <img alt="Plus Sign" width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
                 </Avatar>
                 <Typography component="h1" variant="h5">
                 New Post

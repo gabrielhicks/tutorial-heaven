@@ -1,8 +1,9 @@
 import { 
     FETCH_MESSAGES_REQUEST, 
-    PATCH_MESSAGES_REQUEST, 
-    POST_MESSAGES_REQUEST, 
-    DELETE_MESSAGES_REQUEST } from './message.types';
+    // PATCH_MESSAGES_REQUEST, 
+    POST_MESSAGES_REQUEST 
+    // DELETE_MESSAGES_REQUEST 
+} from './message.types';
 
 const INITIAL_STATE = {
     messages: [],

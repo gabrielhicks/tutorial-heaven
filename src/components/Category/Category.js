@@ -64,7 +64,7 @@ const fixDate = date => {
 function Category({fetchCategory, catId, root, user, category}) {
     useEffect(() => {
         fetchCategory(catId)
-    }, [])
+    }, [fetchCategory, catId])
 
     const pageTopRef = useRef(null)
     const [newClicked, setNewClick] = useState(false)
@@ -115,6 +115,8 @@ function Category({fetchCategory, catId, root, user, category}) {
                 return <VueIcons />
             case "html5":
                 return <HtmlIcons />
+            default:
+                return <h2>Loading...</h2>
         }
     }
     

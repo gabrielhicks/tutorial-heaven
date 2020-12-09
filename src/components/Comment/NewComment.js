@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import { useLastLocation } from 'react-router-last-location';
-import { motion } from "framer-motion";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -54,11 +52,8 @@ const useStyles = makeStyles((theme) => ({
 function NewComment({user, post}) {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const [body, setBody] = useState("")
-    const [author, setAuthor] = useState(user)
-    const [category, setCategory] = useState("")
     const history = useHistory();
     const classes = useStyles();
-    const lastLocation = useLastLocation();
 
     const handleBodyChange = (e) => {
         setBody(e.target.value)
@@ -66,7 +61,7 @@ function NewComment({user, post}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/comments`, {
+        fetch(`http://tutorialheavenapi.herokuapp.com//api/v1/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -92,7 +87,7 @@ function NewComment({user, post}) {
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar style={{zIndex: "100"}} className={classes.avatar}>
-                <img width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
+                <img alt="Plus sign" width="40px" src="https://i.ibb.co/HxCXyfm/plus.webp" />
                 </Avatar>
                 <Typography style={{zIndex: "100"}} component="h1" variant="h5">
                 New Comment

@@ -2,7 +2,7 @@ import { FETCH_CATEGORY_REQUEST, FETCH_CATEGORY_MESSAGES_REQUEST} from './catego
 
 export const fetchCategory = (id) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/api/v1/categories/${id}`)
+        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/categories/${id}`)
         .then(response => response.json())
         .then(category => {
             dispatch(fetchCategoryRequest(category))
@@ -19,7 +19,7 @@ export const fetchCategoryRequest = category => {
 
 export const fetchCategoryMessages = (id) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/api/v1/messages/${id}`)
+        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/messages/${id}`)
         .then(response => response.json())
         .then(categoryMessages => {
             dispatch(fetchCategoryMessagesRequest(categoryMessages))

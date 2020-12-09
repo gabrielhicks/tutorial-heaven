@@ -1,8 +1,9 @@
 import { 
-    FETCH_COMMENTS_REQUEST, 
-    PATCH_COMMENTS_REQUEST, 
-    POST_COMMENTS_REQUEST, 
-    DELETE_COMMENTS_REQUEST } from './comment.types';
+    FETCH_COMMENTS_REQUEST 
+    // PATCH_COMMENTS_REQUEST, 
+    // POST_COMMENTS_REQUEST, 
+    // DELETE_COMMENTS_REQUEST 
+} from './comment.types';
 
 const INITIAL_STATE = {
     comments: [],

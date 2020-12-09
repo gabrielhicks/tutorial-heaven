@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import {MotionImage, IconGrid, Icon, IconLink, NewPost} from './style'
+import {MotionImage, IconGrid, Icon, IconLink} from './style'
 
 const pageTransition = {
     in: {

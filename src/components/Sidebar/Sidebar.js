@@ -25,6 +25,8 @@ function Sidebar({root}) {
                 return <VueIcons />
             case "html5":
                 return <HtmlIcons />
+            default:
+                return <h2>Loading...</h2>
         }
 
     }

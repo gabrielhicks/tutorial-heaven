@@ -8,7 +8,7 @@ import {
 
 export const fetchPosts = () => {
     return (dispatch) => {
-        fetch('http://localhost:3000/api/v1/posts')
+        fetch('http://tutorialheavenapi.herokuapp.com/api/v1/posts')
         .then(response => response.json())
         .then(posts => {
             // console.log(posts)
@@ -19,7 +19,7 @@ export const fetchPosts = () => {
 
 export const fetchPost = (id) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/api/v1/posts/${id}`)
+        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/posts/${id}`)
         .then(response => response.json())
         .then(post => {
             // console.log(post)
@@ -30,7 +30,7 @@ export const fetchPost = (id) => {
 
 export const createPost = (post) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/api/v1/posts`, {
+        fetch(`http://tutorialheavenapi.herokuapp.com/api/v1/posts`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

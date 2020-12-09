@@ -3,15 +3,13 @@ import {connect} from 'react-redux'
 import { Route, Switch, withRouter } from "react-router-dom"
 import { motion } from "framer-motion";
 import {Link} from 'react-router-dom'
-import {fetchUsers, setExistingUser, setUserRequest} from '../../redux/User/user.action'
+import {fetchUsers, setExistingUser} from '../../redux/User/user.action'
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {PostCard, PostTitle, PostContent, PostImage, PostInfo, ProjectStatus, PostCardDate, PostCardRepo} from './style'
-import TextField from '@material-ui/core/TextField';
+import {PostCard, PostTitle, PostContent, PostImage} from './style'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +42,7 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
         setExistingUser(oldToken)
         fetchUsers()
         }
-    }, [])
+    }, [fetchUsers, setExistingUser, user])
 
     const classes = useStyles();
 
@@ -70,10 +68,10 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
-                <img width="40px" src={user.image} />
+                <img alt="User's cloud" width="40px" src={user.image} />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                <img width="250px" src={user.profile} />
+                <img alt="User Profile" width="250px" src={user.profile} />
                 </Typography>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -90,7 +88,7 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
                         <>{user.posts.map(post => 
                         <>
                         <PostCard component={Link} to={`/${post.category.root_url}/${post.id}`}>
-                            <PostImage src={post.image_url}/>
+                            <PostImage alt={`${post.title}`} src={post.image_url}/>
                             <PostTitle>{post.title.slice(0, 10)}...
                             <PostContent>{post.content.slice(0, 10)}...</PostContent></PostTitle>
                         </PostCard>
@@ -154,10 +152,10 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
-                <img width="40px" src={user.image} />
+                <img alt="User Cloud" width="40px" src={user.image} />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                <img width="250px" src={user.profile} />
+                <img alt="User Profile" width="250px" src={user.profile} />
                 </Typography>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
