@@ -170,7 +170,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
+                            {user.id ? <><SideBar container item xs={4}><NewPostStyle onClick={newClickHandler}><AddCircleIcon/>New</NewPostStyle><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
                             {category.posts === undefined ? (<h5>Waking up the dyno...</h5>) : <>{filteredPosts()}<br /></>}
                         </PostContainer>
                     </motion.div>
@@ -198,7 +198,7 @@ function Category({fetchCategory, catId, root, user, category}) {
                         alignItems="center"
                         spacing={3}
                         className={classes.root}>
-                            {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
+                            {user.id ? <><SideBar container item xs={4}><NewPostStyle onClick={newClickHandler}><AddCircleIcon/>New</NewPostStyle><NewPostStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewPostStyle></SideBar></> : null }
                             {category.posts === undefined ? (<h1>https://tutori</h1>) : <>{filteredPosts()}<br /></>}
                         </PostContainerMobile>
                     </motion.div>

@@ -45,7 +45,7 @@ export const GridItem = styled(Grid)`
 `
 
 export const NewCommentStyle = styled(Button)`
-    margin-top: 1vh;
+    ${'' /* margin-top: 1vh; */}
     background-color: rgba(212, 212, 214, 1);
     margin-right: 5px;
     padding: 5px;
@@ -55,17 +55,15 @@ export const NewCommentStyle = styled(Button)`
 `
 
 export const SideBar = styled.div`
-    position: fixed;
-    z-index: -10;
-    display: inline-column;
-    left: 0;
-    bottom: -70px;
-    ${'' /* top: 250px; */}
+    ${'' /* position: fixed; */}
+    display: inline-row;
+    ${'' /* right: 18vw; */}
+    ${'' /* top: 300px; */}
     background-color: transparent;
-    height: 20vh;
-    margin-top: 1.75vh;
-    margin-left: 1.75vw;
-    width: 3vw;
+    ${'' /* height: 20vh; */}
+    ${'' /* margin-top: 1.75vh; */}
+    ${'' /* margin-left: 1.75vw; */}
+    ${'' /* width: 3vw; */}
     text-align: center;
     justify-content: center;
     align-items: center;

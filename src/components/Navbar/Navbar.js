@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         position: 'fixed',
         flexGrow: 1,
+        zIndex: 2,
         bottom: theme.spacing(2),
         right: theme.spacing(2),
     },

@@ -55,7 +55,7 @@ export const MotionImage = styled(motion.img)`
 `
 
 export const NewPostStyle = styled(Button)`
-    margin-top: 1vh;
+    ${'' /* margin-top: 1vh; */}
     background-color: rgba(212, 212, 214, 1);
     margin-right: 5px;
     padding: 5px;
@@ -65,15 +65,15 @@ export const NewPostStyle = styled(Button)`
 `
 
 export const SideBar = styled.div`
-    position: fixed;
-    display: inline-column;
-    left: 0;
-    bottom: -70px;
+    ${'' /* position: fixed; */}
+    display: inline-row;
+    ${'' /* right: 18vw; */}
+    ${'' /* top: 300px; */}
     background-color: transparent;
-    height: 20vh;
-    margin-top: 1.75vh;
-    margin-left: 1.75vw;
-    width: 3vw;
+    ${'' /* height: 20vh; */}
+    ${'' /* margin-top: 1.75vh; */}
+    ${'' /* margin-left: 1.75vw; */}
+    ${'' /* width: 3vw; */}
     text-align: center;
     justify-content: center;
     align-items: center;

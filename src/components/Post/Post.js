@@ -84,7 +84,7 @@ function Post({post, root, user}) {
             </PostCard>
             {console.log(post)}
             {post.comments.length === undefined ? (<h5>Waking up the dyno...</h5>) : <>{renderComments()}<br /></>}
-            {user.id ? <><SideBar container item xs={4}><Button onClick={newClickHandler}><AddCircleIcon/>New</Button><NewCommentStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewCommentStyle></SideBar></> : null }
+            {user.id ? <><SideBar container item xs={4}><NewCommentStyle onClick={newClickHandler}><AddCircleIcon/>New</NewCommentStyle><NewCommentStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewCommentStyle></SideBar></> : null }
             </CommentContainer>
         </motion.div>
         :
