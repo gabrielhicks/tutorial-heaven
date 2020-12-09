@@ -127,7 +127,7 @@ function Login(props){
                         <Grid container>
                             <Grid item>
                             <Link style={{color: "black"}} href="/signup" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                                {"Don't have an account? Try username 'demo' with password 'demo' or click here to Sign Up"}
                             </Link>
                             </Grid>
                         </Grid>
