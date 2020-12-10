@@ -15,8 +15,8 @@
 > A React / Redux / Ruby on Rails web forum and live chat application
 
 ### 🏠 [Homepage](https://tutorial-heaven.netlify.app/)
-
-## Authors
+* Backend: https://github.com/gabrielhicks/tutorial_heaven_api/
+## Author
 
 👤 **Gabriel Hicks**
 
