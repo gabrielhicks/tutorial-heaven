@@ -171,7 +171,6 @@ function Profile({user, users, fetchUsers, setExistingUser}) {
                     {user.posts.length > 0 ?
                         <>{user.posts.map(post => 
                         <>
-                        {console.log(user)}
                         <PostCard component={Link} to={`/${post.category.root_url}/${post.id}`}>
                             <PostImage src={post.image_url}/>
                             <PostTitle>{post.title.slice(0, 10)}...

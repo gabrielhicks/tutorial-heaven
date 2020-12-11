@@ -28,7 +28,7 @@ export const createComment = (comment) => {
         .then(resp => resp.json())
         .then(data => {
             dispatch(postCommentsRequest(data.comment))
-            console.log(data.comment)
+            // console.log(data.comment)
         })
         .catch(console.log)
     }

@@ -72,7 +72,7 @@ function NewComment({user, post}) {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             return history.push(`/`)
         })
         setBody("")

@@ -32,7 +32,7 @@ function CategoryChat({user, image, root, topic, categoryMessages, fetchCategory
 
     useEffect(() => {
         if(categoryMessages) {
-            console.log("hi", categoryMessages.messages)
+            // console.log("hi", categoryMessages.messages)
         setMessages({
             feed: categoryMessages.messages,
             newChatMessages: []

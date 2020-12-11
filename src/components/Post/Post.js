@@ -82,7 +82,6 @@ function Post({post, root, user}) {
                 <PostTitle>{post.title}</PostTitle>
                 <PostContent>{post.content}</PostContent>
             </PostCard>
-            {console.log(post)}
             {post.comments.length === undefined ? (<h5>Waking up the dyno...</h5>) : <>{renderComments()}<br /></>}
             {user.id ? <><SideBar container item xs={4}><NewCommentStyle onClick={newClickHandler}><AddCircleIcon/>New</NewCommentStyle><NewCommentStyle component={Link} to={`/${root}/chat`}><ChatIcon/>Chat</NewCommentStyle></SideBar></> : null }
             </CommentContainer>

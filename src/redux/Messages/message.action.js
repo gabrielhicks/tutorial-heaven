@@ -33,7 +33,7 @@ export const createMessage = (message) => {
         .then(resp => resp.json())
         .then(data => {
             dispatch(postMessagesRequest(data.message))
-            console.log(data.message)
+            // console.log(data.message)
         })
         .catch(console.log)
     }
