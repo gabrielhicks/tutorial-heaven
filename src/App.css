@@ -17,12 +17,16 @@ code {
 }
 
 
-/* 
-rgba(251, 250, 206, 1); - canvas yellow
-rgba(212, 212, 214, 1); - canvas grey
-rgba(238, 147, 152, 1); - canvas red
-rgba(203, 218, 237, 1); - canvas blue
-rgba(254, 204, 153, 1); - canvas orange
-rgba(242, 233, 224, 1); - canvas canvas
-rgba(194, 216, 195, 1); - canvas green 
-*/
+/* .efafaefaefaef {
+color:  rgba(251, 250, 206, 1); - canvas yellow
+color:  rgba(212, 212, 214, 1); - canvas grey
+color:  rgba(238, 147, 152, 1); - canvas red
+color:  rgba(203, 218, 237, 1); - canvas blue
+color:  rgba(254, 204, 153, 1); - canvas orange
+color:  rgba(242, 233, 224, 1); - canvas canvas
+color:  rgba(194, 216, 195, 1); - canvas green 
+} */
+
+.color-picker {
+  color: rgb(61, 23, 23);
+}
