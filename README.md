@@ -33,7 +33,8 @@
 - [ ] Draft and/or Approval for projects to reduce potential spam
 - [ ] Refresh token in place of JWT Access token
 - [ ] GitHub OAuth
-- [ ] Current contributors on proejcts
+- [ ] Current contributors on projects
+- [ ] GraphQL?
 
 ## 🤝 Contributing
 
