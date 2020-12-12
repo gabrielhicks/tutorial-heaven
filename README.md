@@ -25,7 +25,7 @@
 ## To Do
 - [x] Browser responsiveness
 - [ ] Create unit tests
-- [1/2] Fix mobile responsiveness (landscape)
+- [ ] Make mobile landscape version? (Responsiveness)
 - [ ] CRUD functionalities of User Profile
 - [ ] Fine tuning the Modal new/edit functions
 - [ ] Integrating live chat lobby to see who is online
