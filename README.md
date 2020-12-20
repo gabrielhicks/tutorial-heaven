@@ -28,7 +28,7 @@
 
 -   [x] Browser responsiveness
 -   [ ] Create unit tests
--   [x] Fix mobile responsiveness (landscape)
+-   [x] Make mobile landscape version? (Responsiveness)
 -   [ ] CRUD functionalities of User Profile
 -   [ ] Fine tuning the Modal new/edit functions
 -   [ ] Integrating live chat lobby to see who is online
@@ -36,7 +36,8 @@
 -   [ ] Draft and/or Approval for projects to reduce potential spam
 -   [ ] Refresh token in place of JWT Access token
 -   [ ] GitHub OAuth
--   [ ] Current contributors on proejcts
+-   [ ] Current contributors on projects
+-   [ ] GraphQL?
 
 ## 🤝 Contributing
 
