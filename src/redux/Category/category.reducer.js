@@ -7,8 +7,9 @@ const INITIAL_STATE = {
 const categoryReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_CATEGORY_REQUEST:
-            return action.payload
-        default: return state;
+            return action.payload;
+        default:
+            return state;
     }
 };
 

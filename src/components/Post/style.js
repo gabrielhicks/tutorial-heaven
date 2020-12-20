@@ -1,6 +1,6 @@
-import { Paper } from '@material-ui/core'
-import { motion } from "framer-motion";
-import styled from 'styled-components'
+import { Paper } from '@material-ui/core';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 export const MaskDiv = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
@@ -10,7 +10,7 @@ export const MaskDiv = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 1;
-`
+`;
 
 export const PostCard = styled(Paper)`
     display: grid;
@@ -20,7 +20,7 @@ export const PostCard = styled(Paper)`
     max-width: 50vw;
     min-width: 50vw;
     min-height: 20vw;
-`
+`;
 
 export const PostTitle = styled.h2`
     margin: auto;
@@ -28,47 +28,47 @@ export const PostTitle = styled.h2`
     max-width: 40vw;
     grid-column: 2;
     grid-row: 1;
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 750px) {
         font-size: 1.5rem;
         grid-column: 1;
         grid-row: 2;
     }
-`
+`;
 
 export const PostContent = styled.p`
     margin: auto;
     max-width: 40vw;
     grid-column: 2;
     grid-row: 2;
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 750px) {
         grid-column: 1;
         grid-row: 3;
         max-width: 60vw;
     }
-`
+`;
 
 export const PostImage = styled.img`
     max-width: 150px;
     border-radius: 10px;
     grid-column: 1;
     grid-row: 1;
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 750px) {
         justify-self: center;
         grid-column: 1;
         grid-row: 1;
     }
-`
+`;
 
 export const PostInfo = styled.div`
-text-align: left;
+    text-align: left;
     grid-column: 1;
     grid-row: 2;
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 750px) {
         text-align: center;
         grid-column: 1;
         grid-row: 4;
     }
-`
+`;
 
 export const MyForm = styled(motion.div)`
     background-color: white;
@@ -77,28 +77,28 @@ export const MyForm = styled(motion.div)`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
-`
+`;
 
 export const PostCardDate = styled.p`
     font-size: 11px;
     grid-column: 1;
     grid-row: 4;
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 750px) {
         justify-self: center;
         grid-column: 1;
         grid-row: 4;
     }
-`
+`;
 
 export const PostCardAuthor = styled.p`
     grid-column: 1;
     grid-row: 2;
-`
+`;
 
 export const PostCardRepo = styled.p`
     grid-column: 1;
     grid-row: 3;
-`
+`;
 
 export const ProjectStatus = styled.b`
     i.status {
@@ -109,4 +109,4 @@ export const ProjectStatus = styled.b`
         font-weight: 800;
         color: rgba(155, 173, 147, 1);
     }
-`
+`;

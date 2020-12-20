@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export const CommentContainer = styled(Grid)`
     position: relative;
@@ -11,11 +11,11 @@ export const CommentContainer = styled(Grid)`
     padding: 2rem;
     padding-left: 0;
     z-index: 1;
-`
+`;
 
 export const CommentCard = styled(Paper)`
     position: relative;
-    text-align: "inline";
+    text-align: 'inline';
     margin: -1px;
     margin-top: 20px;
     img {
@@ -38,11 +38,11 @@ export const CommentCard = styled(Paper)`
     h3 {
         cursor: pointer;
     }
-`
+`;
 
 export const GridItem = styled(Grid)`
     display: flex;
-`
+`;
 
 export const NewCommentStyle = styled(Button)`
     ${'' /* margin-top: 1vh; */}
@@ -52,7 +52,7 @@ export const NewCommentStyle = styled(Button)`
     width: 75px;
     text-decoration: none;
     z-index: 100;
-`
+`;
 
 export const SideBar = styled.div`
     ${'' /* position: fixed; */}
@@ -67,7 +67,7 @@ export const SideBar = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
-`
+`;
 export const MyForm = styled(motion.div)`
     background-color: white;
     position: fixed;
@@ -75,7 +75,7 @@ export const MyForm = styled(motion.div)`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
-`
+`;
 
 export const LikeButton = styled.button`
     float: right;
@@ -88,4 +88,4 @@ export const LikeButton = styled.button`
         padding: 0;
         width: 25px;
     }
-`
+`;

@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
-import {connect} from 'react-redux'
-import { useHistory } from "react-router-dom";
-import {loginUser} from '../../redux/User/user.action'
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { loginUser } from '../../redux/User/user.action';
+import { motion } from 'framer-motion';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        color: "black",
-        backgroundColor: "rgb(199, 237, 230)",
+        color: 'black',
+        backgroundColor: 'rgb(199, 237, 230)',
     },
     form: {
         width: '100%',
@@ -48,98 +48,104 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
-        backgroundColor: "rgb(199, 237, 230)",
+        backgroundColor: 'rgb(199, 237, 230)',
     },
 }));
 
-function Login(props){
+function Login(props) {
     const transition = { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] };
     const classes = useStyles();
     const history = useHistory();
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleUsernameChange = (e) => {
-        setUsername(e.target.value)
-    }
+        setUsername(e.target.value);
+    };
 
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+        setPassword(e.target.value);
+    };
 
     const localHandleSubmit = (e) => {
-        e.preventDefault()
-        props.handleSubmit({username: username, password: password})
-        setUsername("")
-        setPassword("")
-        return history.push("/")
-    }
-    return(
+        e.preventDefault();
+        props.handleSubmit({ username: username, password: password });
+        setUsername('');
+        setPassword('');
+        return history.push('/');
+    };
+    return (
         <motion.div
-            initial={{transition: transition, opacity: 0.1}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0.1, transition: transition, scale: 1}}
-        >
-            <Container component="main" maxWidth="xs">
+            initial={{ transition: transition, opacity: 0.1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.1, transition: transition, scale: 1 }}>
+            <Container component='main' maxWidth='xs'>
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
+                        <LockOutlinedIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
-                    Sign in
+                    <Typography component='h1' variant='h5'>
+                        Sign in
                     </Typography>
-                    <form onSubmit={localHandleSubmit} className={classes.form} noValidate>
+                    <form
+                        onSubmit={localHandleSubmit}
+                        className={classes.form}
+                        noValidate>
                         <CssTextField
-                            variant="outlined"
-                            margin="normal"
+                            variant='outlined'
+                            margin='normal'
                             required
                             fullWidth
-                            id="username"
-                            label="Username"
-                            name="username"
-                            autoComplete="username"
+                            id='username'
+                            label='Username'
+                            name='username'
+                            autoComplete='username'
                             autoFocus
                             value={username}
                             onChange={handleUsernameChange}
                         />
                         <CssTextField
-                            variant="outlined"
-                            margin="normal"
+                            variant='outlined'
+                            margin='normal'
                             required
                             fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            value={password} 
+                            name='password'
+                            label='Password'
+                            type='password'
+                            id='password'
+                            autoComplete='current-password'
+                            value={password}
                             onChange={handlePasswordChange}
                         />
                         <Button
-                            type="submit"
+                            type='submit'
                             fullWidth
-                            variant="contained"
-                            className={classes.submit}
-                        >
+                            variant='contained'
+                            className={classes.submit}>
                             Sign In
                         </Button>
                         <Grid container>
                             <Grid item>
-                            <Link style={{color: "black"}} href="/signup" variant="body2">
-                                {"Don't have an account? Try username 'demo' with password 'demo' or click here to Sign Up"}
-                            </Link>
+                                <Link
+                                    style={{ color: 'black' }}
+                                    href='/signup'
+                                    variant='body2'>
+                                    {
+                                        "Don't have an account? Try username 'demo' with password 'demo' or click here to Sign Up"
+                                    }
+                                </Link>
                             </Grid>
                         </Grid>
                     </form>
                 </div>
             </Container>
         </motion.div>
-    )
-} 
-
-const mapDispatchToProps = (dispatch) => {
-    return {handleSubmit: (user) => dispatch(loginUser(user))}
+    );
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+const mapDispatchToProps = (dispatch) => {
+    return { handleSubmit: (user) => dispatch(loginUser(user)) };
+};
+
+export default connect(null, mapDispatchToProps)(Login);

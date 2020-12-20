@@ -1,8 +1,8 @@
-import { 
-    FETCH_COMMENTS_REQUEST 
-    // PATCH_COMMENTS_REQUEST, 
-    // POST_COMMENTS_REQUEST, 
-    // DELETE_COMMENTS_REQUEST 
+import {
+    FETCH_COMMENTS_REQUEST,
+    // PATCH_COMMENTS_REQUEST,
+    // POST_COMMENTS_REQUEST,
+    // DELETE_COMMENTS_REQUEST
 } from './comment.types';
 
 const INITIAL_STATE = {
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 const commentReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_COMMENTS_REQUEST:
-            return action.payload
+            return action.payload;
         // case POST_COMMENTS_REQUEST:
         //     return {
         //         ...state, count: state.count - 1,
@@ -25,7 +25,8 @@ const commentReducer = (state = INITIAL_STATE, action) => {
         //     return {
         //         ...state, count: state.count - 1,
         //     };
-        default: return state;
+        default:
+            return state;
     }
 };
 

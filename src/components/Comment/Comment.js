@@ -1,7 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import {CommentCard, GridItem, LikeButton} from './style'
+import { CommentCard, GridItem, LikeButton } from './style';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -9,41 +9,50 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         padding: theme.spacing(2),
-        width: "50vw",
+        width: '50vw',
         textAlign: 'left',
         color: theme.palette.text.primary,
     },
 }));
 
-
-function Comment({comment, user}) {
+function Comment({ comment, user }) {
     const classes = useStyles();
 
-    const fixDate = date => {
+    const fixDate = (date) => {
         let date_test = new Date(date);
-        let first = `${date_test}`.slice(4,15)
-        let last = `${date_test}`.slice(16,25)
-        return `${first} at ${last} EST`
-    }
+        let first = `${date_test}`.slice(4, 15);
+        let last = `${date_test}`.slice(16, 25);
+        return `${first} at ${last} EST`;
+    };
 
     return (
-            <GridItem key={comment.id} item xs={10}>
-                <CommentCard className={classes.paper}>
-                    <p>
+        <GridItem key={comment.id} item xs={10}>
+            <CommentCard className={classes.paper}>
+                <p>
                     <>{comment.body}</>
                     <br />
-                    <b>{comment.user.username}</b> <i style={{fontSize: "9px"}}>posted at {fixDate(comment.created_at)}</i>
-                    </p>
-                    {user.username === comment.user.username ? <LikeButton><img alt={`${comment.id}`} src="https://i.ibb.co/TTScPT8/delete.webp" /></LikeButton> : null}
-                </CommentCard>
-            </GridItem>
-    )
+                    <b>{comment.user.username}</b>{' '}
+                    <i style={{ fontSize: '9px' }}>
+                        posted at {fixDate(comment.created_at)}
+                    </i>
+                </p>
+                {user.username === comment.user.username ? (
+                    <LikeButton>
+                        <img
+                            alt={`${comment.id}`}
+                            src='https://i.ibb.co/TTScPT8/delete.webp'
+                        />
+                    </LikeButton>
+                ) : null}
+            </CommentCard>
+        </GridItem>
+    );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         user: state.user,
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps)(Comment)
+export default connect(mapStateToProps)(Comment);

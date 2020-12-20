@@ -1,25 +1,21 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import Paper from '@material-ui/core/Paper';
 
-export const MyFab = styled(Fab)`
+export const MyFab = styled(Fab)``;
 
-`
-
-export const YourFab = styled(Fab)`
-
-`
+export const YourFab = styled(Fab)``;
 
 export const MyImg = styled.img`
     grid-row: 1;
     grid-column: 1;
-`
+`;
 
 export const YourImg = styled.img`
     grid-row: 1;
     grid-column: 1;
-`
+`;
 
 export const StyledForm = styled.form`
     position: absolute;
@@ -29,7 +25,7 @@ export const StyledForm = styled.form`
     margin-right: 1vw;
     width: 56vw;
     height: 10vh;
-`
+`;
 
 export const MyMessage = styled.p`
     align-self: start;
@@ -38,7 +34,7 @@ export const MyMessage = styled.p`
     &:hover {
         background-color: rgba(212, 212, 214, 0.2);
     }
-`
+`;
 
 export const YourMessage = styled.p`
     align-self: start;
@@ -48,14 +44,14 @@ export const YourMessage = styled.p`
     &:hover {
         background-color: rgba(212, 212, 214, 0.2);
     }
-`
+`;
 
 export const ChatImage = styled.img`
     width: 20vw;
     position: fixed;
     left: 0;
     z-index: 10;
-`
+`;
 
 export const MyText = styled.p`
     align-self: start;
@@ -64,7 +60,7 @@ export const MyText = styled.p`
     &:hover {
         background-color: rgba(212, 212, 214, 0.2);
     }
-`
+`;
 
 export const YourText = styled.p`
     align-self: start;
@@ -74,19 +70,19 @@ export const YourText = styled.p`
     &:hover {
         background-color: rgba(212, 212, 214, 0.2);
     }
-`
+`;
 
 export const MyName = styled.p`
     align-self: start;
     grid-row: 1;
     grid-column: 2;
-`
+`;
 
 export const YourName = styled.p`
     align-self: start;
     grid-row: 1;
     grid-column: 2;
-`
+`;
 
 export const ChatBoxContainer = styled(Paper)`
     position: relative;
@@ -97,7 +93,7 @@ export const ChatBoxContainer = styled(Paper)`
     width: 60vw;
     height: 80vh;
     align-items: flex-end;
-`
+`;
 
 export const SendButton = styled(Button)`
     background-color: rgba(0, 0, 0, 0.1);
@@ -106,7 +102,7 @@ export const SendButton = styled(Button)`
     margin-right: 0px;
     float: right;
     padding: auto;
-`
+`;
 export const TextArea = styled.textarea`
     position: relative;
     padding-right: 1vw;
@@ -115,7 +111,7 @@ export const TextArea = styled.textarea`
     resize: none;
     outline: none;
     border: none;
-`
+`;
 
 export const ChatWindow = styled(Paper)`
     position: absolute;
@@ -124,8 +120,7 @@ export const ChatWindow = styled(Paper)`
     height: 68vh;
     margin-bottom: 4px;
     overflow-y: auto;
-`
-
+`;
 
 export const ChatTextarea = styled(Paper)`
     position: absolute;
@@ -137,4 +132,4 @@ export const ChatTextarea = styled(Paper)`
     margin-bottom: 1vh;
     width: 56vw;
     height: 10vh;
-`
+`;

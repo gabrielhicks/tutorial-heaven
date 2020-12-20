@@ -15,25 +15,28 @@
 > A React / Redux / Ruby on Rails web forum and live chat application
 
 ### 🏠 [Homepage](https://tutorial-heaven.netlify.app/)
-* Backend: https://github.com/gabrielhicks/tutorial_heaven_api/
+
+-   Backend: https://github.com/gabrielhicks/tutorial_heaven_api/
+
 ## Author
 
 👤 **Gabriel Hicks**
 
-* Github: [@gabrielhicks](https://github.com/gabrielhicks)
+-   Github: [@gabrielhicks](https://github.com/gabrielhicks)
 
 ## To Do
-- [x] Browser responsiveness
-- [ ] Create unit tests
-- [1/2] Fix mobile responsiveness (landscape)
-- [ ] CRUD functionalities of User Profile
-- [ ] Fine tuning the Modal new/edit functions
-- [ ] Integrating live chat lobby to see who is online
-- [ ] Implementing Admin role
-- [ ] Draft and/or Approval for projects to reduce potential spam
-- [ ] Refresh token in place of JWT Access token
-- [ ] GitHub OAuth
-- [ ] Current contributors on proejcts
+
+-   [x] Browser responsiveness
+-   [ ] Create unit tests
+-   [x] Fix mobile responsiveness (landscape)
+-   [ ] CRUD functionalities of User Profile
+-   [ ] Fine tuning the Modal new/edit functions
+-   [ ] Integrating live chat lobby to see who is online
+-   [ ] Implementing Admin role
+-   [ ] Draft and/or Approval for projects to reduce potential spam
+-   [ ] Refresh token in place of JWT Access token
+-   [ ] GitHub OAuth
+-   [ ] Current contributors on proejcts
 
 ## 🤝 Contributing
 
@@ -48,4 +51,4 @@ Give a ⭐️ if this project helped you!
 Copyright © 2020 [Gabriel Hicks](https://github.com/gabrielhicks).<br />
 This project is [MIT](https://github.com/gabrielhicks/tutorial-heaven/blob/master/LICENSE) licensed.
 
-***
+---

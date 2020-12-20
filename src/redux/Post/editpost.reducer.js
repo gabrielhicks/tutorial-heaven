@@ -1,14 +1,13 @@
-import { 
-    FETCH_POST_REQUEST,} from './post.types';
+import { FETCH_POST_REQUEST } from './post.types';
 
 const INITIAL_STATE = {
-    post: []
+    post: [],
 };
 
 const editPostReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_POST_REQUEST:
-            return action.payload
+            return action.payload;
         // case POST_POSTS_REQUEST:
         //     return {
         //         ...state, posts: [...state.posts, action.payload]
@@ -21,7 +20,8 @@ const editPostReducer = (state = INITIAL_STATE, action) => {
         //     return {
         //         ...state, posts: [...state.posts]
         //     };
-        default: return state;
+        default:
+            return state;
     }
 };
 
