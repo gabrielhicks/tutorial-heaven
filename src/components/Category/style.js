@@ -139,7 +139,7 @@ export const PostCardTitle = styled.p`
     grid-column: 2;
     grid-row: 1;
     @media only screen and (max-width: 750px) {
-        font-size: 1rem;
+        font-size: 0.9rem;
         grid-column: 1;
         grid-row: 2;
     }
@@ -166,7 +166,7 @@ export const PostCardComments = styled.p`
     justify-self: right;
     @media only screen and (max-width: 750px) {
         grid-column: 1;
-        grid-row: 3;
+        grid-row: 5;
     }
 `;
 
