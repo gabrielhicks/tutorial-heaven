@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import {
   Route,
   Switch,
   withRouter,
   useLocation,
   useHistory,
-} from "react-router-dom";
-import "./App.css";
-import { AnimatePresence } from "framer-motion";
-import { setExistingUser } from "./redux/User/user.action";
-import Homepage from "./components/Homepage/Homepage";
-import Navbar from "./components/Navbar/Navbar";
-import Category from "./components/Category/Category";
-import Login from "./components/User/Login";
-import Register from "./components/User/Register";
-import Profile from "./components/User/Profile";
-import NewPost from "./components/Post/NewPost";
-import Logout from "./components/User/Logout";
+} from 'react-router-dom';
+import './App.css';
+import { AnimatePresence } from 'framer-motion';
+import { setExistingUser } from './redux/User/user.action';
+import Homepage from './components/Homepage/Homepage';
+import Navbar from './components/Navbar/Navbar';
+import Category from './components/Category/Category';
+import Login from './components/User/Login';
+import Register from './components/User/Register';
+import Profile from './components/User/Profile';
+import NewPost from './components/Post/NewPost';
+import Logout from './components/User/Logout';
 
 function App({ setExistingUser }) {
   const history = useHistory();
@@ -27,11 +27,11 @@ function App({ setExistingUser }) {
   };
 
   useEffect(() => {
-    const oldToken = localStorage.getItem("token");
+    const oldToken = localStorage.getItem('token');
     if (oldToken) {
       setExistingUser(oldToken);
     } else {
-      history.push("/");
+      history.push('/');
     }
   }, [user.posts, user.comments, history, setExistingUser]);
 

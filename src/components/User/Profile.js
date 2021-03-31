@@ -13,353 +13,277 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        color: 'black',
-        backgroundColor: 'rgb(199, 237, 230)',
-    },
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-        backgroundColor: 'rgb(199, 237, 230)',
-    },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    color: 'black',
+    backgroundColor: 'rgb(199, 237, 230)',
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    backgroundColor: 'rgb(199, 237, 230)',
+  },
 }));
 
 function Profile({ user, users, fetchUsers, setExistingUser }) {
-    useEffect(() => {
-        if (user) {
-            const oldToken = localStorage.getItem('token');
-            setExistingUser(oldToken);
-            fetchUsers();
-        }
-    }, [fetchUsers, setExistingUser, user]);
+  useEffect(() => {
+    if (user) {
+      const oldToken = localStorage.getItem('token');
+      setExistingUser(oldToken);
+      fetchUsers();
+    }
+  }, [fetchUsers, setExistingUser, user]);
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <Switch>
-            <Route
-                path={`/profile/:id`}
-                render={(routerProps) => {
-                    let id = parseInt(routerProps.match.params.id);
-                    let user;
-                    if (users.length > 0) {
-                        user = users.find((user) => user.id === id);
-                    }
-                    return (
-                        <>
-                            {users.length > 0 ? (
-                                <motion.div
-                                    initial='initial'
-                                    animate='animate'
-                                    exit='exit'>
-                                    {user.posts.length !== undefined ? (
-                                        <Container
-                                            style={{ backgroundColor: 'white' }}
-                                            component='main'
-                                            maxWidth='xs'>
-                                            <CssBaseline />
-                                            <div className={classes.paper}>
-                                                <Avatar
-                                                    className={classes.avatar}>
-                                                    <img
-                                                        alt="User's cloud"
-                                                        width='40px'
-                                                        src={user.image}
-                                                    />
-                                                </Avatar>
-                                                <Typography
-                                                    component='h1'
-                                                    variant='h5'>
-                                                    <img
-                                                        alt='User Profile'
-                                                        width='250px'
-                                                        src={user.profile}
-                                                    />
-                                                </Typography>
-                                                <Grid container spacing={2}>
-                                                    <Grid item xs={12}>
-                                                        {user.username}
-                                                    </Grid>
-                                                    <Grid item xs={12}>
-                                                        {user.bio}
-                                                    </Grid>
-                                                    <Grid item xs={12}>
-                                                        Posts:{' '}
-                                                        {user.posts.length}
-                                                    </Grid>
-                                                    <Grid item xs={12}>
-                                                        {user.posts.length >
-                                                        0 ? (
-                                                            <>
-                                                                {user.posts.map(
-                                                                    (post) => (
-                                                                        <>
-                                                                            <PostCard
-                                                                                component={
-                                                                                    Link
-                                                                                }
-                                                                                to={`/${post.category.root_url}/${post.id}`}>
-                                                                                <PostImage
-                                                                                    alt={`${post.title}`}
-                                                                                    src={
-                                                                                        post.image_url
-                                                                                    }
-                                                                                />
-                                                                                <PostTitle>
-                                                                                    {post.title.slice(
-                                                                                        0,
-                                                                                        10
-                                                                                    )}
-                                                                                    ...
-                                                                                    <PostContent>
-                                                                                        {post.content.slice(
-                                                                                            0,
-                                                                                            10
-                                                                                        )}
-                                                                                        ...
-                                                                                    </PostContent>
-                                                                                </PostTitle>
-                                                                            </PostCard>
-                                                                            <br></br>
-                                                                        </>
-                                                                    )
-                                                                )}
-                                                            </>
-                                                        ) : (
-                                                            <p>
-                                                                "This user
-                                                                hasn't made any
-                                                                posts yet!"
-                                                            </p>
-                                                        )}
-                                                    </Grid>
-                                                    <Grid item xs={12}>
-                                                        Comments:{' '}
-                                                        {user.comments.length}
-                                                    </Grid>
-                                                    <Grid item xs={12}>
-                                                        {user.comments.length >
-                                                        0 ? (
-                                                            <>
-                                                                {user.comments.map(
-                                                                    (
-                                                                        comment
-                                                                    ) => (
-                                                                        <>
-                                                                            <PostCard>
-                                                                                <PostTitle>
-                                                                                    {
-                                                                                        comment.id
-                                                                                    }
-                                                                                    ...
-                                                                                    <PostContent>
-                                                                                        {comment.body.slice(
-                                                                                            0,
-                                                                                            10
-                                                                                        )}
-                                                                                        ...
-                                                                                    </PostContent>
-                                                                                </PostTitle>
-                                                                            </PostCard>
-                                                                            <br></br>
-                                                                        </>
-                                                                    )
-                                                                )}
-                                                            </>
-                                                        ) : (
-                                                            <p>
-                                                                "This user
-                                                                hasn't made any
-                                                                comments yet!"
-                                                            </p>
-                                                        )}
-                                                    </Grid>
-                                                    <Grid item xs={12}></Grid>
-                                                    <Grid item xs={12}></Grid>
-                                                </Grid>
-                                            </div>
-                                        </Container>
-                                    ) : (
-                                        <h3>This user can not be found</h3>
-                                    )}
-                                </motion.div>
+  return (
+    <Switch>
+      <Route
+        path={`/profile/:id`}
+        render={(routerProps) => {
+          let id = parseInt(routerProps.match.params.id);
+          let user;
+          if (users.length > 0) {
+            user = users.find((user) => user.id === id);
+          }
+          return (
+            <>
+              {users.length > 0 ? (
+                <motion.div initial='initial' animate='animate' exit='exit'>
+                  {user.posts.length !== undefined ? (
+                    <Container
+                      style={{ backgroundColor: 'white' }}
+                      component='main'
+                      maxWidth='xs'>
+                      <CssBaseline />
+                      <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                          <img
+                            alt="User's cloud"
+                            width='40px'
+                            src={user.image}
+                          />
+                        </Avatar>
+                        <Typography component='h1' variant='h5'>
+                          <img
+                            alt='User Profile'
+                            width='250px'
+                            src={user.profile}
+                          />
+                        </Typography>
+                        <Grid container spacing={2}>
+                          <Grid item xs={12}>
+                            {user.username}
+                          </Grid>
+                          <Grid item xs={12}>
+                            {user.bio}
+                          </Grid>
+                          <Grid item xs={12}>
+                            Posts: {user.posts.length}
+                          </Grid>
+                          <Grid item xs={12}>
+                            {user.posts.length > 0 ? (
+                              <>
+                                {user.posts.map((post) => (
+                                  <>
+                                    <PostCard
+                                      component={Link}
+                                      to={`/${post.category.root_url}/${post.id}`}>
+                                      <PostImage
+                                        alt={`${post.title}`}
+                                        src={post.image_url}
+                                      />
+                                      <PostTitle>
+                                        {post.title.slice(0, 10)}
+                                        ...
+                                        <PostContent>
+                                          {post.content.slice(0, 10)}
+                                          ...
+                                        </PostContent>
+                                      </PostTitle>
+                                    </PostCard>
+                                    <br></br>
+                                  </>
+                                ))}
+                              </>
                             ) : (
-                                <motion.div
-                                    initial='initial'
-                                    animate='animate'
-                                    exit='exit'>
-                                    <h5>Waking up the dyno...</h5>
-                                </motion.div>
+                              <p>"This user hasn't made any posts yet!"</p>
                             )}
-                        </>
-                    );
-                }}
-            />
-            <Route
-                path='/profile'
-                render={() => {
-                    return (
-                        <motion.div
-                            initial='initial'
-                            animate='animate'
-                            exit='exit'>
-                            {user.comments ? (
-                                <Container
-                                    style={{ backgroundColor: 'white' }}
-                                    component='main'
-                                    maxWidth='xs'>
-                                    <CssBaseline />
-                                    <div className={classes.paper}>
-                                        <Avatar className={classes.avatar}>
-                                            <img
-                                                alt='User Cloud'
-                                                width='40px'
-                                                src={user.image}
-                                            />
-                                        </Avatar>
-                                        <Typography component='h1' variant='h5'>
-                                            <img
-                                                alt='User Profile'
-                                                width='250px'
-                                                src={user.profile}
-                                            />
-                                        </Typography>
-                                        <Grid container spacing={2}>
-                                            <Grid item xs={12}>
-                                                {user.username}
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                {user.bio}
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                Posts: {user.posts.length}
-                                            </Grid>
-                                            <Grid
-                                                style={{
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                }}
-                                                item
-                                                xs={12}>
-                                                {user.posts.length > 0 ? (
-                                                    <>
-                                                        {user.posts.map(
-                                                            (post) => (
-                                                                <>
-                                                                    <PostCard
-                                                                        component={
-                                                                            Link
-                                                                        }
-                                                                        to={`/${post.category.root_url}/${post.id}`}>
-                                                                        <PostImage
-                                                                            src={
-                                                                                post.image_url
-                                                                            }
-                                                                        />
-                                                                        <PostTitle>
-                                                                            {post.title.slice(
-                                                                                0,
-                                                                                10
-                                                                            )}
-                                                                            ...
-                                                                            <PostContent>
-                                                                                {post.content.slice(
-                                                                                    0,
-                                                                                    10
-                                                                                )}
-                                                                                ...
-                                                                            </PostContent>
-                                                                        </PostTitle>
-                                                                    </PostCard>
-                                                                    <br></br>
-                                                                </>
-                                                            )
-                                                        )}
-                                                    </>
-                                                ) : (
-                                                    <p>
-                                                        This user hasn't made
-                                                        any posts yet!
-                                                    </p>
-                                                )}
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                Comments: {user.comments.length}
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                {user.comments.length > 0 ? (
-                                                    <>
-                                                        {user.comments.map(
-                                                            (comment) => (
-                                                                <>
-                                                                    <PostCard>
-                                                                        <PostTitle>
-                                                                            {
-                                                                                comment.id
-                                                                            }
-                                                                            ...
-                                                                            <PostContent>
-                                                                                {comment.body.slice(
-                                                                                    0,
-                                                                                    10
-                                                                                )}
-                                                                                ...
-                                                                            </PostContent>
-                                                                        </PostTitle>
-                                                                    </PostCard>
-                                                                    <br></br>
-                                                                </>
-                                                            )
-                                                        )}
-                                                    </>
-                                                ) : (
-                                                    <p>
-                                                        "This user hasn't made
-                                                        any comments yet!"
-                                                    </p>
-                                                )}
-                                            </Grid>
-                                            <Grid item xs={12}></Grid>
-                                            <Grid item xs={12}></Grid>
-                                        </Grid>
-                                    </div>
-                                </Container>
+                          </Grid>
+                          <Grid item xs={12}>
+                            Comments: {user.comments.length}
+                          </Grid>
+                          <Grid item xs={12}>
+                            {user.comments.length > 0 ? (
+                              <>
+                                {user.comments.map((comment) => (
+                                  <>
+                                    <PostCard>
+                                      <PostTitle>
+                                        {comment.id}
+                                        ...
+                                        <PostContent>
+                                          {comment.body.slice(0, 10)}
+                                          ...
+                                        </PostContent>
+                                      </PostTitle>
+                                    </PostCard>
+                                    <br></br>
+                                  </>
+                                ))}
+                              </>
                             ) : (
-                                <h5>Waking up the dyno...</h5>
+                              <p>"This user hasn't made any comments yet!"</p>
                             )}
-                        </motion.div>
-                    );
-                }}
-            />
-        </Switch>
-    );
+                          </Grid>
+                          <Grid item xs={12}></Grid>
+                          <Grid item xs={12}></Grid>
+                        </Grid>
+                      </div>
+                    </Container>
+                  ) : (
+                    <h3>This user can not be found</h3>
+                  )}
+                </motion.div>
+              ) : (
+                <motion.div initial='initial' animate='animate' exit='exit'>
+                  <h5>Waking up the dyno...</h5>
+                </motion.div>
+              )}
+            </>
+          );
+        }}
+      />
+      <Route
+        path='/profile'
+        render={() => {
+          return (
+            <motion.div initial='initial' animate='animate' exit='exit'>
+              {user.comments ? (
+                <Container
+                  style={{ backgroundColor: 'white' }}
+                  component='main'
+                  maxWidth='xs'>
+                  <CssBaseline />
+                  <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                      <img alt='User Cloud' width='40px' src={user.image} />
+                    </Avatar>
+                    <Typography component='h1' variant='h5'>
+                      <img
+                        alt='User Profile'
+                        width='250px'
+                        src={user.profile}
+                      />
+                    </Typography>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                        {user.username}
+                      </Grid>
+                      <Grid item xs={12}>
+                        {user.bio}
+                      </Grid>
+                      <Grid item xs={12}>
+                        Posts: {user.posts.length}
+                      </Grid>
+                      <Grid
+                        style={{
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}
+                        item
+                        xs={12}>
+                        {user.posts.length > 0 ? (
+                          <>
+                            {user.posts.map((post) => (
+                              <>
+                                <PostCard
+                                  component={Link}
+                                  to={`/${post.category.root_url}/${post.id}`}>
+                                  <PostImage src={post.image_url} />
+                                  <PostTitle>
+                                    {post.title.slice(0, 10)}
+                                    ...
+                                    <PostContent>
+                                      {post.content.slice(0, 10)}
+                                      ...
+                                    </PostContent>
+                                  </PostTitle>
+                                </PostCard>
+                                <br></br>
+                              </>
+                            ))}
+                          </>
+                        ) : (
+                          <p>This user hasn't made any posts yet!</p>
+                        )}
+                      </Grid>
+                      <Grid item xs={12}>
+                        Comments: {user.comments.length}
+                      </Grid>
+                      <Grid item xs={12}>
+                        {user.comments.length > 0 ? (
+                          <>
+                            {user.comments.map((comment) => (
+                              <>
+                                <PostCard>
+                                  <PostTitle>
+                                    {comment.id}
+                                    ...
+                                    <PostContent>
+                                      {comment.body.slice(0, 10)}
+                                      ...
+                                    </PostContent>
+                                  </PostTitle>
+                                </PostCard>
+                                <br></br>
+                              </>
+                            ))}
+                          </>
+                        ) : (
+                          <p>"This user hasn't made any comments yet!"</p>
+                        )}
+                      </Grid>
+                      <Grid item xs={12}></Grid>
+                      <Grid item xs={12}></Grid>
+                    </Grid>
+                  </div>
+                </Container>
+              ) : (
+                <h5>Waking up the dyno...</h5>
+              )}
+            </motion.div>
+          );
+        }}
+      />
+    </Switch>
+  );
 }
 
 const mapStateToProps = (state) => {
-    return {
-        user: state.user,
-        users: state.users,
-    };
+  return {
+    user: state.user,
+    users: state.users,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        setExistingUser: (token) => dispatch(setExistingUser(token)),
-        fetchUsers: () => dispatch(fetchUsers()),
-    };
+  return {
+    setExistingUser: (token) => dispatch(setExistingUser(token)),
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
 };
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(Profile)
+  connect(mapStateToProps, mapDispatchToProps)(Profile)
 );

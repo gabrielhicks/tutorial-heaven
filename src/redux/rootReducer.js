@@ -9,14 +9,14 @@ import usersReducer from './User/users.reducer';
 import editPostReducer from './Post/editpost.reducer';
 
 const rootReducer = combineReducers({
-    posts: postReducer,
-    user: userReducer,
-    comments: commentReducer,
-    messages: messageReducer,
-    category: categoryReducer,
-    users: usersReducer,
-    categoryMessages: categoryMessagesReducer,
-    post: editPostReducer,
+  posts: postReducer,
+  user: userReducer,
+  comments: commentReducer,
+  messages: messageReducer,
+  category: categoryReducer,
+  users: usersReducer,
+  categoryMessages: categoryMessagesReducer,
+  post: editPostReducer,
 });
 
 export default rootReducer;
